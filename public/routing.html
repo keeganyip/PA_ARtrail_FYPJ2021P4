@@ -97,7 +97,7 @@
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
   const database = getDatabase(app);
-  const locations = ref(database, 'Locations');
+  const locations = ref(database, 'Trails');
  
 
   onValue(locations, (snapshot) => {
