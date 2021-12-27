@@ -1,0 +1,22 @@
+{
+  "Trails" : {
+    "Chinatown" : {
+      "Landmarks":{
+        "Chinatown Heritage Centre":[1,1],
+        "Sri Mariamman Temple":[1,1],
+        "Masjid Jamae (Chulia)":[1,1],
+        "Tong Heng":[1,1],
+        "Buddha Tooth Relic":[1,1],
+        "Pagoda Street & Trengannu Street":[1,1],
+        "Sago Street":[1,1],
+        "Mural on letter writer @ Smith Street":[1,1]
+      }
+    },
+    "Kampong Glam" : "Landmarks",
+    "Little India" : "Landmarks",
+    "Peranakan" : "Landmarks"
+  },
+  "test" : {
+    "test1" : "Hi"
+  }
+}
