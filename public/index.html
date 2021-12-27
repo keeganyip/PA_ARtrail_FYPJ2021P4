@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>Testing Apache</title>
+        <style >
+            body,html{
+                height:100%;
+                margin:0;
+            }
+            #bg{
+                background-image: url("./static/background.jpeg");
+                height:100%;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+            #button{
+                position:absolute;
+                margin-top: 1000px;
+                margin-left: 83px;
+                width: 500px;
+                height: 150px;
+                font-size:xx-large;
+                font-weight: bold;
+                color:white;
+                padding-left: 10px;
+                padding-right:10px;
+                border:1px black solid;
+                border-radius: 25px;
+                background-color: purple;
+            }
+        </style>
+        <script type="text/javascript">
+            function onClick(){
+                window.location.href="routing.html"
+            }
+        </script>
+    </head>
+    <body>
+        <div id="bg">
+            <input onclick="onClick()" type="button" value="Start the AR Voice Guided Tour" id="button"></input>
+        </div>
+    </body>
+</html>

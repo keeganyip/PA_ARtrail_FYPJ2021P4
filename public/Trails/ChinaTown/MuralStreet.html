@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html style="background-color: grey;">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello Bulma!</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="../../scripts/code.js"></script>
+  </head>
+  <body>
+
+    <!-- <nav class="level">
+      <a class="level-item level-left" href="https://nixonchew.github.io/fypj/main.html">
+        <img src="../assets/back-arrow-svgrepo-com.svg" width="30" height="30" alt="">
+      </a>
+      <h1 class="level-item has-text-centered"> Chinese Clan Association</h1>
+    </nav> -->
+
+  <section class="section">
+    <div class="container">
+      <!-- <a class="navbar-brand" href="https://nixonchew.github.io/fypj/main.html">
+        <img src="../assets/back-arrow-svgrepo-com.svg" width="30" height="30" alt="">
+      </a> -->
+
+      <h1 class="title has-text-centered">
+        Mural Street @ Smith Street
+      </h1>
+      <div class="content">
+          <p id="textContent" class="has-text-white">
+            Fascinating wall murals have been mushrooming all over the city in recent years, thanks to Singaporean artists like Yip Yew Chong. His work isn’t just Instagram-worthy, it’s turning roads, like this one in Chinatown, into street museums.
+            Yew Chong painted these murals from his personal memories of Singapore’s past – he grew up in Sago Lane, a street across the road. The Paper Mask & Puppet Seller (on the right) was inspired by a real person who sold masks on this very street.
+
+          </p>
+      </div>
+    <div class="field">
+        <button class="button is-light is-pulled-right" id="congrats_button">Complete</button>
+    </div>
+    <div class="field">
+      <a href="https://finalyearproject-631fc.web.app/main.html">
+      <button class="button is-light is-pulled-right" style="margin-right:5px;">Cancel</button>
+    </a>
+    </div>
+    <div class="field"> 
+      <img class="image is-64x64" id="speaker" src="../assets/125-1258034_free-download-and-vector-speaker-icon-animated-gif-removebg-preview.png" alt="">
+    </div>
+    </div>
+
+  </section>
+
+<!--this is for the pop up--> 
+
+
+
+  </body>
+  
+<script>
+  var modal = document.getElementById("congraztPage")
+var span = document.getElementsByClassName("close")[0];
+var btn = document.getElementById("button_complete");
+var speaker = document.getElementById("speaker");
+var textSentance = document.getElementById("textContent");
+console.log(textSentance.textContent);
+
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+span.onclick = function() {
+  modal.style.display = "none";
+}
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+speaker.onclick = function(){
+
+  let utterance = new SpeechSynthesisUtterance(textSentance.textContent);
+  speechSynthesis.speak(utterance);
+}
+
+
+
+</script>
+
+<style>
+  #content {
+    border-radius: 25px;
+    padding: 20px;
+  }
+  
+  
+</style>
+
+</html>

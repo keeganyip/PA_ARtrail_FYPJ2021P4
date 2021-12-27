@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <link rel="stylesheet" href="scripts/style.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet"/>
+  <link href="scripts/gdropdown.css" rel="stylesheet" type="text/css"/>
+    <script src="bundle.js"></script>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>GeoAR.js demo</title>
+    <script src='https://aframe.io/releases/0.9.2/aframe.min.js'></script>
+    <script src='https://raw.githack.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js'></script>
+    <script>
+        THREEx.ArToolkitContext.baseURL = 'https://raw.githack.com/jeromeetienne/ar.js/master/three.js/'
+    </script>
+    <script src="./Trails/info.js"></script>
+    <script async src="scripts/gDropDown.js"></script>
+    <script async src="./scripts/routing.js"></script>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCL1J1qRPLGfBP9AkMp9E0zfD-5_5UZcWs&callback=getLocationUpdate"> </script>
+
+    <style>
+        #map {
+          height: 100%;
+          width: 100%;
+        }
+        html, body {
+          height: 100%;
+          margin: 0;
+          padding: 0;
+          
+        }
+      </style>
+</head>
+
+<link rel="stylesheet" href="./scripts/style.css">
+    
+
+
+<body>
+<div id="map"></div>
+<input type="button" style="margin-left: 100px;font-size:larger;margin-top:10px;height:98px; border: 1px solid; padding: 1px 12px; font: bold 20px Roboto, Arial, sans-serif; color: #000000; background-color: #FFFFFF; cursor: pointer;" id="submit" value="Start"  />
+<button id="recenter" style="background-color: white; margin-top: 11px;margin-left: 1px;"> <img src="static/center-icon.jpg" style="width: 89px;height: 89px;background-color: white;"> </button>
+<span id ="instructions"></span>
+<div id="dialog">
+  <p style="font-size:large;">You are more than 700m from the trail, do you want to travel to the trail now?</p>
+  <p style="font-size:medium;">Choose travel mode</p>   
+  <select id = "option" style="width:100px;height:25px;font-size: larger;" >
+    <option value="DRIVING">Driving</option>
+    <option value="WALKING">Walking</option>
+    <option value="BICYCLING">Bicycling</option>
+    <option value="TRANSIT">Transit</option>
+  </select>
+  <input style = "margin-left: 230px;display:none;" type="button" id="submitTravelMode" value="Ok" />
+</div>
+<div id="fardialog" >
+  <p style="font-size:xx-large;">You are less than 700m from the trail, do you want to start the trail now?</p>   
+
+  <input style = "margin-left: 230px;display:none;" type="button" id="submitTravelMode" value="Ok" />
+</div>
+
+<div id = "congraztPage" title="You have completed the trail" class="modal" style="display: none;background-color: rgb(0,0,0);background-color: rgba(0,0,0,0.4);position: fixed;z-index: 1;left: 0;top: 0;width: 100%;height: 100%;">
+  <span class="close" style="color: #aaa;color: #aaa;font-size: 28px;font-weight: bold;">&times;</span>
+  <div id = "content" style="background-color: #fefefe;margin: 15% auto; /* 15% from the top and centered */padding: 20px;border: 1px solid #888;width: 80%; ">
+  <h1 style="text-align: center;">Congratulations!</h1>
+</div>
+</div>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-analytics.js";
+  import { getDatabase ,  ref,  onValue} from "https://www.gstatic.com/firebasejs/9.5.0/firebase-database.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyAiWhsurmpe0XHv5fT6woKqY6hURnd4Kno",
+    authDomain: "fypj-f74df.firebaseapp.com",
+    databaseURL: "https://fypj-f74df-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "fypj-f74df",
+    storageBucket: "fypj-f74df.appspot.com",
+    messagingSenderId: "934697055143",
+    appId: "1:934697055143:web:b193780aae92b9e111bc82",
+    measurementId: "G-9K8TFP4H0D",
+    databaseURL:"https://fypj-f74df-default-rtdb.asia-southeast1.firebasedatabase.app/"
+  };
+
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const database = getDatabase(app);
+  const locations = ref(database, 'Locations');
+ 
+
+  onValue(locations, (snapshot) => {
+  const data = snapshot.val();
+  //updateStarCount(postElement, data);
+  console.log(data);
+});
+</script>
+</body>
+</html>
