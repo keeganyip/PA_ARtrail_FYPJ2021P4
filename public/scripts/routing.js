@@ -478,9 +478,11 @@ function success(position) {
     //     }
     // }
 }
-    function errorHandler(err) {
+function errorHandler(err) {
     if(err.code == 1) {
         alert("Error: Access is denied!");
+        
+        // TODO: getLocationUpdate() to ask again or send back to home 
     } else if( err.code == 2) {
         alert("Error: Position is unavailable!");
     }
