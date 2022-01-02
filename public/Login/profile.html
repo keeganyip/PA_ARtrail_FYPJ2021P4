@@ -167,12 +167,12 @@
             } else if ($('.carousel-inner .carousel-item:last').hasClass('active')) {
                 // Hide right arrow
                 $this.children('.carousel-control-next').hide();
-                 //hide slide1
+                //hide slide1
                 $('#slide1').hide();
 
                 // But show left arrow
                 $this.children('.carousel-control-prev').show();
-                 //show slide2
+                //show slide2
                 $('#slide2').show();
             } else {
                 $this.children('.carousel-control').show();
@@ -180,15 +180,11 @@
         }
 
         $(function () {
-            $(".tab-content").swiperight(function () {
-                var $tab = $('#tablist .active').prev();
-                if ($tab.length > 0)
-                    $tab.find('a').tab('show');
+            $("#slide1").swiperight(function () {
+                var $carousel = $('#carousel').prev();
             });
-            $(".tab-content").swipeleft(function () {
-                var $tab = $('#tablist .active').next();
-                if ($tab.length > 0)
-                    $tab.find('a').tab('show');
+            $("#slide2").swipeleft(function () {
+                var $carousel = $('#carousel').next();
             });
         });
     </script>
