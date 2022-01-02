@@ -26,6 +26,8 @@
     <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
     <link href="../assets/css/fa.css" rel="stylesheet" />
     <link href="../assets/css/login.css" rel="stylesheet" />
+    <link href="../assets/css/profile.css" rel="stylesheet" />
+    <link href="https://code.jquery.com/mobile/1.5.0-rc1/jquery.mobile-1.5.0-rc1.min.css" rel="stylesheet" />
 
     <!-- Template Main CSS File -->
     <link href="../assets/css/style.css" rel="stylesheet" />
@@ -56,173 +58,68 @@
                                 </div>
 
                                 <div class="mb-md-5 mt-md-4 pt-5 pb-4">
-
-                                    <div id="carousel" class="carousel carousel-dark slide" data-bs-ride="carousel" data-bs-transition=""
-                                        data-bs-interval="false" data-bs-wrap="false">
-                                        <div class="carousel-inner">
-                                            <div id="title1" class="carousel-item active">
-                                                Trail Progress
-                                               
-                                            </div>
-                                            <div class="carousel-item">
-                                                Trail Journal
-                                            </div>
-                                        </div>
-                                        <div class="carousel-indicators" style="position: relative;">
-                                            <button type="button" data-bs-target="#carousel" data-bs-slide-to="0"
-                                                class="active" aria-current="true" aria-label="Slide 1"></button>
-                                            <button type="button" data-bs-target="#carousel" data-bs-slide-to="1"
-                                                aria-label="Slide 2"></button>
-                                        </div>
-                                        <button class="carousel-control-prev" type="button" data-bs-target="#carousel"
-                                            data-bs-slide="prev">
-                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                            <span class="visually-hidden">Previous</span>
-                                        </button>
-                                        <button class="carousel-control-next" type="button" data-bs-target="#carousel"
-                                            data-bs-slide="next">
-                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                            <span class="visually-hidden">Next</span>
-                                        </button>
+                                    <div id="slider" class="slider">
+                                        <section>
+                                            <h1>Trail Progress</h1>
+                                        </section>
+                                        <section>
+                                            <h1>Trail Journal</h1>
+                                        </section>
                                     </div>
-                                </div>
-                                <div>
-                                    <div id="slide1" style="transition-property: transform;">
-                                        TEST TEXT slide 1
-                                    </div>
-                                    <div id="slide2">
-                                        Test Text Slide 2
-                                    </div>
+                                    <!-- <div class='pagination'><span>1 / 2</span></div> -->
+                                    
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-    </div>
-    </section>
-    <!-- End Login -->
+        </section>
+        <!-- End Login -->
 
-    <main id="main"></main>
-    <!-- End #main -->
+        <main id="main"></main>
+        <!-- End #main -->
 
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
+        <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+                class="bi bi-arrow-up-short"></i></a>
 
-    <!-- Vendor JS Files -->
-    <script src="../assets/vendor/purecounter/purecounter.js"></script>
-    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="../assets/vendor/php-email-form/validate.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.js"
-        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/mobile/1.5.0-rc1/jquery.mobile-1.5.0-rc1.js"
-        integrity="sha256-ozaZ7ZptnEEuLpoEojfxBjOKXHoaQUb/DLnsTUEkIfs=" crossorigin="anonymous"></script>
+        <!-- Vendor JS Files -->
+        <script src="../assets/vendor/purecounter/purecounter.js"></script>
+        <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+        <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+        <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+        <script src="../assets/vendor/php-email-form/validate.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/mobile/1.5.0-rc1/jquery.mobile-1.5.0-rc1.js"
+            integrity="sha256-ozaZ7ZptnEEuLpoEojfxBjOKXHoaQUb/DLnsTUEkIfs=" crossorigin="anonymous"></script>
 
-    <script src="../assets/js/snap.js"></script>
+        <script src="../assets/js/snap.js"></script>
 
-    <!-- Template Main JS File -->
-    <script src="../assets/js/main.js"></script>
-    <script>
-        $(document).ready(function () {
-            checkitem();
-            carouselswipe();
-
-        });
-
-        
-
-        $('#carousel').on('slid.bs.carousel', checkitem);
-
-        var snapperslide1 = new Snap({
-            element: document.getElementById('slide1'),
-            disable: 'left',
-            transitionSpeed:.6,
-            easing:'ease-in-out'
-        });
-        var snappertitle1 = new Snap({
-            element: document.getElementById('title1')
-        })
-        var snapperslide2 = new Snap({
-        element: document.getElementById('slide2'),
-        disable: 'right',
-        transitionSpeed:.6
-        });
-        snappertitle1.disable();
-        snapperslide1.disable();
-        snapperslide2.disable();
-
-        function carouselswipe() {
-            
+        <!-- Template Main JS File -->
+        <script src="../assets/js/main.js"></script>
+       
+        <!-- <script>
+            const slider = document.getElementById("slider");
+            const pagination = document.querySelector('.pagination')
            
-            var carousel = $('.carousel').carousel();
-            $('#slide1').on('swipeleft', function () {
-                console.log('SWIPING LEFT');
-                carousel.carousel('next');
-                snapperslide1.open('right');
-                snapperslide2.close();
-                
-               
-            })
-            $('#slide2').on('swiperight', function () {
-                console.log('SWIPING RIGHT');
-                snapperslide1.close();
-                snapperslide2.open('left')
-                carousel.carousel('prev');
-            })
-        };
+            initPagination();
 
+            function initPagination() {
+                //pagination.innerHTML = `<span>1 / ${payload.length}<span>`;
 
-
-        function checkitem() {
-            var $this = $('#carousel');
-            console.log($('.carousel-inner .carousel-item:first').hasClass('active'))
-            if ($('.carousel-inner .carousel-item:first').hasClass('active')) {
-                // Hide left arrow
-                $this.children('.carousel-control-prev').hide();
-                //show slide1
-                $('#slide1').show();
-                
-
-                // But show right arrow
-                $this.children('.carousel-control-next').show();
-                //hide slide2
-                $('#slide2').hide();
-
-                snapperslide1.close();
-                snapperslide2.open('left')
-            } else if ($('.carousel-inner .carousel-item:last').hasClass('active')) {
-                // Hide right arrow
-                $this.children('.carousel-control-next').hide();
-                //hide slide1
-                $('#slide1').hide();
-
-                // But show left arrow
-                $this.children('.carousel-control-prev').show();
-                //show slide2
-                $('#slide2').show();
-
-                snapperslide1.open('right');
-                snapperslide2.close();
-
-            } else {
-                $this.children('.carousel-control').show();
+                    console.log(getCurrentPageNumber())
+                slider.addEventListener('scroll', function () {
+                    pagination.innerHTML = `<span>${getCurrentPageNumber()} / 2<span>`;
+                });
             }
-        };
 
-
-
-        // $(function () {
-        //     $("#slide1").swiperight(function () {
-        //         var $carousel = $('#carousel').prev();
-        //     });
-        //     $("#slide2").swipeleft(function () {
-        //         var $carousel = $('#carousel').next();
-        //     });
-        // });
-    </script>
-
+            function getCurrentPageNumber() {
+                const pgWidth = $(window).width();
+                const pgShift = pgWidth * 0.5; // when to consider that the page has changed
+                return Math.floor((slider.scrollLeft + pgShift) / pgWidth) + 1;
+            }
+        </script> -->
 </body>
 
 </html>
