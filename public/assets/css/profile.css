@@ -12,6 +12,7 @@
     display: flex;
     -webkit-overflow-scrolling: touch;
     overflow-x: scroll;
+    margin-top: 6rem;
   }
   section {
     border-right: 1px solid black;
@@ -44,3 +45,33 @@
 	top: 20px;
 	right: 20px;
 }
+.gallery-row {
+    max-width: inherit;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+  }
+  
+  /* Create two equal columns that sits next to each other */
+  .column {
+    flex: 30%;
+    padding: 0 4px;
+  }
+  
+  .column img {
+    margin-top: 8px;
+    vertical-align: middle;
+  }
+
+  .gallery{
+    max-height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: mandatory;
+    scroll-snap-points-y: repeat(3rem);
+    scroll-snap-type: y mandatory;
+  }
+  .gallery::webkit-scrollbar{
+      display: none;
+  }
+  
+  
