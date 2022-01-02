@@ -56,28 +56,13 @@
                                 </div>
 
                                 <div class="mb-md-5 mt-md-4 pt-5 pb-4">
-                                    <!-- <div role="tabpanel"> -->
 
-                                    <!-- Nav tabs -->
-                                    <!-- <div>
-                                            <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
-                                              <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Home</button>
-                                              <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</button>
-                                            </div>
-                                        </div> -->
-
-                                    <!-- Tab panes -->
-                                    <!-- <div class="tab-content">
-                                          <div role="tabpanel" class="tab-pane active" id="home">...1</div>
-                                          <div role="tabpanel" class="tab-pane" id="profile">...2</div>
-                                        </div> -->
-
-                                    <!-- </div> -->
-                                    <div id="carousel" class="carousel carousel-dark slide" data-bs-ride="carousel"
+                                    <div id="carousel" class="carousel carousel-dark slide" data-bs-ride="carousel" data-bs-transition=""
                                         data-bs-interval="false" data-bs-wrap="false">
                                         <div class="carousel-inner">
-                                            <div class="carousel-item active">
+                                            <div id="title1" class="carousel-item active">
                                                 Trail Progress
+                                               
                                             </div>
                                             <div class="carousel-item">
                                                 Trail Journal
@@ -102,7 +87,7 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <div id="slide1">
+                                    <div id="slide1" style="transition-property: transform;">
                                         TEST TEXT slide 1
                                     </div>
                                     <div id="slide2">
@@ -135,20 +120,59 @@
     <script src="https://code.jquery.com/mobile/1.5.0-rc1/jquery.mobile-1.5.0-rc1.js"
         integrity="sha256-ozaZ7ZptnEEuLpoEojfxBjOKXHoaQUb/DLnsTUEkIfs=" crossorigin="anonymous"></script>
 
+    <script src="../assets/js/snap.js"></script>
 
     <!-- Template Main JS File -->
     <script src="../assets/js/main.js"></script>
     <script>
-        /* If you want to stop autoplay bootstrap carousel the use this code: 
-  $('.carousel').carousel({
-    interval: false,
-  })
-  */
         $(document).ready(function () {
             checkitem();
+            carouselswipe();
+
         });
 
+        
+
         $('#carousel').on('slid.bs.carousel', checkitem);
+
+        var snapperslide1 = new Snap({
+            element: document.getElementById('slide1'),
+            disable: 'left',
+            transitionSpeed:.6,
+            easing:'ease-in-out'
+        });
+        var snappertitle1 = new Snap({
+            element: document.getElementById('title1')
+        })
+        var snapperslide2 = new Snap({
+        element: document.getElementById('slide2'),
+        disable: 'right',
+        transitionSpeed:.6
+        });
+        snappertitle1.disable();
+        snapperslide1.disable();
+        snapperslide2.disable();
+
+        function carouselswipe() {
+            
+           
+            var carousel = $('.carousel').carousel();
+            $('#slide1').on('swipeleft', function () {
+                console.log('SWIPING LEFT');
+                carousel.carousel('next');
+                snapperslide1.open('right');
+                snapperslide2.close();
+                
+               
+            })
+            $('#slide2').on('swiperight', function () {
+                console.log('SWIPING RIGHT');
+                snapperslide1.close();
+                snapperslide2.open('left')
+                carousel.carousel('prev');
+            })
+        };
+
 
 
         function checkitem() {
@@ -159,11 +183,15 @@
                 $this.children('.carousel-control-prev').hide();
                 //show slide1
                 $('#slide1').show();
+                
 
                 // But show right arrow
                 $this.children('.carousel-control-next').show();
                 //hide slide2
                 $('#slide2').hide();
+
+                snapperslide1.close();
+                snapperslide2.open('left')
             } else if ($('.carousel-inner .carousel-item:last').hasClass('active')) {
                 // Hide right arrow
                 $this.children('.carousel-control-next').hide();
@@ -174,19 +202,25 @@
                 $this.children('.carousel-control-prev').show();
                 //show slide2
                 $('#slide2').show();
+
+                snapperslide1.open('right');
+                snapperslide2.close();
+
             } else {
                 $this.children('.carousel-control').show();
             }
-        }
+        };
 
-        $(function () {
-            $("#slide1").swiperight(function () {
-                var $carousel = $('#carousel').prev();
-            });
-            $("#slide2").swipeleft(function () {
-                var $carousel = $('#carousel').next();
-            });
-        });
+
+
+        // $(function () {
+        //     $("#slide1").swiperight(function () {
+        //         var $carousel = $('#carousel').prev();
+        //     });
+        //     $("#slide2").swipeleft(function () {
+        //         var $carousel = $('#carousel').next();
+        //     });
+        // });
     </script>
 
 </body>
