@@ -56,24 +56,25 @@
                                 </div>
 
                                 <div class="mb-md-5 mt-md-4 pt-5 pb-4">
-                                    <div role="tabpanel">
+                                    <!-- <div role="tabpanel"> -->
 
-                                        <!-- Nav tabs -->
-                                        <div>
+                                    <!-- Nav tabs -->
+                                    <!-- <div>
                                             <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
                                               <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Home</button>
                                               <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</button>
                                             </div>
-                                        </div>
-                                      
-                                        <!-- Tab panes -->
-                                        <div class="tab-content">
+                                        </div> -->
+
+                                    <!-- Tab panes -->
+                                    <!-- <div class="tab-content">
                                           <div role="tabpanel" class="tab-pane active" id="home">...1</div>
                                           <div role="tabpanel" class="tab-pane" id="profile">...2</div>
-                                        </div>
-                                      
-                                      </div>
-                                    <!-- <div id="carousel" class="carousel carousel-dark slide" data-bs-ride="carousel" data-bs-interval="false" data-bs-wrap="false">
+                                        </div> -->
+
+                                    <!-- </div> -->
+                                    <div id="carousel" class="carousel carousel-dark slide" data-bs-ride="carousel"
+                                        data-bs-interval="false" data-bs-wrap="false">
                                         <div class="carousel-inner">
                                             <div class="carousel-item active">
                                                 Trail Progress
@@ -98,7 +99,15 @@
                                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                             <span class="visually-hidden">Next</span>
                                         </button>
-                                    </div> -->
+                                    </div>
+                                </div>
+                                <div>
+                                    <div id="slide1">
+                                        TEST TEXT slide 1
+                                    </div>
+                                    <div id="slide2">
+                                        Test Text Slide 2
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -130,20 +139,60 @@
     <!-- Template Main JS File -->
     <script src="../assets/js/main.js"></script>
     <script>
-        $(function() {
-            $(".tab-content").swiperight(function() {
+        /* If you want to stop autoplay bootstrap carousel the use this code: 
+  $('.carousel').carousel({
+    interval: false,
+  })
+  */
+        $(document).ready(function () {
+            checkitem();
+        });
+
+        $('#carousel').on('slid.bs.carousel', checkitem);
+
+
+        function checkitem() {
+            var $this = $('#carousel');
+            console.log($('.carousel-inner .carousel-item:first').hasClass('active'))
+            if ($('.carousel-inner .carousel-item:first').hasClass('active')) {
+                // Hide left arrow
+                $this.children('.carousel-control-prev').hide();
+                //show slide1
+                $('#slide1').show();
+
+                // But show right arrow
+                $this.children('.carousel-control-next').show();
+                //hide slide2
+                $('#slide2').hide();
+            } else if ($('.carousel-inner .carousel-item:last').hasClass('active')) {
+                // Hide right arrow
+                $this.children('.carousel-control-next').hide();
+                 //hide slide1
+                $('#slide1').hide();
+
+                // But show left arrow
+                $this.children('.carousel-control-prev').show();
+                 //show slide2
+                $('#slide2').show();
+            } else {
+                $this.children('.carousel-control').show();
+            }
+        }
+
+        $(function () {
+            $(".tab-content").swiperight(function () {
                 var $tab = $('#tablist .active').prev();
                 if ($tab.length > 0)
                     $tab.find('a').tab('show');
             });
-            $(".tab-content").swipeleft(function() {
+            $(".tab-content").swipeleft(function () {
                 var $tab = $('#tablist .active').next();
                 if ($tab.length > 0)
                     $tab.find('a').tab('show');
             });
         });
     </script>
-    
+
 </body>
 
 </html>
