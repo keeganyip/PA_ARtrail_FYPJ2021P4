@@ -12,7 +12,7 @@
     display: flex;
     -webkit-overflow-scrolling: touch;
     overflow-x: scroll;
-    margin-top: 6rem;
+    margin-top: 3rem;
   }
   section {
     border-right: 1px solid black;
@@ -25,7 +25,7 @@
   }
   h1  {
     position: absolute;
-    top: 1%;
+    top: 5%;
     transform: translateY(-50%);
     text-align: center;
     color: black;
@@ -73,5 +73,95 @@
   .gallery::webkit-scrollbar{
       display: none;
   }
+
+
+
+  .progress-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    text-align: center;
+    max-width: 400px;
+    margin: 0 auto;
+    padding-left: 10px;
+  }
+  #ProgressBar {
+    
+    width: 25px;
+    margin: 0 auto;
+  }
+  .step {
+    text-align: center;
+  }
+  .text {
+    margin-bottom: 10px;
+    color: #0011ff;
+  }
+
+  .bullets {
+    background-color: gray;
+    /* border: 1px solid #0011ff; */
+    height: 15px;
+    width: 15px;
+    border-radius: 100%;
+    color: #0011ff;
+    display: inline-block;
+    position: relative;
+    transition: background-color 500ms;
+    line-height: 20px;
+  }
+  
+  .bullets.completed {
+    color: white;
+    background-color: #0011ff;
+  }
+  
+  .bullets.completed::after {
+    content: "";
+    position: absolute;
+    right: -18px;
+    bottom: 7px;
+    height: 5px;
+    width: 18px;
+    background-color: #0011ff;
+  }
+
+  span.trail{
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    max-width: 78px;
+  }
+
+  .accordion-button{
+    background-color:transparent;
+  }
+  .accordion-item{
+    background-color:transparent;
+    border:0;
+  }
+
+.title {
+  font-family: 'Lato',sans-serif; 
+  font-weight: 700;
+  font-size: 25px;
+  color: #47525E;
+}
+
+.welcome-text{
+  font-family: 'Lato',sans-serif; 
+  font-weight: 700;
+  color: #5A6978;
+  font-size: 25px;
+}
+
+#lightSlider{
+  height: 200px !important;
+  width: 200px !important;
+}
+
+#lightSlider img{
+  height: 50px !important;
+  width: 50px !important;
+}
   
   

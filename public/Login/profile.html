@@ -28,6 +28,8 @@
     <link href="../assets/css/login.css" rel="stylesheet" />
     <link href="../assets/css/profile.css" rel="stylesheet" />
     <link href="https://code.jquery.com/mobile/1.5.0-rc1/jquery.mobile-1.5.0-rc1.min.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <link href="../assets/css/lightslider.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
     <link href="../assets/css/style.css" rel="stylesheet" />
@@ -45,134 +47,401 @@
         <img class="bg-img" src="../assets/img/background.jpg" alt="">
         <!-- ======= Login Section ======= -->
         <section class="vh-100 content">
-            <h3 class="fw-bold mb-2 text-center text-uppercase">Welcome, <span style="color: #00A6FF;">UserName</span>
+            <h3 class="welcome-text mb-2 text-center">Welcome, <span class="welcome-text"
+                    style="color: #00A6FF;">*username*</span>
                 </h2>
 
                 <div class="py-5 h-100">
-                            <div class="text-black text-center">
-                                <div class="mb-5">
-                                    <img src="https://img.icons8.com/color/48/000000/test-account.png" />
-                                    <p>User</p>
-                                </div>
+                    <div class="text-black text-center">
+                        <div class="mb-5">
+                            <img src="https://img.icons8.com/color/48/000000/test-account.png" />
+                            <p>User</p>
+                        </div>
 
-                                <div class="mb-md-5 mt-md-4 mt-5 pt-5 pb-4">
-                                    <div id="slider" class="slider">
-                                        <section>
-                                            <h1>Trails Overview</h1>
-                                            <hr style="width:80%; margin: auto; height:2px">
-                                        </section>
-                                        <section>
-                                            <h1>Trail Journal</h1>
-                                            <div class="gallery mx-1" >
-                                                <div class="gallery-row">
-                                                    <div class="column">
-                                                        <img src="../assets/img/gallery/gallery-1.jpg"
-                                                            style="width:100%">
-                                                        <img src="../assets/img/gallery/gallery-2.jpg"
-                                                            style="width:100%">
-                                                        <img src="../assets/img/gallery/gallery-3.jpg"
-                                                            style="width:100%">
-                                                        <img src="../assets/img/gallery/gallery-4.jpg"
-                                                            style="width:100%">
-                                                        <img src="../assets/img/gallery/gallery-5.jpg"
-                                                            style="width:100%">
-                                                        <img src="../assets/img/gallery/gallery-6.jpg"
-                                                            style="width:100%">
-                                                        <img src="../assets/img/gallery/gallery-7.jpg"
-                                                            style="width:100%">
-                                                    </div>
-                                                    <div class="column">
-                                                        <img src="../assets/img/gallery/gallery-1.jpg"
-                                                            style="width:100%">
-                                                        <img src="../assets/img/gallery/gallery-2.jpg"
-                                                            style="width:100%">
-                                                        <img src="../assets/img/gallery/gallery-3.jpg"
-                                                            style="width:100%">
-                                                        <img src="../assets/img/gallery/gallery-4.jpg"
-                                                            style="width:100%">
-                                                        <img src="../assets/img/gallery/gallery-5.jpg"
-                                                            style="width:100%">
-                                                        <img src="../assets/img/gallery/gallery-6.jpg"
-                                                            style="width:100%">
-                                                        <img src="../assets/img/gallery/gallery-7.jpg"
-                                                            style="width:100%">
-                                                    </div>
-                                                    <div class="column">
-                                                        <img src="../assets/img/gallery/gallery-1.jpg"
-                                                            style="width:100%">
-                                                        <img src="../assets/img/gallery/gallery-2.jpg"
-                                                            style="width:100%">
-                                                        <img src="../assets/img/gallery/gallery-3.jpg"
-                                                            style="width:100%">
-                                                        <img src="../assets/img/gallery/gallery-4.jpg"
-                                                            style="width:100%">
-                                                        <img src="../assets/img/gallery/gallery-5.jpg"
-                                                            style="width:100%">
-                                                        <img src="../assets/img/gallery/gallery-6.jpg"
-                                                            style="width:100%">
-                                                        <img src="../assets/img/gallery/gallery-7.jpg"
-                                                            style="width:100%">
-                                                    </div>
-                                                    <div class="column">
-                                                        <img src="../assets/img/gallery/gallery-1.jpg"
-                                                            style="width:100%">
-                                                        <img src="../assets/img/gallery/gallery-2.jpg"
-                                                            style="width:100%">
-                                                        <img src="../assets/img/gallery/gallery-3.jpg"
-                                                            style="width:100%">
-                                                        <img src="../assets/img/gallery/gallery-4.jpg"
-                                                            style="width:100%">
-                                                        <img src="../assets/img/gallery/gallery-5.jpg"
-                                                            style="width:100%">
-                                                        <img src="../assets/img/gallery/gallery-6.jpg"
-                                                            style="width:100%">
-                                                        <img src="../assets/img/gallery/gallery-7.jpg"
-                                                            style="width:100%">
+                        <div class="mb-md-5 mt-md-4 mt-5 pt-5 pb-4">
+                            <div id="slider" class="slider">
+                                <section>
+                                    <h1 class="title">Trails Overview</h1>
+                                    <hr style="width:80%; margin: auto; height:2px">
+                                    <div class="m-2 mt-5">
+                                        <div class="accordion accordion-flush" id="accordionExample">
+                                            <div class="accordion-item">
+                                                <h2 class="accordion-header" id="headingOne">
+                                                    <button class="accordion-button collapsed" type="button"
+                                                        data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                                        aria-expanded="false" aria-controls="collapseOne">
+                                                        <span class="trail" style="color: #F95F62;">Chinatown</span>
+                                                        <div class="progress-section align-content-center">
+                                                            <div id="ProgressBar">
+                                                                <div class="step">
+                                                                    <div class="bullets"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="ProgressBar">
+                                                                <div class="step">
+                                                                    <div class="bullets"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="ProgressBar">
+                                                                <div class="step">
+                                                                    <div class="bullets"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="ProgressBar">
+                                                                <div class="step">
+                                                                    <div class="bullets"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="ProgressBar">
+                                                                <div class="step">
+                                                                    <div class="bullets"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="ProgressBar">
+                                                                <div class="step">
+                                                                    <div class="bullets"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="ProgressBar">
+                                                                <div class="step">
+                                                                    <div class="bullets"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="ProgressBar">
+                                                                <div class="step">
+                                                                    <div class="bullets" id='last'></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </button>
+                                                </h2>
+                                                <div id="collapseOne" class="accordion-collapse collapse"
+                                                    aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+
+                                                    <div class="accordion-body">
+                                                        <ul id="lightSlider">
+                                                            <li>
+                                                                <figure><img
+                                                                        src="../assets/img/chinatown/chinatown heritage centre.JPG"
+                                                                        alt="chinatown heritage centre" />
+                                                                    <figcaption>Chinatown Heritage Centre</figcaption>
+                                                                </figure>
+                                                            </li>
+                                                            <li>
+                                                                <figure><img
+                                                                    src="../assets/img/chinatown/Sri mariam temple.JPG"
+                                                                    alt="sri mariam temple" />
+                                                                <figcaption>Sri Mariam Temple</figcaption>
+                                                            </figure>
+                                                            </li>
+                                                            <li>
+                                                               <figure><img
+                                                                    src="../assets/img/chinatown/Sri mariam temple.JPG"
+                                                                    alt="sri mariam temple" />
+                                                                <figcaption>Sri Mariam Temple</figcaption>
+                                                            </li>
+                                                        </ul>
+                                                        <!-- <div id="button section">
+                                                            <button id="Previous">Previous</button>
+                                                            <button id="Next">Next</button>
+                                                            <button id="Submit">Submit</button>
+                                                        </div> -->
                                                     </div>
                                                 </div>
                                             </div>
-                                        </section>
-                                    </div>
-                                    <!-- <div class='pagination'><span>1 / 2</span></div> -->
+                                            <div class="accordion-item">
+                                                <h2 class="accordion-header" id="headingTwo">
+                                                    <button class="accordion-button collapsed" type="button"
+                                                        data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                                                        aria-expanded="false" aria-controls="collapseTwo">
+                                                        <span class="trail" style="color: #976DD0;">Kampong Glam</span>
+                                                        <div class="progress-section align-content-center">
+                                                            <div id="ProgressBar">
+                                                                <div class="step">
+                                                                    <div class="bullets"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="ProgressBar">
+                                                                <div class="step">
+                                                                    <div class="bullets"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="ProgressBar">
+                                                                <div class="step">
+                                                                    <div class="bullets"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="ProgressBar">
+                                                                <div class="step">
+                                                                    <div class="bullets"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="ProgressBar">
+                                                                <div class="step">
+                                                                    <div class="bullets"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="ProgressBar">
+                                                                <div class="step">
+                                                                    <div class="bullets"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="ProgressBar">
+                                                                <div class="step">
+                                                                    <div class="bullets"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="ProgressBar">
+                                                                <div class="step">
+                                                                    <div class="bullets" id='last'></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </button>
+                                                </h2>
+                                                <div id="collapseTwo" class="accordion-collapse collapse"
+                                                    aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                                    <div class="accordion-body">
+                                                        <strong>This is the second item's accordion body.</strong> It is
+                                                        hidden by default, until the collapse plugin adds the
+                                                        appropriate classes that we use to style each element. These
+                                                        classes control the overall appearance, as well as the showing
+                                                        and hiding via CSS transitions. You can modify any of this with
+                                                        custom CSS or overriding our default variables. It's also worth
+                                                        noting that just about any HTML can go within the
+                                                        <code>.accordion-body</code>, though the transition does limit
+                                                        overflow.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="accordion-item">
+                                                <h2 class="accordion-header" id="headingThree">
+                                                    <button class="accordion-button collapsed" type="button"
+                                                        data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                                                        aria-expanded="false" aria-controls="collapseThree">
+                                                        <span class="trail" style="color: #35A113;">Little India</span>
+                                                        <div class="progress-section align-content-center">
+                                                            <div id="ProgressBar">
+                                                                <div class="step">
+                                                                    <div class="bullets"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="ProgressBar">
+                                                                <div class="step">
+                                                                    <div class="bullets"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="ProgressBar">
+                                                                <div class="step">
+                                                                    <div class="bullets"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="ProgressBar">
+                                                                <div class="step">
+                                                                    <div class="bullets"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="ProgressBar">
+                                                                <div class="step">
+                                                                    <div class="bullets"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="ProgressBar">
+                                                                <div class="step">
+                                                                    <div class="bullets"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="ProgressBar">
+                                                                <div class="step">
+                                                                    <div class="bullets"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="ProgressBar">
+                                                                <div class="step">
+                                                                    <div class="bullets" id='last'></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </button>
+                                                </h2>
+                                                <div id="collapseThree" class="accordion-collapse collapse"
+                                                    aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                                    <div class="accordion-body">
+                                                        <strong>This is the third item's accordion body.</strong> It is
+                                                        hidden by default, until the collapse plugin adds the
+                                                        appropriate classes that we use to style each element. These
+                                                        classes control the overall appearance, as well as the showing
+                                                        and hiding via CSS transitions. You can modify any of this with
+                                                        custom CSS or overriding our default variables. It's also worth
+                                                        noting that just about any HTML can go within the
+                                                        <code>.accordion-body</code>, though the transition does limit
+                                                        overflow.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="accordion-item">
+                                                <h2 class="accordion-header" id="headingFour">
+                                                    <button class="accordion-button collapsed" type="button"
+                                                        data-bs-toggle="collapse" data-bs-target="#collapseFour"
+                                                        aria-expanded="false" aria-controls="collapseFour">
+                                                        <span class="trail" style="color: #FF9E6A;">Peranakan</span>
+                                                        <div class="progress-section align-content-center">
+                                                            <div id="ProgressBar">
+                                                                <div class="step">
+                                                                    <div class="bullets"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="ProgressBar">
+                                                                <div class="step">
+                                                                    <div class="bullets"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="ProgressBar">
+                                                                <div class="step">
+                                                                    <div class="bullets"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="ProgressBar">
+                                                                <div class="step">
+                                                                    <div class="bullets"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="ProgressBar">
+                                                                <div class="step">
+                                                                    <div class="bullets"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="ProgressBar">
+                                                                <div class="step">
+                                                                    <div class="bullets"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="ProgressBar">
+                                                                <div class="step">
+                                                                    <div class="bullets"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="ProgressBar">
+                                                                <div class="step">
+                                                                    <div class="bullets" id='last'></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </button>
+                                                </h2>
+                                                <div id="collapseFour" class="accordion-collapse collapse"
+                                                    aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                                                    <div class="accordion-body">
+                                                        <strong>This is the third item's accordion body.</strong> It is
+                                                        hidden by default, until the collapse plugin adds the
+                                                        appropriate classes that we use to style each element. These
+                                                        classes control the overall appearance, as well as the showing
+                                                        and hiding via CSS transitions. You can modify any of this with
+                                                        custom CSS or overriding our default variables. It's also worth
+                                                        noting that just about any HTML can go within the
+                                                        <code>.accordion-body</code>, though the transition does limit
+                                                        overflow.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                </div>
+
+                                    </div>
+                                </section>
+                                <section>
+                                    <h1>Trail Journal</h1>
+                                    <hr style="width:80%; margin: auto; height:2px">
+                                    <div class="gallery mx-1">
+                                        <div class="gallery-row">
+                                            <div class="column">
+                                                <img src="../assets/img/gallery/gallery-1.jpg" style="width:100%">
+                                                <img src="../assets/img/gallery/gallery-2.jpg" style="width:100%">
+                                                <img src="../assets/img/gallery/gallery-3.jpg" style="width:100%">
+                                                <img src="../assets/img/gallery/gallery-4.jpg" style="width:100%">
+                                                <img src="../assets/img/gallery/gallery-5.jpg" style="width:100%">
+                                                <img src="../assets/img/gallery/gallery-6.jpg" style="width:100%">
+                                                <img src="../assets/img/gallery/gallery-7.jpg" style="width:100%">
+                                            </div>
+                                            <div class="column">
+                                                <img src="../assets/img/gallery/gallery-1.jpg" style="width:100%">
+                                                <img src="../assets/img/gallery/gallery-2.jpg" style="width:100%">
+                                                <img src="../assets/img/gallery/gallery-3.jpg" style="width:100%">
+                                                <img src="../assets/img/gallery/gallery-4.jpg" style="width:100%">
+                                                <img src="../assets/img/gallery/gallery-5.jpg" style="width:100%">
+                                                <img src="../assets/img/gallery/gallery-6.jpg" style="width:100%">
+                                                <img src="../assets/img/gallery/gallery-7.jpg" style="width:100%">
+                                            </div>
+                                            <div class="column">
+                                                <img src="../assets/img/gallery/gallery-1.jpg" style="width:100%">
+                                                <img src="../assets/img/gallery/gallery-2.jpg" style="width:100%">
+                                                <img src="../assets/img/gallery/gallery-3.jpg" style="width:100%">
+                                                <img src="../assets/img/gallery/gallery-4.jpg" style="width:100%">
+                                                <img src="../assets/img/gallery/gallery-5.jpg" style="width:100%">
+                                                <img src="../assets/img/gallery/gallery-6.jpg" style="width:100%">
+                                                <img src="../assets/img/gallery/gallery-7.jpg" style="width:100%">
+                                            </div>
+                                            <div class="column">
+                                                <img src="../assets/img/gallery/gallery-1.jpg" style="width:100%">
+                                                <img src="../assets/img/gallery/gallery-2.jpg" style="width:100%">
+                                                <img src="../assets/img/gallery/gallery-3.jpg" style="width:100%">
+                                                <img src="../assets/img/gallery/gallery-4.jpg" style="width:100%">
+                                                <img src="../assets/img/gallery/gallery-5.jpg" style="width:100%">
+                                                <img src="../assets/img/gallery/gallery-6.jpg" style="width:100%">
+                                                <img src="../assets/img/gallery/gallery-7.jpg" style="width:100%">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
                             </div>
+                            <!-- <div class='pagination'><span>1 / 2</span></div> -->
+
                         </div>
                     </div>
                 </div>
-        </section>
-        <!-- End Login -->
+    </div>
+    </div>
+    </section>
+    <!-- End Login -->
 
-        <main id="main"></main>
-        <!-- End #main -->
+    <main id="main"></main>
+    <!-- End #main -->
 
-        <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-                class="bi bi-arrow-up-short"></i></a>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
 
-        <!-- Vendor JS Files -->
-        <script src="../assets/vendor/purecounter/purecounter.js"></script>
-        <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
-        <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-        <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
-        <script src="../assets/vendor/php-email-form/validate.js"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.js"
-            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/mobile/1.5.0-rc1/jquery.mobile-1.5.0-rc1.js"
-            integrity="sha256-ozaZ7ZptnEEuLpoEojfxBjOKXHoaQUb/DLnsTUEkIfs=" crossorigin="anonymous"></script>
+    <!-- Vendor JS Files -->
+    <script src="../assets/vendor/purecounter/purecounter.js"></script>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="../assets/vendor/php-email-form/validate.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/mobile/1.5.0-rc1/jquery.mobile-1.5.0-rc1.js"
+        integrity="sha256-ozaZ7ZptnEEuLpoEojfxBjOKXHoaQUb/DLnsTUEkIfs=" crossorigin="anonymous"></script>
 
-        <script src="../assets/js/snap.js"></script>
+    <script src="../assets/js/snap.js"></script>
 
-        <!-- Template Main JS File -->
-        <script src="../assets/js/main.js"></script>
-        <script>
-            document.onload
-            var elements = document.getElementsByClassName("column");
-            for (i = 0; i < elements.length; i++) {
-                elements[i].style.flex = "33%";
-            }
-        </script>
-        <!-- <script>
+    <!-- Template Main JS File -->
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/progress.js"></script>
+    <script src="../assets/js/lightslider.js"></script>
+
+    <script>
+        var elements = document.getElementsByClassName("column");
+        for (i = 0; i < elements.length; i++) {
+            elements[i].style.flex = "33%";
+        }
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            console.log($("#lightSlider"))
+            $("#lightSlider").lightSlider();
+        });
+    </script>
+    <!-- <script>
             const slider = document.getElementById("slider");
             const pagination = document.querySelector('.pagination')
            
