@@ -17,8 +17,14 @@
     display: table;
 }
 .lightSlider {
+    height: 149px !important; 
+    width: 1440px !important;
     overflow: hidden;
     margin: 0;
+}
+.lightSlider img{
+    width: 140px;
+    height:120px;   
 }
 .lSSlideWrapper {
     max-width: 100%;

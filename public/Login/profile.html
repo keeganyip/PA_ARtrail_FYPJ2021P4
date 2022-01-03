@@ -119,7 +119,7 @@
                                                     aria-labelledby="headingOne" data-bs-parent="#accordionExample">
 
                                                     <div class="accordion-body">
-                                                        <ul id="lightSlider">
+                                                        <ul id="lightSlider1" style="height: 120px; width: 1440px;">
                                                             <li>
                                                                 <figure><img
                                                                         src="../assets/img/chinatown/chinatown heritage centre.JPG"
@@ -129,16 +129,51 @@
                                                             </li>
                                                             <li>
                                                                 <figure><img
-                                                                    src="../assets/img/chinatown/Sri mariam temple.JPG"
-                                                                    alt="sri mariam temple" />
-                                                                <figcaption>Sri Mariam Temple</figcaption>
-                                                            </figure>
+                                                                        src="../assets/img/chinatown/Sri mariam temple.JPG"
+                                                                        alt="sri mariam temple" />
+                                                                    <figcaption>Sri Mariam Temple</figcaption>
+                                                                </figure>
                                                             </li>
                                                             <li>
-                                                               <figure><img
-                                                                    src="../assets/img/chinatown/Sri mariam temple.JPG"
-                                                                    alt="sri mariam temple" />
-                                                                <figcaption>Sri Mariam Temple</figcaption>
+                                                                <figure><img
+                                                                        src="../assets/img/chinatown/masjid jamae.JPG"
+                                                                        alt="Masjid Jamae" />
+                                                                    <figcaption>Masjid Jamae (Chulia)</figcaption>
+                                                                </figure>
+                                                            </li>
+                                                            <li>
+                                                                <figure><img src="../assets/img/chinatown/tong heng.JPG"
+                                                                        alt="Tong Heng" />
+                                                                    <figcaption>Tong Heng</figcaption>
+                                                                </figure>
+                                                            </li>
+                                                            <li>
+                                                                <figure><img
+                                                                        src="../assets/img/chinatown/buddha tooth.JPG"
+                                                                        alt="buddha tooth relic" />
+                                                                    <figcaption>Buddha Tooth Relic</figcaption>
+                                                                </figure>
+                                                            </li>
+                                                            <li>
+                                                                <figure><img src="../assets/img/chinatown/PagodaSt.jpg"
+                                                                        alt="PagodaSt&TrengannuSt" />
+                                                                    <figcaption>Pagoda Street and Trengannu Street
+                                                                    </figcaption>
+                                                                </figure>
+                                                            </li>
+                                                            <li>
+                                                                <figure><img
+                                                                        src="../assets/img/chinatown/sago street.JPG"
+                                                                        alt="Sago St" />
+                                                                    <figcaption>Sago Street</figcaption>
+                                                                    </figure>
+                                                            </li>
+                                                            <li>
+                                                                <figure><img
+                                                                        src="../assets/img/chinatown/Mural on letter writer.JPG"
+                                                                        alt="Sago St" />
+                                                                    <figcaption>Sago Street</figcaption>
+                                                                </figure>
                                                             </li>
                                                         </ul>
                                                         <!-- <div id="button section">
@@ -430,16 +465,19 @@
     <script src="../assets/js/lightslider.js"></script>
 
     <script>
+          $(document).ready(function () {
+            console.log($("#lightSlider"))
+            $("#lightSlider1").lightSlider({
+                autoWidth: true
+            });
+        });
         var elements = document.getElementsByClassName("column");
         for (i = 0; i < elements.length; i++) {
             elements[i].style.flex = "33%";
         }
     </script>
     <script type="text/javascript">
-        $(document).ready(function () {
-            console.log($("#lightSlider"))
-            $("#lightSlider").lightSlider();
-        });
+      
     </script>
     <!-- <script>
             const slider = document.getElementById("slider");
