@@ -2,7 +2,7 @@
     overflow: hidden;
     position: relative;
 }
-  
+
 .bg-img {
     opacity: 0.15;
     position: absolute;
@@ -15,33 +15,54 @@
 .content {
     position: relative;
 }
-.form-control{
+
+.form-control {
     border-color: black;
     padding: 0.8rem 1rem;
 }
 
-.form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+.form-control::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: black;
-    opacity: 1; /* Firefox */
+    opacity: 1;
+    /* Firefox */
 }
 
 .separator {
-display: flex;
-align-items: center;
-text-align: center;
+    display: flex;
+    align-items: center;
+    text-align: center;
 }
 
 .separator::before,
 .separator::after {
-content: '';
-flex: 1;
-border-bottom: 1px solid gray;
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid gray;
 }
 
 .separator:not(:empty)::before {
-margin-right: .25em;
+    margin-right: .25em;
 }
 
-  .separator:not(:empty)::after {
+.separator:not(:empty)::after {
     margin-left: .25em;
-  }
+}
+
+@media (max-height: 650px) {
+    #content {
+        margin-top: 1rem !important;
+        padding-top: 1rem !important;
+        overflow-y: scroll !important;
+        height: 118vh !important;
+    }
+
+    #profilepic {
+        margin-bottom: 1rem !important;
+    }
+
+    #container {
+        padding-top: 1rem !important;
+        padding-bottom: 1rem !important;
+    }
+}

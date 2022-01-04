@@ -42,18 +42,18 @@
     <div class="bg-wrap">
         <img class="bg-img" src="../assets/img/background.jpg" alt="">
         <!-- ======= Login Section ======= -->
-        <section class="vh-100 content">
+        <section id="content" class="vh-100 content" style="position: relative;">
             <h2 class="fw-bold mb-2 text-center text-uppercase">Login</h2>
 
             <div class="py-5 h-100">
                 <div class="row d-flex justify-content-center align-items-center h-100">
                     <div class="col-12 col-md-8 col-lg-6 col-xl-5">
                         <div class="text-black text-center">
-                            <div class="mb-5">
+                            <div class="mb-3">
                                 <img src="https://img.icons8.com/color/48/000000/test-account.png" />
                                 <p>User</p>
                             </div>
-                            <div class="mb-md-5 mt-md-4 pt-5 pb-4">
+                            <div class="mb-md-5 mt-md-4 pt-5">
                                 <div class="form-outline form-white mb-3">
                                     <input type="email" id="typeEmailX" placeholder="Email Address"
                                         class="form-control form-control-lg" />
@@ -84,7 +84,7 @@
                                 </p>
                             </div>
 
-                            <div class="mt-2">
+                            <div>
                                 <p class="mb-0">
                                     Don't have an account? <br />
                                     <a href="register.html" style="color: #00A6FF;">Register</a>
@@ -94,6 +94,40 @@
                     </div>
                 </div>
             </div>
+            <div class="tab-nav-container text-center">
+                <a href="../index.html">
+                    <div>
+                        <div class="tab red">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <p class="tab-text">Home</p>
+                    </div>
+                </a>
+                <a>
+                    <div>
+                        <div class="tab purple">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <p class="tab-text">Map</p>
+                    </div>
+                </a>
+                <a>
+                    <div>
+                        <div class="tab green">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <p class="tab-text text-left">Calendar</p>
+                    </div>
+                </a>
+                <a href="../Login/login.html">
+                    <div>
+                        <div class="tab active orange">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <p class="tab-text active">Profile</p>
+                    </div>
+                </a>
+            </div>
     </div>
     </section>
     <!-- End Login -->
@@ -101,8 +135,6 @@
     <main id="main"></main>
     <!-- End #main -->
 
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
     <script src="../assets/vendor/purecounter/purecounter.js"></script>
