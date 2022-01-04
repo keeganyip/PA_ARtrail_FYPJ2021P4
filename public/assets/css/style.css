@@ -1317,3 +1317,69 @@ section {
     text-align: center;
   }
 }
+/* Bottom Tab NavBar */
+.tab-nav-container{
+  background-color: white;
+  display: flex;
+  padding: 5px 15px;
+  justify-content: space-between;
+  width: 100%;
+  bottom: 0;
+  position: fixed;
+}
+.tab-nav-container a{
+  font-weight: normal;
+  color: black !important;
+}
+.tab-nav-container a:active{
+  font-weight: 500;
+  color: black;
+}
+.tab{
+  background-color: rgb(226, 226, 226);
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  margin: 0 auto;
+  height: 33px;
+  width: 33px;
+  transition: background 0.4s linear;
+}
+.tab i{
+  font-size: 1.2em;
+}
+.tab-text{
+  margin: 0 !important;
+  font-size: 15px;
+}
+.tab-text.active{
+  font-weight: 600;
+}
+.tab p{
+  font-weight: bold;
+  overflow: hidden;
+  max-width: 0;
+}
+.tab.active .tab-text{
+  font-weight: 500;
+  color: black;
+}
+.tab.active{
+  flex-direction: column;
+  padding: 10px;
+}
+.tab.active.red{
+  color: #F95F62;
+}
+.tab.active.purple{
+  color: #976DD0;
+}
+.tab.active.green{
+  color: #35A113;
+}
+.tab.active.orange{
+  color: #FF9E6A;
+}
