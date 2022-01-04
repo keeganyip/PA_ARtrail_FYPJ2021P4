@@ -48,6 +48,12 @@
 .separator:not(:empty)::after {
     margin-left: .25em;
 }
+.header-text{
+    font-family: 'Lato',sans-serif; 
+  font-weight: 700;
+  color: #5A6978;
+  font-size: 25px;
+}
 
 @media (max-height: 650px) {
     #content {
