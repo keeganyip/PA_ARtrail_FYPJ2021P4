@@ -1,0 +1,22 @@
+body{
+    background-color: black;
+}
+
+.image-container img{
+    max-height: 50vh;
+    max-width: 50vh;
+}
+
+.navigation-icons{
+    color:white;
+    font-size: 20px;
+}
+
+.caption{
+    font-family: 'Lato',sans-serif;
+    color: white;
+    min-height: 10vh;
+    border-radius: 10px;
+    width: 95%;
+    background-color: gray;
+}

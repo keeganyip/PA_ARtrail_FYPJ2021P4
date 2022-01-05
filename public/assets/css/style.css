@@ -1326,6 +1326,8 @@ section {
   width: 100%;
   bottom: 0;
   position: fixed;
+  z-index: 999;
+  max-height: 65px;
 }
 .tab-nav-container a{
   font-weight: normal;
