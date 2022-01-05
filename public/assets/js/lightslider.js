@@ -362,7 +362,8 @@
                         if (settings.mode === 'slide') {
                             if ((v) >= w - elSize - settings.slideMargin) {
                                 i = i + 1;
-                                var minPgr = 2;
+                                
+                                var minPgr = 1;
                                 if (settings.autoWidth) {
                                     pagers += '<li><a href="#">' + (i + 1) + '</a></li>';
                                     minPgr = 1;
@@ -373,6 +374,13 @@
                                 } else {
                                     $slide.parent().removeClass('noPager');
                                 }
+                                // var items = $children.length
+                                // console.log(items)
+                                // console.log(i)
+                                // if (i < items){
+                                //     console.log('HI')
+                                //     pagers += '<li><a href="#">' + (i + 1) + '</a></li>';
+                                // }
                                 break;
                             }
                         }

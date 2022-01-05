@@ -79,10 +79,11 @@
                                 <div class="m-2 mt-5">
                                     <div class="accordion accordion-flush" id="accordionExample">
                                         <div class="accordion-item">
-                                            <h2 class="accordion-header" id="headingOne">
-                                                <button class="accordion-button collapsed" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                                                    aria-expanded="false" aria-controls="collapseOne">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button collapsed"
+                                                    type="button" data-bs-toggle="collapse"
+                                                    data-bs-target="#ctAccordion" aria-expanded="false"
+                                                    aria-controls="ctAccordion">
                                                     <span class="trail" style="color: #F95F62;">Chinatown</span>
                                                     <div class="progress-section align-content-center">
                                                         <div id="ProgressBar">
@@ -128,7 +129,7 @@
                                                     </div>
                                                 </button>
                                             </h2>
-                                            <div id="collapseOne" class="accordion-collapse collapse"
+                                            <div id="ctAccordion" class="accordion-collapse collapse"
                                                 aria-labelledby="headingOne" data-bs-parent="#accordionExample">
 
                                                 <div class="accordion-body">
@@ -185,6 +186,13 @@
                                                                 <figcaption>Mural on letter writer</figcaption>
                                                             </figure>
                                                         </li>
+                                                        <!-- <li class="invisible">
+                                                            <figure><img
+                                                                    src="../assets/img/chinatown/Mural on letter writer.JPG"
+                                                                    alt="Mural on letter writer" />
+                                                                <figcaption>Mural on letter writer</figcaption>
+                                                            </figure>
+                                                        </li> -->
                                                     </ul>
                                                     <!-- <div id="button section">
                                                             <button id="Previous">Previous</button>
@@ -438,7 +446,7 @@
                             </section>
                         </div>
                         <!-- <div class='pagination'><span>1 / 2</span></div> -->
-                     
+
                     </div>
                 </div>
             </div>
@@ -478,7 +486,7 @@
                     </a>
                 </div>
             </nav>
-          
+
     </div>
     </div>
 
@@ -515,18 +523,30 @@
     <script src="../assets/js/lightslider.js"></script>
 
     <script>
-         var images = document.querySelectorAll('.gallery img');
-        images.forEach(image => {
-            console.log()
-            image.addEventListener('click', function(){window.location.href = 'imagepreview.html?' + image.getAttribute('src')});
-        });
         $(document).ready(function () {
             // console.log($("#lightSlider"))
-            $("#lightSlider1").lightSlider({
-                autoWidth: true,
-                item:1,
+        });
+        var images = document.querySelectorAll('.gallery img');
+        images.forEach(image => {
+            console.log()
+            image.addEventListener('click', function () {
+                window.location.href = 'imagepreview.html?' + image.getAttribute('src')
             });
         });
+        var ls;
+        $('#ctAccordion').on('show.bs.collapse', function () {
+            //on clicking the accordion menu
+            ls = $("#lightSlider1").lightSlider({
+                autoWidth:true,
+                
+            });
+        });
+
+        $('#ctAccordion').on('hidden.bs.collapse', function () {
+            //on clicking the accordion menu
+            ls.destroy();
+        });
+
     </script>
     <!-- <script>
             const slider = document.getElementById("slider");
