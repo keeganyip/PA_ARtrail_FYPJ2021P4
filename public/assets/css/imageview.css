@@ -8,10 +8,12 @@ body{
 }
 
 .navigation-icons{
-    color:white;
+    color:white !important;
     font-size: 20px;
 }
-
+.navigation-icons a{
+    color:white !important;
+}
 .caption{
     font-family: 'Lato',sans-serif;
     color: white;
