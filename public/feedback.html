@@ -1,0 +1,90 @@
+<html>
+<head>
+<title>Feedback Form</title>
+<link rel="stylesheet" href="assets/css/review.css" />                  
+<script src="assets/js/review.js"></script>
+<script>
+    function submitfeedback(){
+      if (confirm("Thank you for your feedback! Press OK to view feedbacks or Cancel to go home.")) 
+      {window.location = "feedbackoverview.html";
+      } else {
+        window.location="overview.html";
+      }
+    }
+    </script>
+<style>
+    body{
+        background-image: url('background.jpg');
+    }
+    .button {
+      background-color: #00A6FF;
+      border: none;
+      color: white;
+      padding: 25px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+    .buttonsubmit {border-radius: 12px;}
+    </style>
+</head>
+<body>
+    <div class="demo-wrap">
+        <img class="demo-bg" src="assets/img/background.jpg" alt="">
+        <div class="demo-content">
+            &#10060
+    <div style="justify-content: center;">
+    <h1>Feedback Form</h1>
+    <p>We would love to hear your thoughts, suggestion, concerns or problems with anything so we can improve!</p>
+    <br>
+    <form>
+        <form action="/action_page.php">
+            <label for="name">Name:</label><br>
+            <input type="text" id="fname" name="fname" value=""><br>
+            <br>
+            Describe your feedback: <br>
+            <textarea rows="4" cols="50" name="comment" form="usrform">
+            </textarea><br>
+    </form>
+    <p>Rate your experience:</p>
+    <form class="rating">
+    <label>
+        <input type="radio" name="stars" value="1" />
+        <span class="icon">★</span>
+      </label>
+      <label>
+        <input type="radio" name="stars" value="2" />
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+      </label>
+      <label>
+        <input type="radio" name="stars" value="3" />
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>   
+      </label>
+      <label>
+        <input type="radio" name="stars" value="4" />
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+      </label>
+      <label>
+        <input type="radio" name="stars" value="5" />
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+      </label>
+  </form> 
+</div>
+  <button class="button buttonsubmit" onclick="submitfeedback()">Submit feedback</button>
+</div>
+</div>
+</body>
+</html>

@@ -16,15 +16,24 @@
     content: " ";
     display: table;
 }
-.lightSlider {
+.profile.lightSlider {
     height: 149px !important; 
     width: 1440px !important;
+    /* overflow: hidden; */
+    /* margin: 0; */
+}
+
+.ov.lightSlider{
     overflow: hidden;
     margin: 0;
 }
 .lightSlider img{
     width: 140px;
     height:120px;   
+}
+.ov.lightSlider img{
+    width: 250px;
+   height: 250px;
 }
 .lSSlideWrapper {
     max-width: 100%;
