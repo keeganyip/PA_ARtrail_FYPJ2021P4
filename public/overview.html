@@ -1,78 +1,275 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>AR Heritage Trails</title>
-		<link rel="stylesheet" href="assets/css/lightslider.css" />                  
-        <script src="assets/js/jquery-3.6.0.min.js"></script>
-        <script src="assets/js/lightslider.min.js"></script>
-        <script>
-            function imageClick(url) {
-                window.location = url;
-            }
-        </script>
-	</head>
-	<center><h1>AR Heritage Trails</h1></center>
-	<body>
 
-		<h2 style="color:#35A113;">Little India Trail</h2>
-		<h3>Known as Serangoon before 1980s, the Little India precint melds the old with the new and hosts trades from the past alongside modern businesses</h3>
-		<ul id="lightSlider1" class="ov">
-            <li><figure><img src="assets/img/littleindia/Indian Heritage Centre.jpg" alt="Indian Heritage Centre"/><figcaption>Indian Heritage Centre</figcaption></figure></li>
-            <li><figure><img src="assets/img/littleindia/Former House of Tan Teng Niah.jpeg" alt="Former House of TanTengNiah"/><figcaption>Former House of Tan Teng Niah</figcaption></figure></li>
-            <li><figure><img src="assets/img/littleindia/Large Mural by Psyfool on traditional trades of Little India.jpg" alt="PsyfoolMural"/><figcaption>Large Mural by Psyfool</figcaption></figure></li>
-            <li><figure><img src="assets/img/littleindia/Sri Veeramakaliammman Temple.jpg" alt="Sri Veeramakaliammman Temple"/><figcaption>Sri Veeramakaliammman Temple</figcaption></figure></li>
-            <li><figure><img src="assets/img/littleindia/Stretch of Chinese Clan Associations.jpg" alt="Stretch of Chinese Clan Associations"/><figcaption>Stretch of Chinese Clan Associations</figcaption></figure></li>
-            <li><figure><img src="assets/img/littleindia/Foochow Methodist Church.jpg" alt="Foochow Methodist Church"/><figcaption>Foochow Methodist Church</figcaption></figure></li>
-            <li><figure><img src="assets/img/littleindia/Former Kandang Karbau Hospital (now Land Transport Authority Building).jpg" alt="Former Kandang Karbau Hospital"/><figcaption>Former Kandang Karbau Hospital</figcaption></figure></li>
-			<li><figure><img src="assets/img/littleindia/Tekka Centre.jpg" alt="Tekka Centre" /><figcaption>Tekka Centre</figcaption></figure></li>
-        </ul>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AR Heritage Trails</title>
+    <link rel="stylesheet" href="assets/css/lightslider.css" />
 
-        <h2 style="color:#FF9E6A;">Peranakan Trail</h2>
-		<h3>Peranakan culture in Singapore has roots tracing all the way back to Sir Stamford Raffles’ arrival in 1819.</h3>
-		<ul id="lightSlider2" class="ov">
-            <li><figure><img src="assets/img/peranakan/Koon Seng Road Peranakan Shophouses.jpg" alt="Koon Seng Road Peranakan Shophouses"/><figcaption>Koon Seng Road Peranakan Shophouses</figcaption></figure></li>
-            <li><figure><img src="assets/img/peranakan/Katong Antique House.jpg" alt="Katong Antique House"/><figcaption>Katong Antique House</figcaption></figure></li>
-            <li><figure><img src="assets/img/peranakan/holy family.JPG" alt="holy family"/><figcaption>Holy Family</figcaption></figure></li>
-            <li><figure><img src="assets/img/peranakan/Houses with preserved façade.jpg" alt="Houses with preserved façade"/><figcaption>Houses with preserved façade</figcaption></figure></li>
-            <li><figure><img src="assets/img/peranakan/Kim Choo Gallery.jpg" alt="Kim Choo Gallery"/><figcaption>Kim Choo Gallery</figcaption></figure></li>
-            <li><figure><img src="assets/img/peranakan/Medley Alley.jpg" alt="Medley Alley"/><figcaption>Medley Alley</figcaption></figure></li>
-            <li><figure><img src="assets/img/peranakan/Red House Bakery.jpeg" alt="Red House Bakery"/><figcaption>Red House Bakery</figcaption></figure></li>
-			<li><figure><img src="assets/img/peranakan/Sri Senpaga Vinayagar Temple.jpg" alt="Sri Senpaga Vinayagar Temple" /><figcaption>Sri Senpaga Vinayagar Temple</figcaption></figure></li>
-        </ul>
+    <!-- Favicons -->
+    <link href="../assets/img/favicon.png" rel="icon" />
+    <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
 
-        <h2 style="color:#7E55B7;">Kampong Glam Trail</h2>
-		<h3>Kampong Glam got its name from the Malay word gelam (cajeput tree) which grew locally and has many uses. Its bark can be used for weaving and to caulk boats</h3>
-		<ul id="lightSlider3" class="ov">
-            <li><figure><img src="assets/img/kampongglam/Malay Heritage Centre.JPG" alt="Malay Heritage Centre"/><figcaption>Malay Heritage Centre</figcaption></figure></li>
-            <li><figure><img src="assets/img/kampongglam/gedung kuning.jpg" alt="gedung kuning"/><figcaption>Gedung Kuning</figcaption></figure></li>
-            <li><figure><img src="assets/img/kampongglam/Madrasah Alsagoff Al-Arabiah.JPG" alt="Madrasah Alsagoff Al-Arabiah"/><figcaption>Madrasah Alsagoff Al-Arabiah</figcaption></figure></li>
-            <li><figure><img src="assets/img/kampongglam/masjid sultan.JPG" alt="masjid sultan"/><figcaption>Masjid Sultan</figcaption></figure></li>
-            <li><figure><img src="assets/img/kampongglam/arab street.png" alt="Arab Street"/><figcaption>Arab Street</figcaption></figure></li>
-            <li><figure><img src="assets/img/kampongglam/bali lane.JPG" alt="bali lane"/><figcaption>Bali Lane</figcaption></figure></li>
-            <li><figure><img src="assets/img/kampongglam/Bussorah Street.jpg" alt="Bussorah Street"/><figcaption>Bussorah Street</figcaption></figure></li>
-			<li><figure><img src="assets/img/kampongglam/zam zam.jpg" alt="zam zam" /><figcaption>Zam Zam</figcaption></figure></li>
-        </ul>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i"
+        rel="stylesheet" />
 
-        <h2 style="color:#F95F62;">Chinatown Trail</h2>
-		<h3>Chinatown, also known as 牛车水 Niu Che Shui, or bullock water cart in Mandarin, was named after the ox-drawn carts that transported water to the area.</h3>
-		<ul id="lightSlider4" class="ov">
-            <li><figure><a href="../public/landmarks/chinatown/chinatownheritagecentre.html"><img src="assets/img/chinatown/chinatown heritage centre.JPG" alt="Chinatown Heritage Centre"/></a><figcaption>Chinatown Heritage Centre</figcaption></figure></li>
-            <li><figure><a href="../public/landmarks/chinatown/srimariamtemple.html"><img src="assets/img/chinatown/Sri mariam temple.JPG" alt="Sri Mariamman temple"/></a><figcaption>Sri Mariamman Temple</figcaption></figure></li>
-            <li><figure><a href="../public/landmarks/chinatown/masjidjamae.html"><img src="assets/img/chinatown/masjid jamae.JPG"alt="Masjid Jamae"/></a><figcaption>Masjid Jamae</figcaption></figure></li>
-            <li><figure><a href="../public/landmarks/chinatown/tongheng.html"><img src="assets/img/chinatown/tong heng.JPG" alt="Tong Heng"/></a><figcaption>Tong Heng</figcaption></figure></li>
-            <li><figure><a href="../public/landmarks/chinatown/buddhatoothrelic.html"><img src="assets/img/chinatown/buddha tooth.JPG" alt="Buddha Tooth Relic"/></a><figcaption>Buddha Tooth Relic</figcaption></figure></li>
-            <li><figure><a href="../public/landmarks/chinatown/pagodastreet.html"><img src="assets/img/chinatown/PagodaSt.jpg" alt="Pagoda Street"/></a><figcaption>Pagoda Street</figcaption></figure></li>
-            <li><figure><a href="../public/landmarks/chinatown/sagostreet.html"><img src="assets/img/chinatown/sago street.JPG" alt="Sago Street"/></a><figcaption>Sago Street</figcaption></figure></li>
-			<li><figure><a href="../public/landmarks/chinatown/muralletterwriter.html"><img src="assets/img/chinatown/Mural on letter writer.JPG" alt="Mural on letter writer"/></a><figcaption>Mural on letter writer</figcaption></figure></li>
-        </ul>
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $("#lightSlider1").lightSlider({autoWidth:true});
-                $("#lightSlider2").lightSlider({autoWidth:true});
-                $("#lightSlider3").lightSlider({autoWidth:true});
-                $("#lightSlider4").lightSlider({autoWidth:true});
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+    <link href="assets/css/fa.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <link href="assets/css/overview.css" rel="stylesheet">
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/lightslider.js"></script>
+    <script>
+        function imageClick(url) {
+            window.location = url;
+        }
+    </script>
+</head>
+<center>
+    <h1>AR Heritage Trails</h1>
+</center>
+
+<body>
+
+    <h2 style="color:#35A113;">Little India Trail</h2>
+    <h3>Known as Serangoon before 1980s, the Little India precint melds the old with the new and hosts trades from the
+        past alongside modern businesses</h3>
+    <ul id="lightSlider1" class="ov">
+        <li>
+            <figure><img src="assets/img/littleindia/Indian Heritage Centre.jpg" alt="Indian Heritage Centre" />
+                <figcaption>Indian Heritage Centre</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure><img src="assets/img/littleindia/Former House of Tan Teng Niah.jpeg"
+                    alt="Former House of TanTengNiah" />
+                <figcaption>Former House of Tan Teng Niah</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure><img src="assets/img/littleindia/Large Mural by Psyfool on traditional trades of Little India.jpg"
+                    alt="PsyfoolMural" />
+                <figcaption>Large Mural by Psyfool</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure><img src="assets/img/littleindia/Sri Veeramakaliammman Temple.jpg"
+                    alt="Sri Veeramakaliammman Temple" />
+                <figcaption>Sri Veeramakaliammman Temple</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure><img src="assets/img/littleindia/Stretch of Chinese Clan Associations.jpg"
+                    alt="Stretch of Chinese Clan Associations" />
+                <figcaption>Stretch of Chinese Clan Associations</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure><img src="assets/img/littleindia/Foochow Methodist Church.jpg" alt="Foochow Methodist Church" />
+                <figcaption>Foochow Methodist Church</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure><img
+                    src="assets/img/littleindia/Former Kandang Karbau Hospital (now Land Transport Authority Building).jpg"
+                    alt="Former Kandang Karbau Hospital" />
+                <figcaption>Former Kandang Karbau Hospital</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure><img src="assets/img/littleindia/Tekka Centre.jpg" alt="Tekka Centre" />
+                <figcaption>Tekka Centre</figcaption>
+            </figure>
+        </li>
+    </ul>
+
+    <h2 style="color:#FF9E6A;">Peranakan Trail</h2>
+    <h3>Peranakan culture in Singapore has roots tracing all the way back to Sir Stamford Raffles’ arrival in 1819.</h3>
+    <ul id="lightSlider2" class="ov">
+        <li>
+            <figure><img src="assets/img/peranakan/Koon Seng Road Peranakan Shophouses.jpg"
+                    alt="Koon Seng Road Peranakan Shophouses" />
+                <figcaption>Koon Seng Road Peranakan Shophouses</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure><img src="assets/img/peranakan/Katong Antique House.jpg" alt="Katong Antique House" />
+                <figcaption>Katong Antique House</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure><img src="assets/img/peranakan/holy family.JPG" alt="holy family" />
+                <figcaption>Holy Family</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure><img src="assets/img/peranakan/Houses with preserved façade.jpg"
+                    alt="Houses with preserved façade" />
+                <figcaption>Houses with preserved façade</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure><img src="assets/img/peranakan/Kim Choo Gallery.jpg" alt="Kim Choo Gallery" />
+                <figcaption>Kim Choo Gallery</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure><img src="assets/img/peranakan/Medley Alley.jpg" alt="Medley Alley" />
+                <figcaption>Medley Alley</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure><img src="assets/img/peranakan/Red House Bakery.jpeg" alt="Red House Bakery" />
+                <figcaption>Red House Bakery</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure><img src="assets/img/peranakan/Sri Senpaga Vinayagar Temple.jpg"
+                    alt="Sri Senpaga Vinayagar Temple" />
+                <figcaption>Sri Senpaga Vinayagar Temple</figcaption>
+            </figure>
+        </li>
+    </ul>
+
+    <h2 style="color:#7E55B7;">Kampong Glam Trail</h2>
+    <h3>Kampong Glam got its name from the Malay word gelam (cajeput tree) which grew locally and has many uses. Its
+        bark can be used for weaving and to caulk boats</h3>
+    <ul id="lightSlider3" class="ov">
+        <li>
+            <figure><img src="assets/img/kampongglam/Malay Heritage Centre.JPG" alt="Malay Heritage Centre" />
+                <figcaption>Malay Heritage Centre</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure><img src="assets/img/kampongglam/gedung kuning.jpg" alt="gedung kuning" />
+                <figcaption>Gedung Kuning</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure><img src="assets/img/kampongglam/Madrasah Alsagoff Al-Arabiah.JPG"
+                    alt="Madrasah Alsagoff Al-Arabiah" />
+                <figcaption>Madrasah Alsagoff Al-Arabiah</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure><img src="assets/img/kampongglam/masjid sultan.JPG" alt="masjid sultan" />
+                <figcaption>Masjid Sultan</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure><img src="assets/img/kampongglam/arab street.png" alt="Arab Street" />
+                <figcaption>Arab Street</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure><img src="assets/img/kampongglam/bali lane.JPG" alt="bali lane" />
+                <figcaption>Bali Lane</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure><img src="assets/img/kampongglam/Bussorah Street.jpg" alt="Bussorah Street" />
+                <figcaption>Bussorah Street</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure><img src="assets/img/kampongglam/zam zam.jpg" alt="zam zam" />
+                <figcaption>Zam Zam</figcaption>
+            </figure>
+        </li>
+    </ul>
+
+    <a href="routing.html?ctTrail">
+        <div class="container">
+            <div class="row">
+                <div class="col-4">
+                    <h2 style="color:#F95F62;">Chinatown Trail</h2>
+                </div>
+
+                <div class="col-4"></div>
+
+                <div class="col-4 text-end">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+            <br>
+            <h3>Chinatown, also known as 牛车水 Niu Che Shui, or bullock water cart in Mandarin, was named after the
+                ox-drawn
+                carts that transported water to the area.</h3>
+        </div>
+    </a>
+    <ul id="lightSlider4" class="ov">
+        <li>
+            <figure><a href="../public/landmarks/chinatown/chinatownheritagecentre.html"><img
+                        src="assets/img/chinatown/chinatown heritage centre.JPG" alt="Chinatown Heritage Centre" /></a>
+                <figcaption>Chinatown Heritage Centre</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure><a href="../public/landmarks/chinatown/srimariamtemple.html"><img
+                        src="assets/img/chinatown/Sri mariam temple.JPG" alt="Sri Mariamman temple" /></a>
+                <figcaption>Sri Mariamman Temple</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure><a href="../public/landmarks/chinatown/masjidjamae.html"><img
+                        src="assets/img/chinatown/masjid jamae.JPG" alt="Masjid Jamae" /></a>
+                <figcaption>Masjid Jamae</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure><a href="../public/landmarks/chinatown/tongheng.html"><img src="assets/img/chinatown/tong heng.JPG"
+                        alt="Tong Heng" /></a>
+                <figcaption>Tong Heng</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure><a href="../public/landmarks/chinatown/buddhatoothrelic.html"><img
+                        src="assets/img/chinatown/buddha tooth.JPG" alt="Buddha Tooth Relic" /></a>
+                <figcaption>Buddha Tooth Relic</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure><a href="../public/landmarks/chinatown/pagodastreet.html"><img
+                        src="assets/img/chinatown/PagodaSt.jpg" alt="Pagoda Street" /></a>
+                <figcaption>Pagoda Street</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure><a href="../public/landmarks/chinatown/sagostreet.html"><img
+                        src="assets/img/chinatown/sago street.JPG" alt="Sago Street" /></a>
+                <figcaption>Sago Street</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure><a href="../public/landmarks/chinatown/muralletterwriter.html"><img
+                        src="assets/img/chinatown/Mural on letter writer.JPG" alt="Mural on letter writer" /></a>
+                <figcaption>Mural on letter writer</figcaption>
+            </figure>
+        </li>
+    </ul>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#lightSlider1").lightSlider({
+                autoWidth: true
             });
-        </script>
-	</body>
+            $("#lightSlider2").lightSlider({
+                autoWidth: true
+            });
+            $("#lightSlider3").lightSlider({
+                autoWidth: true
+            });
+            $("#lightSlider4").lightSlider({
+                autoWidth: true
+            });
+        });
+    </script>
+</body>
+
 </html>

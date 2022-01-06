@@ -6,10 +6,11 @@ const trails = {
         landmarks:
             [ 
                 { 
-                    name: "Buddha Tooth Relic", 
+                    name: "Chinatown Heritage Centre", 
                     location: { 
-                        lat: 1.379090, // add here latitude if using static data 
-                        lng: 103.850035, // add here longitude if using static data 
+                         
+                        lat: 1.2834358522886367, // add here latitude if using static data 
+                        lng: 103.84440228835545, // add here longitude if using static data 
             
                     },
                     content:"Get transported back in time and experience the footsteps \n of migrants in the late 19th century of singapore",
@@ -23,13 +24,12 @@ const trails = {
                     "<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large " +
                     "</div>" +
                     "</div>"
-                }, 
-            
+                },
                 { 
                     name: "Sri Maraimman Temple", 
                     location:{ 
-                        lat:1.282644, 
-                        lng:103.845227, 
+                        lat:1.2826974252118535, 
+                        lng: 103.84513546864258, 
                     },  
                     content:'This hindu temple is the oldest \n and largest of its kind in singapore',
                     src:'https://finalyearproject-631fc.web.app/Trails/ChinaTown/SriMariamman.html',
@@ -44,15 +44,94 @@ const trails = {
                     "</div>" +
                     "</div>"
                 }, 
-            
                 { 
                     name: "Masjid Jamae", 
                     location:{ 
-                        lat:1.283190, 
-                        lng:103.845329, 
+                        
+                        lat:1.2832659109590843,
+                        lng: 103.84544660487347, 
                     },
                     content:'Established in 1826 it is one of the oldest mosque in \n singapore One of the only six in the \n country that conducts sermons in tamil' ,
                     src:'https://finalyearproject-631fc.web.app/Trails/ChinaTown/MasjidJamae.html',
+                    contentHTML :
+                    '<div id="content">' +
+                    '<div id="siteNotice">' +
+                    "</div>" +
+                    '<h1 id="firstHeading" class="firstHeading">Uluru</h1>' +
+                    '<div id="bodyContent">' +
+                    "<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large " +
+                    "</div>" +
+                    "</div>"
+                }, 
+                { 
+                    name: "Tong Heng", 
+                    location:{ 
+                         
+                        lat:1.2816404559768435, 
+                        lng:103.84496985330027, 
+                    },
+                    content:'Tong Heng is the oldest confectioneries. \n Witness a story of resilience, \n determination and resourcefulness.' ,
+                    src:'https://finalyearproject-631fc.web.app/Trails/ChinaTown/TongHeng.html',
+                    contentHTML :
+                    '<div id="content">' +
+                    '<div id="siteNotice">' +
+                    "</div>" +
+                    '<h1 id="firstHeading" class="firstHeading">Uluru</h1>' +
+                    '<div id="bodyContent">' +
+                    "<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large " +
+                    "</div>" +
+                    "</div>"
+                }, 
+                { 
+                    name: "Buddha Tooth Relic", 
+                    location: { 
+                        lat: 1.2815604059789072, // add here latitude if using static data 
+                        lng: 103.84423719747802, // add here longitude if using static data 
+            
+                    },
+                    content:"Get transported back in time and experience the footsteps \n of migrants in the late 19th century of singapore",
+                    src:'https://finalyearproject-631fc.web.app/Trails/ChinaTown/BuddhaToothRelic.html',
+                    contentHTML :
+                    '<div id="content">' +
+                    '<div id="siteNotice">' +
+                    "</div>" +
+                    '<h1 id="firstHeading" class="firstHeading">Buddha Tooth Relic</h1>' +
+                    '<div id="bodyContent">' +
+                    "<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large " +
+                    "</div>" +
+                    "</div>"
+                }, 
+                
+                { 
+                    name: "Pagoda Street & Trengannu Street", 
+                    location:{ 
+                         
+                        lat:1.2831788568902647,  
+                        lng:103.84473979738155, 
+                    }, 
+                    content:'Witness murals that depict the past \n through the eyes of singaporean artist Yip Yew Chong.',
+                    src:'https://finalyearproject-631fc.web.app/Trails/ChinaTown/MuralStreet.html',
+                    contentHTML :
+                    '<div id="content">' +
+                    '<div id="siteNotice">' +
+                    "</div>" +
+                    '<h1 id="firstHeading" class="firstHeading">Uluru</h1>' +
+                    '<div id="bodyContent">' +
+                    "<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large " +
+                    "</div>" +
+                    "</div>"
+                },
+               
+            
+                { 
+                    name: "Sago Street", 
+                    location:{ 
+                       
+                        lat:1.281800536866017,  
+                        lng: 103.84399338201563, 
+                    },
+                    content:'Experience the street of the dead where immigrants of the past with no family lived and died',
+                    src:'https://finalyearproject-631fc.web.app/Trails/ChinaTown/SagoStreet.html',
                     contentHTML :
                     '<div id="content">' +
                     '<div id="siteNotice">' +
@@ -83,62 +162,11 @@ const trails = {
                     "</div>"
                 }, 
             
-                { 
-                    name: "Tong Heng", 
-                    location:{ 
-                        lat:1.281370, 
-                        lng:103.844937, 
-                    },
-                    content:'Tong Heng is the oldest confectioneries. \n Witness a story of resilience, \n determination and resourcefulness.' ,
-                    src:'https://finalyearproject-631fc.web.app/Trails/ChinaTown/TongHeng.html',
-                    contentHTML :
-                    '<div id="content">' +
-                    '<div id="siteNotice">' +
-                    "</div>" +
-                    '<h1 id="firstHeading" class="firstHeading">Uluru</h1>' +
-                    '<div id="bodyContent">' +
-                    "<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large " +
-                    "</div>" +
-                    "</div>"
-                }, 
+               
             
-                { 
-                    name: "Buddha Tooth Relic Temple", 
-                    location:{ 
-                        lat:1.281458, 
-                        lng:103.844192, 
-                    },
-                    content:'This place hold special meaning for buddhist people as it stores the left canine tooth of buddha' ,
-                    src:'https://finalyearproject-631fc.web.app/Trails/ChinaTown/BuddhaToothRelic.html',
-                    contentHTML :
-                    '<div id="content">' +
-                    '<div id="siteNotice">' +
-                    "</div>" +
-                    '<h1 id="firstHeading" class="firstHeading">Uluru</h1>' +
-                    '<div id="bodyContent">' +
-                    "<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large " +
-                    "</div>" +
-                    "</div>"
-                }, 
+               
             
-                { 
-                    name: "Sago Street", 
-                    location:{ 
-                        lat:1.281683, 
-                        lng:103.844203, 
-                    },
-                    content:'Experience the street of the dead where immigrants of the past with no family lived and died',
-                    src:'https://finalyearproject-631fc.web.app/Trails/ChinaTown/SagoStreet.html',
-                    contentHTML :
-                    '<div id="content">' +
-                    '<div id="siteNotice">' +
-                    "</div>" +
-                    '<h1 id="firstHeading" class="firstHeading">Uluru</h1>' +
-                    '<div id="bodyContent">' +
-                    "<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large " +
-                    "</div>" +
-                    "</div>"
-                }, 
+               
 
                 
             ],
@@ -239,171 +267,4 @@ const trails = {
         ]
     }
 }
-
-// [ 
-//     {
-//         name: "Yio Chu Kang", 
-//         location: { 
-//             lat: 1.381643, // add here latitude if using static data 
-//             lng: 103.845035, // add here longitude if using static data 
-
-//         },
-//         content:"Get transported back in time and experience the footsteps \n of migrants in the late 19th century of singapore",
-//         src:'https://finalyearproject-631fc.web.app/Trails/ChinaTown/BuddhaToothRelic.html',
-//         contentHTML :
-//         '<div id="content">' +
-//         '<div id="siteNotice">' +
-//         "</div>" +
-//         '<h1 id="firstHeading" class="firstHeading">Uluru</h1>' +
-//         '<div id="bodyContent">' +
-//         "<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large " +
-//         "sandstone rock formation in the southern part of the " +
-//         "Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) " +
-//         "south west of the nearest large town, Alice Springs; 450&#160;km " +
-//         "(280&#160;mi) by road. Kata Tjuta and Uluru are the two major " +
-//         "features of the Uluru - Kata Tjuta National Park. Uluru is " +
-//         "sacred to the Pitjantjatjara and Yankunytjatjara, the " +
-//         "Aboriginal people of the area. It has many springs, waterholes, " +
-//         "rock caves and ancient paintings. Uluru is listed as a World " +
-//         "Heritage Site.</p>" +
-//         '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
-//         "https://en.wikipedia.org/w/index.php?title=Uluru</a> " +
-//         "(last visited June 22, 2009).</p>" +
-//         "</div>" +
-//         "</div>"
-
-//     },
-
-//     {
-//         name: "Secondary School", 
-//         location: { 
-//             lat: 1.382061, // add here latitude if using static data 
-//             lng: 103.843322, // add here longitude if using static data 
-
-//         },
-//         content:"Get transported back in time and experience the footsteps \n of migrants in the late 19th century of singapore",
-//         src:'https://finalyearproject-631fc.web.app/Trails/ChinaTown/MasjidJamae.html',
-//         contentHTML :
-//         '<div id="content">' +
-//         '<div id="siteNotice">' +
-//         "</div>" +
-//         '<h1 id="firstHeading" class="firstHeading">Uluru</h1>' +
-//         '<div id="bodyContent">' +
-//         "<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large " +
-//         "sandstone rock formation in the southern part of the " +
-//         "Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) " +
-//         "south west of the nearest large town, Alice Springs; 450&#160;km " +
-//         "(280&#160;mi) by road. Kata Tjuta and Uluru are the two major " +
-//         "features of the Uluru - Kata Tjuta National Park. Uluru is " +
-//         "sacred to the Pitjantjatjara and Yankunytjatjara, the " +
-//         "Aboriginal people of the area. It has many springs, waterholes, " +
-//         "rock caves and ancient paintings. Uluru is listed as a World " +
-//         "Heritage Site.</p>" +
-//         '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
-//         "https://en.wikipedia.org/w/index.php?title=Uluru</a> " +
-//         "(last visited June 22, 2009).</p>" +
-//         "</div>" +
-//         "</div>"
-
-//     },
-
-//     {
-//         name: "Secondary School 2", 
-//         location: { 
-//             lat: 1.382384, // add here latitude if using static data 
-//             lng: 103.842199, // add here longitude if using static data 
-
-//         },
-//         content:"Get transported back in time and experience the footsteps \n of migrants in the late 19th century of singapore",
-//         src:'https://finalyearproject-631fc.web.app/Trails/ChinaTown/SagoStreet.html',
-//         contentHTML :
-//         '<div id="content">' +
-//         '<div id="siteNotice">' +
-//         "</div>" +
-//         '<h1 id="firstHeading" class="firstHeading">Uluru</h1>' +
-//         '<div id="bodyContent">' +
-//         "<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large " +
-//         "sandstone rock formation in the southern part of the " +
-//         "Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) " +
-//         "south west of the nearest large town, Alice Springs; 450&#160;km " +
-//         "(280&#160;mi) by road. Kata Tjuta and Uluru are the two major " +
-//         "features of the Uluru - Kata Tjuta National Park. Uluru is " +
-//         "sacred to the Pitjantjatjara and Yankunytjatjara, the " +
-//         "Aboriginal people of the area. It has many springs, waterholes, " +
-//         "rock caves and ancient paintings. Uluru is listed as a World " +
-//         "Heritage Site.</p>" +
-//         '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
-//         "https://en.wikipedia.org/w/index.php?title=Uluru</a> " +
-//         "(last visited June 22, 2009).</p>" +
-//         "</div>" +
-//         "</div>"
-
-//     },
-
-//     {
-//         name: "Block A", 
-//         location: { 
-//             lat: 1.380098, // add here latitude if using static data 
-//             lng: 103.848517, // add here longitude if using static data 
-
-//         },
-//         content:"Get transported back in time and experience the footsteps \n of migrants in the late 19th century of singapore",
-//         src:'https://finalyearproject-631fc.web.app/Trails/ChinaTown/PagodaStreet.html',
-//         contentHTML :
-//         '<div id="content">' +
-//         '<div id="siteNotice">' +
-//         "</div>" +
-//         '<h1 id="firstHeading" class="firstHeading">Uluru</h1>' +
-//         '<div id="bodyContent">' +
-//         "<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large " +
-//         "sandstone rock formation in the southern part of the " +
-//         "Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) " +
-//         "south west of the nearest large town, Alice Springs; 450&#160;km " +
-//         "(280&#160;mi) by road. Kata Tjuta and Uluru are the two major " +
-//         "features of the Uluru - Kata Tjuta National Park. Uluru is " +
-//         "sacred to the Pitjantjatjara and Yankunytjatjara, the " +
-//         "Aboriginal people of the area. It has many springs, waterholes, " +
-//         "rock caves and ancient paintings. Uluru is listed as a World " +
-//         "Heritage Site.</p>" +
-//         '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
-//         "https://en.wikipedia.org/w/index.php?title=Uluru</a> " +
-//         "(last visited June 22, 2009).</p>" +
-//         "</div>" +
-//         "</div>"
-
-//     },
-
-//     {
-//         name: "Block L", 
-//         location: { 
-//             lat: 1.379224, // add here latitude if using static data 
-//             lng: 103.849622, // add here longitude if using static data 
-
-//         },
-//         content:"Get transported back in time and experience the footsteps \n of migrants in the late 19th century of singapore",
-//         src:'https://finalyearproject-631fc.web.app/Trails/ChinaTown/MuralStreet.html',
-//         contentHTML :
-//         '<div id="content">' +
-//         '<div id="siteNotice">' +
-//         "</div>" +
-//         '<h1 id="firstHeading" class="firstHeading">Uluru</h1>' +
-//         '<div id="bodyContent">' +
-//         "<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large " +
-//         "sandstone rock formation in the southern part of the " +
-//         "Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) " +
-//         "south west of the nearest large town, Alice Springs; 450&#160;km " +
-//         "(280&#160;mi) by road. Kata Tjuta and Uluru are the two major " +
-//         "features of the Uluru - Kata Tjuta National Park. Uluru is " +
-//         "sacred to the Pitjantjatjara and Yankunytjatjara, the " +
-//         "Aboriginal people of the area. It has many springs, waterholes, " +
-//         "rock caves and ancient paintings. Uluru is listed as a World " +
-//         "Heritage Site.</p>" +
-//         '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
-//         "https://en.wikipedia.org/w/index.php?title=Uluru</a> " +
-//         "(last visited June 22, 2009).</p>" +
-//         "</div>" +
-//         "</div>"
-
-//     }
-// ]
 
