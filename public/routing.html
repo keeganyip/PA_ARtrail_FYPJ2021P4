@@ -20,6 +20,8 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
   <link href="assets/css/fa.css" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/routing.css">
+
 
   <link href="https://code.jquery.com/mobile/1.5.0-rc1/jquery.mobile-1.5.0-rc1.min.css" rel="stylesheet" />
   <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
@@ -74,49 +76,49 @@
 
 
 <body>
+  
   <div id="map"></div>
-  <input type="button"
-    style="margin-left: 100px;font-size:larger;margin-top:10px;height:98px; border: 1px solid; padding: 1px 12px; font: bold 20px Roboto, Arial, sans-serif; color: #000000; background-color: #FFFFFF; cursor: pointer;"
-    id="submit" value="Start" />
-  <button id="recenter" style="background-color: white; margin-top: 11px;margin-left: 1px;"> <img
-      src="static/center-icon.jpg" style="width: 89px;height: 89px;background-color: white;"> </button>
+  <div class="container">
+  <!-- <button id="recenter" style="background-color: white; margin-top: 11px;margin-left: 1px;"> <img
+      src="static/center-icon.jpg" style="width: 89px;height: 89px;background-color: white;"> </button> -->
   <span id="instructions"></span>
   <div class="modal" id="dialog" aria-labelledby="modaltitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" style="max-width: 80%;" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered" style="width: auto;" data-bs-backdrop="static" data-bs-keyboard="false">
       <div class="modal-content justify-content-center  ">
         <div class="modal-header" style="border-bottom: 2px solid gray;">
           <h1 id="modaltitle" class="modal-title w-100 text-center">Too Far from Trail</h3>
         </div>
         <div class="modal-body" style="border-bottom: 1px solid gray;">
-          <p style="font-size: 3rem;">You are more than 700m from the trail, do you want to travel to the trail now?</p>
-          <p style="font-size: 3rem;">Choose travel mode</p>
+          <p style="font-size: 2rem;">You are more than 700m from the trail</p>
+          <!-- <p style="font-size: 3rem;">Choose travel mode</p>
           <select id="option" style="font-size: 2.5rem;">
             <option value="DRIVING">Driving</option>
             <option value="WALKING">Walking</option>
             <option value="BICYCLING">Bicycling</option>
             <option value="TRANSIT">Transit</option>
-          </select>
+          </select> -->
           
         </div>
         <div class="modal-footer">
-          <input type="button" class="btn btn-primary btn-lg" style="font-size: 3rem;" id="submitTravelMode" value="OK" />
+          <input type="button" class="btn btn-primary btn-lg" style="font-size: 1.5rem;" id="ok" value="OK" />
         </div>
       </div>
     </div>
   </div>
-  <div id="fardialog">
+  <!-- <div id="fardialog">
     <p style="font-size:xx-large;">You are less than 700m from the trail, do you want to start the trail now?</p>
 
     <input style="margin-left: 230px;display:none;" type="button" id="submitTravelMode" value="Ok" />
-  </div>
+  </div> -->
 
-  <div id="congraztPage" title="You have completed the trail" class="modal"
+  <!-- <div id="congraztPage" title="You have completed the trail" class="modal"
     style="display: none;background-color: rgb(0,0,0);background-color: rgba(0,0,0,0.4);position: fixed;z-index: 1;left: 0;top: 0;width: 100%;height: 100%;">
     <span class="close" style="color: #aaa;color: #aaa;font-size: 28px;font-weight: bold;">&times;</span>
     <div id="content"
       style="background-color: #fefefe;margin: 15% auto; /* 15% from the top and centered */padding: 20px;border: 1px solid #888;width: 80%; ">
       <h1 style="text-align: center;">Congratulations!</h1>
     </div>
+  </div> -->
   </div>
   <script type="module">
     // Import the functions you need from the SDKs you need

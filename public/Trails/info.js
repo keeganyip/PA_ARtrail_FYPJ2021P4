@@ -19,9 +19,10 @@ const trails = {
                     '<div id="content">' +
                     '<div id="siteNotice">' +
                     "</div>" +
-                    '<h1 id="firstHeading" class="firstHeading">Buddha Tooth Relic</h1>' +
-                    '<div id="bodyContent">' +
-                    "<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large " +
+                    '<h4>Chinatown Heritage Centre</h4>' +
+                    '<div class="text-center" id="bodyContent">' +
+                    '<h5>*Distance Away*</h5>'+
+                    "<a href='main.html?CHC'><button class='btn btn-primary'>NAVIGATE</button></a>"+
                     "</div>" +
                     "</div>"
                 },
@@ -38,9 +39,10 @@ const trails = {
                     '<div id="content">' +
                     '<div id="siteNotice">' +
                     "</div>" +
-                    '<h1 id="firstHeading" class="firstHeading"></h1>' +
-                    '<div id="bodyContent">' +
-                    "<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large " +
+                    '<h4>Sri Maraimman Temple</h4>' +
+                    '<div class="text-center" id="bodyContent">' +
+                    '<h5>*Distance Away*</h5>'+
+                    "<a href='main.html?SMT'><button class='btn btn-primary'>NAVIGATE</button></a>"+
                     "</div>" +
                     "</div>"
                 }, 
@@ -57,9 +59,10 @@ const trails = {
                     '<div id="content">' +
                     '<div id="siteNotice">' +
                     "</div>" +
-                    '<h1 id="firstHeading" class="firstHeading">Uluru</h1>' +
-                    '<div id="bodyContent">' +
-                    "<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large " +
+                    '<h4>Masjid Jamae</h4>' +
+                    '<div class="text-center" id="bodyContent">' +
+                    '<h5>*Distance Away*</h5>'+
+                    "<a href='main.html?MJ'><button class='btn btn-primary'>NAVIGATE</button></a>"+
                     "</div>" +
                     "</div>"
                 }, 
@@ -76,9 +79,10 @@ const trails = {
                     '<div id="content">' +
                     '<div id="siteNotice">' +
                     "</div>" +
-                    '<h1 id="firstHeading" class="firstHeading">Uluru</h1>' +
-                    '<div id="bodyContent">' +
-                    "<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large " +
+                    '<h4>Tong Heng</h4>' +
+                    '<div class="text-center" id="bodyContent">' +
+                    '<h5>*Distance Away*</h5>'+
+                    "<a href='main.html?TH'><button class='btn btn-primary'>NAVIGATE</button></a>"+
                     "</div>" +
                     "</div>"
                 }, 
@@ -95,9 +99,10 @@ const trails = {
                     '<div id="content">' +
                     '<div id="siteNotice">' +
                     "</div>" +
-                    '<h1 id="firstHeading" class="firstHeading">Buddha Tooth Relic</h1>' +
-                    '<div id="bodyContent">' +
-                    "<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large " +
+                    '<h4>Buddha Tooth Relic</h4>' +
+                    '<div class="text-center" id="bodyContent">' +
+                    '<h5>*Distance Away*</h5>'+
+                    "<a href='main.html?BTR'><button class='btn btn-primary'>NAVIGATE</button></a>"+
                     "</div>" +
                     "</div>"
                 }, 
@@ -115,9 +120,10 @@ const trails = {
                     '<div id="content">' +
                     '<div id="siteNotice">' +
                     "</div>" +
-                    '<h1 id="firstHeading" class="firstHeading">Uluru</h1>' +
-                    '<div id="bodyContent">' +
-                    "<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large " +
+                    '<h4>Pagoda Street & Trengannu Street</h4>' +
+                    '<div class="text-center" id="bodyContent">' +
+                    '<h5>*Distance Away*</h5>'+
+                    "<a href='main.html?PGTST'><button class='btn btn-primary'>NAVIGATE</button></a>"+
                     "</div>" +
                     "</div>"
                 },
@@ -136,9 +142,10 @@ const trails = {
                     '<div id="content">' +
                     '<div id="siteNotice">' +
                     "</div>" +
-                    '<h1 id="firstHeading" class="firstHeading">Uluru</h1>' +
-                    '<div id="bodyContent">' +
-                    "<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large " +
+                    '<h4>Sago Street</h4>' +
+                    '<div class="text-center" id="bodyContent">' +
+                    '<h5>*Distance Away*</h5>'+
+                    "<a href='main.html?SGST'><button class='btn btn-primary'>NAVIGATE</button></a>"+
                     "</div>" +
                     "</div>"
                 }, 
@@ -152,12 +159,13 @@ const trails = {
                     content:'Witness murals that depict the past \n through the eyes of singaporean artist Yip Yew Chong.',
                     src:'https://finalyearproject-631fc.web.app/Trails/ChinaTown/MuralStreet.html',
                     contentHTML :
-                    '<div id="content">' +
+                    '<div id="content" >' +
                     '<div id="siteNotice">' +
                     "</div>" +
-                    '<h1 id="firstHeading" class="firstHeading">Uluru</h1>' +
-                    '<div id="bodyContent">' +
-                    "<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large " +
+                    '<h4 class="text-center">Mural at Mohamed Ali Lane</h4>' +
+                    '<div class="text-center" id="bodyContent">' +
+                    '<h5>*Distance Away*</h5>'+
+                    "<a href='main.html?MMAL'><button class='btn btn-primary'>NAVIGATE</button></a>"+
                     "</div>" +
                     "</div>"
                 }, 

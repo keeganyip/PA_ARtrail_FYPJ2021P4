@@ -14,7 +14,8 @@ if (localStorage.getItem('landmarkIndex')){
 }
 
 // All of Chinatown's landmarks
-const Chinatown = trails.nyp.landmarks ; 
+const nyp = trails.nyp.landmarks
+const Chinatown = trails.chinatown.landmarks ; 
 
 function getLocationUpdate(){
     directionsService = new google.maps.DirectionsService();
@@ -371,12 +372,17 @@ function currentPositionSuccess(position){
             anchor: new google.maps.Point(11, 40),
         }
     };
-
+    origin = {
+        longitude: position.coords.longitude,
+        latitude: position.coords.latitude,
+    }
+    console.log("ORIGIN",origin);
     window.map = new google.maps.Map(document.getElementById("map"), {
         zoom: 13,
-        center: {lat: 1.354887375010911, lng:103.8252658350733},
+        center: {lat: position.coords.latitude, lng:position.coords.longitude},
         zoomControl: false,
-        mapTypeControl: true,
+        disableDefaultUI: true,
+        keyboardShortcuts: false,
         mapTypeControlOptions: {
             style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
         },
@@ -395,12 +401,26 @@ function currentPositionSuccess(position){
               },
         ],
     });
- 
+    
+    var backbtn = document.getElementById('back');
+    google.maps.event.addListener(map, "click", function(event) {
+        
+        var mapdiv = document.getElementById('map');
+        console.log("CLICKED",mapdiv);
+        mapdiv.style.position = 'revert';
+        mapdiv.style.height = '100%';
+        mapdiv.style.width = '100%';
+        window.map.controls[google.maps.ControlPosition.LEFT_TOP].push(backbtn);
+        backbtn.onclick = function(){
+            mapdiv.style.position = 'absolute';
+            mapdiv.style.height = '20%';
+            mapdiv.style.width = '40%';
+            window.map.controls[google.maps.ControlPosition.LEFT_TOP].pop();
+        }
+    });
     // Set start button into the map also
-    var recetnerBtn = document.getElementById("recenter");
-    var completeBtn = document.getElementById("complete");
-    window.map.controls[google.maps.ControlPosition.TOP].push(completeBtn);
-    window.map.controls[google.maps.ControlPosition.TOP].push(recetnerBtn);
+    // var recetnerBtn = document.getElementById("recenter");
+    // window.map.controls[google.maps.ControlPosition.TOP].push(recetnerBtn);
 }
 
 function success(position) {
@@ -416,11 +436,18 @@ function success(position) {
     if(distanceMsg  < 80){
         icon.setAttribute("src","./Trails/assets/map-marker-removebg-preview.png");
     }
-    console.log(Chinatown)
+    console.log("TRAIL:",Chinatown)
+    console.log(flag);
+    var queryString = decodeURIComponent(window.location.search);
+    queryString = queryString.substring(1);
+    if(queryString == 'CHC'){
+        destination = Chinatown[0].location;
+    }
     if (flag){
         flag=false
         directionRenderer.set('directions', null)
-        displayRoute(origin,Chinatown[landmarkIndex].location,"WALKING")
+        console.log("ROUTING");
+        displayRoute(origin,destination,"WALKING")
     }
         
 }

@@ -1,5 +1,5 @@
 // import { Modal } from 'assets/scri'
-
+let popup,Popup;
 var watchID, geoLoc, target, travelMode, directionsService, directionRenderer;
 var flag = false;
 var notAtTrail = true
@@ -21,6 +21,8 @@ var landmarkIndex = 0
 var trail = ""
 var localStorage = window.localStorage
 var distance = 0
+
+
 
 
 //
@@ -124,7 +126,7 @@ function checkDistanceFromTrail(origin,trail){
     //     ]
     //     })
 
-
+    distance = 100;
     if (distance > 1600) {
         flag = false
         if (flag) {
@@ -135,35 +137,85 @@ function checkDistanceFromTrail(origin,trail){
         console.log($("#dialog"))
         var myModal = new bootstrap.Modal(document.getElementById('dialog'))
         myModal.show();
-        $('#Ok').click(function () {
-            flag = true
-            travelMode = $('#option').val();
-            displayRoute(origin, Chinatown[0].location, travelMode)
-            map.setCenter(origin)
+        console.log($('#ok'));
+        $('#ok').on('click',function () {
+            window.location.href='overview.html'
         })
     }
 
     // If at the trail already
     else {
-        flag = false
-        if (flag) {
-            $("#fardialog").dialog("open");
-            $("#farOk").click(function () {
-                window.location.href = "https://finalyearproject-631fc.web.app/headphone.html"
+        // flag = false
+        // if (flag) {
+        //     $("#fardialog").dialog("open");
+        //     $("#farOk").click(function () {
+        //         window.location.href = "https://finalyearproject-631fc.web.app/headphone.html"
 
-            })
-        }
-        // Set get route button 
-        getRouteButtonFlag = true
-        flag = true
-        $("#fardialog").dialog("open");
-        $("#farOk").click(function () {
-            window.location.href = "https://finalyearproject-631fc.web.app/headphone.html"
+        //     })
+        // }
+        // // Set get route button 
+        // getRouteButtonFlag = true
+        // flag = true
+        // $("#fardialog").dialog("open");
+        // $("#farOk").click(function () {
+        //     window.location.href = "https://finalyearproject-631fc.web.app/headphone.html"
 
-        })
+        // })
 
     }
 }
+
+// class Popup extends google.maps.OverlayView {
+//     position;
+//     containerDiv;
+//     constructor(position, content) {
+//       super();
+//       this.position = position;
+//       content.classList.add("popup-bubble");
+
+//       // This zero-height div is positioned at the bottom of the bubble.
+//       const bubbleAnchor = document.createElement("div");
+
+//       bubbleAnchor.classList.add("popup-bubble-anchor");
+//       bubbleAnchor.appendChild(content);
+//       // This zero-height div is positioned at the bottom of the tip.
+//       this.containerDiv = document.createElement("div");
+//       this.containerDiv.classList.add("popup-container");
+//       this.containerDiv.appendChild(bubbleAnchor);
+//       // Optionally stop clicks, etc., from bubbling up to the map.
+//       Popup.preventMapHitsAndGesturesFrom(this.containerDiv);
+//     }
+//     /** Called when the popup is added to the map. */
+//     onAdd() {
+//       this.getPanes().floatPane.appendChild(this.containerDiv);
+//     }
+//     /** Called when the popup is removed from the map. */
+//     onRemove() {
+//       if (this.containerDiv.parentElement) {
+//         this.containerDiv.parentElement.removeChild(this.containerDiv);
+//       }
+//     }
+//     /** Called each frame when the popup needs to draw itself. */
+//     draw() {
+//       const divPosition = this.getProjection().fromLatLngToDivPixel(
+//         this.position
+//       );
+//       // Hide the popup when it is far out of view.
+//       const display =
+//         Math.abs(divPosition.x) < 4000 && Math.abs(divPosition.y) < 4000
+//           ? "block"
+//           : "none";
+
+//       if (display === "block") {
+//         this.containerDiv.style.left = divPosition.x + "px";
+//         this.containerDiv.style.top = divPosition.y + "px";
+//       }
+
+//       if (this.containerDiv.style.display !== display) {
+//         this.containerDiv.style.display = display;
+//       }
+//     }
+//   }
 
 //init Map based on trail
 function startingTrail(position) {
@@ -186,10 +238,14 @@ function startingTrail(position) {
         var startlong = chinatownstart["longitude"]
         trail = 'chinatown';
     }
+    else{
+        window.location.href = 'overview.html'
+    }
     var origin = {
         lat: position.coords.latitude,
         lng: position.coords.longitude
     }
+    // console.log(trails[trail])
     checkDistanceFromTrail(origin,trails[trail]['location'])
     window.map = new google.maps.Map(document.getElementById("map"), { //init Map
         zoom: 19,
@@ -219,6 +275,7 @@ function startingTrail(position) {
             },
         ],
     });
+    const map = window.map;
 
     var keys = Object.keys(trails);
     console.log(trails[trail], "TRAILS")
@@ -228,23 +285,48 @@ function startingTrail(position) {
     for (i = 0; i< landmarks.length; i++){
         boundary.extend(landmarks[i].location)
         marker = makeMarker(landmarks[i].location, icons.marker,landmarks[i].name) //position, icon, title
-        // google.maps.event.addListener(marker, 'click', function () {
-            //         makeLandmarkMarkers(trails[keys[i]])
-            //         dropDown = document.getElementById('Choose Trail')
-            //         dropDown.innerHTML = (trails[keys[i]].name)
-            //         trail = trails[keys[i]].name
-            //         cancelBtn = makecancelButton()
-            //         window.map.controls[google.maps.ControlPosition.TOP].push(cancelBtn);
-            //         localStorage.setItem('trail', trails[keys[i]].name)
-            //     });
+        marker.content = landmarks[i].contentHTML;
+        // popup = new Popup(landmarks[i].location,landmarks[i].content)
+        // marker.addListener('click',()=>{
+        //     popup.setMap(map);
+        // });
+        
+        var infowindow = new google.maps.InfoWindow();
+        google.maps.event.addListener(marker,"click", (function (marker,i){
+            return function(){
+                closelastopen(infowindow);
+
+                infowindow.setContent(landmarks[i].contentHTML);
+                infowindow.open({
+                anchor: marker,
+                map,
+                shouldFocus: false,
+                });
+                lastopen = infowindow;
+                var location = position.longitude
+            }
+        })
+        (marker,i));
         gMarkers.push(marker);
     }
+    google.maps.event.addListener(map, "click", function(event) {
+        infowindow.close();
+    });
     window.map.fitBounds(boundary)
     
 
     
 }
 
+function closelastopen(iw){
+    iw.close();
+}
+
+function getMap(){
+
+    console.log(map);
+    return map;
+}
 
 
 //get current location
@@ -279,16 +361,19 @@ function getLocationUpdate() {
 
 function makeMarker(position, icon, title) {
     marker = new google.maps.Marker({
+        
         position: position,
         label: {
             color: 'black',
             fontWeight: 'bold',
-            text: title
+            text: title,
+            fontSize: '25px',
         },
         map: map,
         icon: icon,
         title: title
     });
+
     return marker
 }
 
@@ -445,29 +530,48 @@ function currentPositionSuccess(position) {
 
 
 
+//draw current location of user
 
+function makeuserlocation(position, icon, title) {
+    marker = new google.maps.Marker({
+        
+        position: position,
+        label: {
+            color: 'black',
+            fontWeight: 'bold',
+            text: title,
+            fontSize: '15px',
+        },
+        map: map,
+        icon: icon,
+        title: title
+    });
 
+    return marker
+}
 
+//when position changes
 function success(position) {
     origin = {
         lat: position.coords.latitude,
         lng: position.coords.longitude
     }
     // recenterLogic(origin)
-    const map = window.map
-
+    const map = window.map;
+    var icon = "assets/img/userLocation.png";
+    makeuserlocation(origin,icon,"You Are Here");
     directionsService = new google.maps.DirectionsService();
     directionRenderer = new google.maps.DirectionsRenderer({
         preserveViewport: true
     });
 
     directionRenderer.setMap(map);
-    // Set complete button     
-    if (!getRouteButtonFlag) {
-        getRouteButtonFlag = true
-        document.getElementById("submit").origin = origin
-        document.getElementById("submit").addEventListener("click", checkDistance)
-    }
+    // // Set complete button     
+    // if (!getRouteButtonFlag) {
+    //     getRouteButtonFlag = true
+    //     document.getElementById("submit").origin = origin
+    //     document.getElementById("submit").addEventListener("click", checkDistance)
+    // }
 
     // distance = getDistance(origin,trail.location)
 
