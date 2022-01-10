@@ -14,7 +14,7 @@ const trails = {
             
                     },
                     content:"Get transported back in time and experience the footsteps \n of migrants in the late 19th century of singapore",
-                    src:'https://finalyearproject-631fc.web.app/Trails/ChinaTown/BuddhaToothRelic.html',
+                    src:'landmarks/chinatown/chinatownheritagecentre.html',
                     contentHTML :
                     '<div id="content">' +
                     '<div id="siteNotice">' +
@@ -33,7 +33,7 @@ const trails = {
                         lng: 103.84513546864258, 
                     },  
                     content:'This hindu temple is the oldest \n and largest of its kind in singapore',
-                    src:'https://finalyearproject-631fc.web.app/Trails/ChinaTown/SriMariamman.html',
+                    src:'landmarks/chinatown/srimariamtemple.html',
 
                     contentHTML :
                     '<div id="content">' +
@@ -54,7 +54,7 @@ const trails = {
                         lng: 103.84544660487347, 
                     },
                     content:'Established in 1826 it is one of the oldest mosque in \n singapore One of the only six in the \n country that conducts sermons in tamil' ,
-                    src:'https://finalyearproject-631fc.web.app/Trails/ChinaTown/MasjidJamae.html',
+                    src:'landmarks/chinatown/masjidjamae.html',
                     contentHTML :
                     '<div id="content">' +
                     '<div id="siteNotice">' +
@@ -74,7 +74,7 @@ const trails = {
                         lng:103.84496985330027, 
                     },
                     content:'Tong Heng is the oldest confectioneries. \n Witness a story of resilience, \n determination and resourcefulness.' ,
-                    src:'https://finalyearproject-631fc.web.app/Trails/ChinaTown/TongHeng.html',
+                    src:'landmarks/chinatown/tongheng.html',
                     contentHTML :
                     '<div id="content">' +
                     '<div id="siteNotice">' +
@@ -94,7 +94,7 @@ const trails = {
             
                     },
                     content:"Get transported back in time and experience the footsteps \n of migrants in the late 19th century of singapore",
-                    src:'https://finalyearproject-631fc.web.app/Trails/ChinaTown/BuddhaToothRelic.html',
+                    src:'landmarks/chinatown/buddhatoothrelic.html',
                     contentHTML :
                     '<div id="content">' +
                     '<div id="siteNotice">' +
@@ -115,7 +115,7 @@ const trails = {
                         lng:103.84473979738155, 
                     }, 
                     content:'Witness murals that depict the past \n through the eyes of singaporean artist Yip Yew Chong.',
-                    src:'https://finalyearproject-631fc.web.app/Trails/ChinaTown/MuralStreet.html',
+                    src:'landmarks/chinatown/pagodastreet.html',
                     contentHTML :
                     '<div id="content">' +
                     '<div id="siteNotice">' +
@@ -137,7 +137,7 @@ const trails = {
                         lng: 103.84399338201563, 
                     },
                     content:'Experience the street of the dead where immigrants of the past with no family lived and died',
-                    src:'https://finalyearproject-631fc.web.app/Trails/ChinaTown/SagoStreet.html',
+                    src:'landmarks/chinatown/sagostreet.html',
                     contentHTML :
                     '<div id="content">' +
                     '<div id="siteNotice">' +
@@ -157,7 +157,7 @@ const trails = {
                         lng:103.84583411762635, 
                     }, 
                     content:'Witness murals that depict the past \n through the eyes of singaporean artist Yip Yew Chong.',
-                    src:'https://finalyearproject-631fc.web.app/Trails/ChinaTown/MuralStreet.html',
+                    src:'landmarks/chinatown/muralletterwriter.html',
                     contentHTML :
                     '<div id="content" >' +
                     '<div id="siteNotice">' +
@@ -193,7 +193,7 @@ const trails = {
         
                 },
                 content:"Get transported back in time and experience the footsteps \n of migrants in the late 19th century of singapore",
-                src:'https://finalyearproject-631fc.web.app/Trails/ChinaTown/BuddhaToothRelic.html',
+                src:'landmarks/chinatown/buddhatoothrelic.html',
                 extraContent:"Fascinating wall murals have been mushrooming all over the city in recent years, thanks to Singaporean artists like Yip Yew Chong. His work isn’t just Instagram-worthy, it’s turning roads, like this one in Chinatown, into street museums.Yew Chong painted these murals from his personal memories of Singapore’s past – he grew up in Sago Lane, a street across the road. The Paper Mask & Puppet Seller (on the right) was inspired by a real person who sold masks on this very street.",
                 contentHTML :
                 '<div id="content" >' +
@@ -214,7 +214,7 @@ const trails = {
         
                 },
                 content:"Get transported back in time and experience the footsteps \n of migrants in the late 19th century of singapore",
-                src:'https://finalyearproject-631fc.web.app/Trails/ChinaTown/PagodaStreet.html',
+                src:'landmarks/chinatown/muralletterwriter.html',
                 extraContent:"Fascinating wall murals have been mushrooming all over the city in recent years, thanks to Singaporean artists like Yip Yew Chong. His work isn’t just Instagram-worthy, it’s turning roads, like this one in Chinatown, into street museums.Yew Chong painted these murals from his personal memories of Singapore’s past – he grew up in Sago Lane, a street across the road. The Paper Mask & Puppet Seller (on the right) was inspired by a real person who sold masks on this very street.",
                 contentHTML :
                 '<div id="content">' +
@@ -235,7 +235,7 @@ const trails = {
         
                 },
                 content:"Get transported back in time and experience the footsteps \n of migrants in the late 19th century of singapore",
-                src:'https://finalyearproject-631fc.web.app/Trails/ChinaTown/MasjidJamae.html',
+                src:'landmarks/chinatown/masjidjamae.html',
                 extraContent:"Fascinating wall murals have been mushrooming all over the city in recent years, thanks to Singaporean artists like Yip Yew Chong. His work isn’t just Instagram-worthy, it’s turning roads, like this one in Chinatown, into street museums.Yew Chong painted these murals from his personal memories of Singapore’s past – he grew up in Sago Lane, a street across the road. The Paper Mask & Puppet Seller (on the right) was inspired by a real person who sold masks on this very street.",
 
                 contentHTML :
@@ -256,7 +256,7 @@ const trails = {
         
                 },
                 content:"Get transported back in time and experience the footsteps \n of migrants in the late 19th century of singapore",
-                src:'https://finalyearproject-631fc.web.app/Trails/ChinaTown/MuralStreet.html',
+                src:'landmarks/chinatown/sagostreet.html',
                 extraContent:"Fascinating wall murals have been mushrooming all over the city in recent years, thanks to Singaporean artists like Yip Yew Chong. His work isn’t just Instagram-worthy, it’s turning roads, like this one in Chinatown, into street museums.Yew Chong painted these murals from his personal memories of Singapore’s past – he grew up in Sago Lane, a street across the road. The Paper Mask & Puppet Seller (on the right) was inspired by a real person who sold masks on this very street.",
 
                 contentHTML :
