@@ -7,7 +7,7 @@ var centered = false;
 var completeButtonFlag = false;
 var getRouteButtonFlag = false;
 var gMarkers = []
-var target = {
+var NYPStart = {
     latitude: 1.379155,
     longitude: 103.849828
 };
@@ -237,6 +237,11 @@ function startingTrail(position) {
         var startlat = chinatownstart["latitude"]
         var startlong = chinatownstart["longitude"]
         trail = 'chinatown';
+    }
+    else if (trail == 'NYP'){
+        var startlat = NYPStart["latitude"]
+        var startlong = NYPStart["longitude"]
+        trail = 'nyp';
     }
     else{
         window.location.href = 'overview.html'

@@ -71,6 +71,7 @@ function makeIncrementalMarker(position, i, title, content) {
         icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=' + i + '|33cc33|000000',
         title: title
     });
+    console.log("LOOK",'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=' + i + '|33cc33|000000');
     marker.addListener("click", () => {
         infowindow.open({
             anchor: marker,
@@ -93,12 +94,28 @@ function makeStartMarker(position, direction) {
             offset: '0%',
             icon: {
                 path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
-                scale: 7,
+                scale: 4,
                 strokeOpacity: 1
             }
         }]
     })
     return line
+}
+
+
+function makeEndMarker(position,title){
+    console.log(title);
+    marker = new google.maps.Marker({
+        position: position,
+        label: {
+            color: 'black',
+            fontWeight: 'bold',
+            text: title
+        },
+        map: map,
+        title: title
+    });
+    return marker
 }
 
 function removeMarkers() {
@@ -170,20 +187,21 @@ function recenterLogic(origin) {
     }
 }
 
-function displayRoute(latlng, destination, travelMode) {
-    removeMarkers()
+function displayRoute(latlng, destination, destinationLocation, travelMode) {
+    removeMarkers();
     directionsService.route({
         origin: latlng,
-        destination: destination,
+        destination: destinationLocation,
         travelMode: google.maps.TravelMode[travelMode]
     }).then((response) => {
         directionRenderer.setDirections(response);
         const route = response.routes[0];
         var leg = route.legs[0]
         // instructions = leg["steps"][0].instructions + " "+ leg["steps"][0].distance.text + "  "+leg["steps"][0].duration.text
-        instructions = ""
-        document.getElementById("instructions").innerHTML = instructions
+        // instructions = ""
+        // document.getElementById("instructions").innerHTML = instructions
         gMarker = makeStartMarker(leg.start_location, leg.end_location)
+        destMarker = makeEndMarker(destinationLocation,destination)
         gMarkers.push(gMarker)
     })
 }
@@ -201,11 +219,11 @@ if (localStorage.getItem('landmarkIndex')) {
 function loadPlaceFromAPIs(position) {
     const params = {
         radius: 300, // search places not farther than this value (in meters)
-        clientId: 'CRDMPAGPE4KCZOMKKCLKKSJOKUKJZVE54LUROL2GLDS3UMTA',
-        clientSecret: 'TCWSXDU33J30GFTTPDRVL4SXMGMT3ON0ZWZVXWQPPINDMMWD',
+        clientId: '02NGKRBHAJWSG12JYET2RJYPUO15NORA4NS5AOGYOYIB3HLJ',
+        clientSecret: '2OAVJC42O2WX4A3OV43WOF45WNBYUMD2PXSWZKYISXTI2JBW',
         version: '20300101', // foursquare versioning, required but unuseful for this demo
     };
-
+    //fsq3le97hiGWeeRpJV36GITy5TsUqDH7mZD0wR3ueXSf3l0=
     // CORS Proxy to avoid CORS problems
     const corsProxy = 'https://cors-anywhere.herokuapp.com/';
 
@@ -240,6 +258,87 @@ window.onload = () => {
 
 
             Chinatown.forEach((place) => {
+                const latitude = place.location.lat;
+                const longitude = place.location.lng;
+                const content = place.content;
+                const src = place.src;
+
+                // add place icon
+                const icon = document.createElement('a-image');
+                const text = document.createElement('a-text');
+                // text.setAttribute("name",place.name);
+                text.setAttribute("scale", "20 20 20");
+                icon.setAttribute("scale", '40 40 40');
+                text.setAttribute("align", "center");
+                text.setAttribute("baseline", "top");
+                text.setAttribute("look-at", '[gps-camera]');
+                icon.setAttribute("look-at", "[gps-camera]");
+                text.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude}`);
+                icon.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude}`);
+                text.setAttribute('value', place.name);
+                icon.setAttribute('src', './Trails/assets/map-marker.png');
+                icon.setAttribute('material', 'opacity:0.5;');
+
+
+                // for debug purposes, just show in a bigger scale, otherwise I have to personally go on places...
+                // icon.setAttribute('scale', '120 120 120');
+                // icon.setAttribute('look-at','[gps-camera]');
+
+                text.addEventListener('loaded', () => window.dispatchEvent(new CustomEvent('gps-entity-place-loaded')));
+
+
+                // distanceMsg = setTimeout(function(){icon.getAttribute('distance');},5000);
+                // console.log(distanceMsg);
+
+
+
+                const clickListener = function (ev) {
+                    ev.stopPropagation();
+                    ev.preventDefault();
+
+                    const name = ev.target.getAttribute('name');
+
+                    const el = ev.detail.intersection && ev.detail.intersection.object.el;
+
+                    if (el && el === ev.target) {
+                        const label = document.createElement('span');
+                        const container = document.createElement('div');
+                        const para = document.createElement('p');
+                        const butt = document.createElement('a');
+                        const image = document.createElement('img');
+                        image.setAttribute("style", "width:0.8cm;height0.8cm;opacity:0.95;margin-right:10px;");
+                        image.setAttribute("src", "./Trails/assets/125-1258034_free-download-and-vector-speaker-icon-animated-gif-removebg-preview.png");
+                        image.onclick = function () {
+                            let utterance = new SpeechSynthesisUtterance(extraContent);
+                            speechSynthesis.speak(utterance);
+                        }
+                        butt.setAttribute('class', 'button');
+                        butt.setAttribute('href', src);
+                        butt.setAttribute('style', 'border-radius:4px;background-color:#555555;text-color:#808080');
+                        container.setAttribute('id', 'place-label');
+                        label.innerText = place.name;
+                        para.innerText = place.content;
+                        extraContent = place.extraContent;
+                        butt.innerText = "More Info";
+                        container.appendChild(label);
+                        label.appendChild(para);
+                        label.appendChild(image);
+
+                        label.appendChild(butt);
+
+                        document.body.appendChild(container);
+                        image.addEventListener('click', textSPeech);
+                        setTimeout(() => {
+                            container.parentElement.removeChild(container);
+                        }, 3500);
+                    }
+                };
+
+                icon.addEventListener('click', clickListener);
+                scene.appendChild(icon);
+                scene.appendChild(text);
+            });
+            nyp.forEach((place) => {
                 const latitude = place.location.lat;
                 const longitude = place.location.lng;
                 const content = place.content;
@@ -376,7 +475,7 @@ function currentPositionSuccess(position) {
     var icons = {
         marker: {
             labelOrigin: new google.maps.Point(11, -12),
-            url: "https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_red.png",
+            url: "https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_red.png", // red marker
             size: new google.maps.Size(22, 40),
             origin: new google.maps.Point(0, 0),
             anchor: new google.maps.Point(11, 40),
@@ -388,7 +487,7 @@ function currentPositionSuccess(position) {
     }
     console.log("ORIGIN", origin);
     window.map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 13,
+        zoom: 16,
         center: {
             lat: position.coords.latitude,
             lng: position.coords.longitude
@@ -449,25 +548,31 @@ function success(position) {
     const map = window.map
 
     directionRenderer.setMap(map);
+    directionRenderer.setOptions( { suppressMarkers: true } );
     icon = document.querySelector("a-image");
     distanceMsg = icon.getAttribute('distance')
     console.log(distanceMsg);
 
     if (distanceMsg < 80) {
-        icon.setAttribute("src", "./Trails/assets/map-marker-removebg-preview.png");
+        icon.setAttribute("src", "./Trails/assets/map-marker.png");
     }
     console.log("TRAIL:", Chinatown)
     console.log(flag);
     var queryString = decodeURIComponent(window.location.search);
     queryString = queryString.substring(1);
     if (queryString == 'CHC') {
-        destination = Chinatown[0].location;
+        destinationLocation = Chinatown[0].location;
+        destination = Chinatown[0].name;
+    }
+    else if(queryString == 'BlockL'){
+        destinationLocation = nyp[0].location;
+        destination = nyp[0].name;
     }
     if (flag) {
         flag = false
         directionRenderer.set('directions', null)
         console.log("ROUTING");
-        displayRoute(origin, destination, "WALKING")
+        displayRoute(origin, destination, destinationLocation, "WALKING")
     }
 
 }

@@ -196,12 +196,14 @@ const trails = {
                 src:'https://finalyearproject-631fc.web.app/Trails/ChinaTown/BuddhaToothRelic.html',
                 extraContent:"Fascinating wall murals have been mushrooming all over the city in recent years, thanks to Singaporean artists like Yip Yew Chong. His work isn’t just Instagram-worthy, it’s turning roads, like this one in Chinatown, into street museums.Yew Chong painted these murals from his personal memories of Singapore’s past – he grew up in Sago Lane, a street across the road. The Paper Mask & Puppet Seller (on the right) was inspired by a real person who sold masks on this very street.",
                 contentHTML :
-                '<div id="content">' +
+                '<div id="content" >' +
                 '<div id="siteNotice">' +
                 "</div>" +
-                '<h1 id="firstHeading" class="firstHeading">Block L</h1>' +
-                '<div id="bodyContent">' +
-                "<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large " +
+                '<h4 class="text-center">Block L</h4>' +
+                '<div class="text-center" id="bodyContent">' +
+                '<h5>*Distance Away*</h5>'+
+                "<a href='main.html?BlockL'><button class='btn btn-primary'>NAVIGATE</button></a>"+
+                "</div>" +
                 "</div>"
             },
             {
