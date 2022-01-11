@@ -1,5 +1,12 @@
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../public/assets/css/style.css"/>
+        <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i" rel="stylesheet" />
+        <link href="../public/assets/img/favicon.png" rel="icon" />
+        <link href="../public/assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+        <link href="assets/vendor/bootstrap/css/bootstrap.min.css">
         <style>
             img {
             float: center;
@@ -22,25 +29,70 @@
         margin: 5%;
         font-weight: bold;
         color: #000000;
+        opacity: 1 !important;
+        }
+        .button {
+            background-color: #00A6FF;
+            border: none;
+            color: white;
+            padding: 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            width: 70%;
+            }
+        .buttonstart {border-radius: 12px;}
+        .container {
+            position: relative;
+            text-align: center;
+            color: white;
+            font-size: 75px;
         }
         .centered {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 90%;
+            }
+        .box2 {
+            background-color: rgba(0,0,0,.5);
+            color: #fff;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 90%;
+            margin: auto;
+            text-align: center;
+        }
+        p{
+            padding-top: 125px;
         }
         </style>
         </head>
         <body>
+            <div class="container">
             <div class="background">
-                <div class="transbox">
-                  <p>Are you ready to explore Singapore's Heritage?</p><br>
-                  <p>You are about to dive into Singapore's extensive heritage and rich culture. Get ready to immerse yourself with our AR Heritage Trails!</p>
-                  <img src="assets/img/titlepage/peranakan.jpeg" style="width: 1500;"/>
+                <img src="assets/img/titlepage/peranakan.jpeg" style="width: 1500;"/>
                 <img src="assets/img/titlepage/Buddha tooth.jpg"/>
                 <img src="assets/img/titlepage/Masjid sultan.jpg"/>
                 <img src="assets/img/titlepage/little-india-singapore.png"/>
+                <div class="centered" style="font-size: 1rem;">
+                <!-- <div class="transbox"> -->
+                    <div class="box box2">
+                  <p style="color: white;">Are you ready to explore Singapore's Heritage?</p><br>
+                  <p style="color: white;">You are about to dive into Singapore's extensive heritage and rich culture. Get ready to immerse yourself with our AR Heritage Trails!</p>
+                  <div style="margin-top: 88%;"><button class="button buttonstart" onclick="parent.location='overview.html'">Get Started</button></div>
                 </div>
+            </div>
+            </div>
+                <!-- </div> -->
             </div>
     </body>
 </html>

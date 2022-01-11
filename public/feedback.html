@@ -1,21 +1,33 @@
 <html>
+
 <head>
-<title>Feedback Form</title>
-<link rel="stylesheet" href="assets/css/review.css" />                  
-<script src="assets/js/review.js"></script>
-<script>
-    function submitfeedback(){
-      if (confirm("Thank you for your feedback! Press OK to view feedbacks or Cancel to go home.")) 
-      {window.location = "feedbackoverview.html";
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback Form</title>
+  <link rel="stylesheet" href="assets/css/review.css" />
+  <link rel="stylesheet" href="../public/assets/css/style.css" />
+  <link href="../public/assets/img/favicon.png" rel="icon" />
+  <link href="../public/assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+  <link href="../public/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../public/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+  <link href="../public/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
+  <link href="../public/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
+  <link href="../public/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+  <link href="../public/assets/css/fa.css" rel="stylesheet" />
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i"
+    rel="stylesheet" />
+  <script src="../public/assets/js/review.js"></script>
+  <script>
+    function submitfeedback() {
+      if (confirm("Thank you for your feedback! Press OK to view feedbacks or Cancel to go home.")) {
+        window.location = "feedbackoverview.html";
       } else {
-        window.location="overview.html";
+        window.location = "overview.html";
       }
     }
-    </script>
-<style>
-    body{
-        background-image: url('background.jpg');
-    }
+  </script>
+  <style>
     .button {
       background-color: #00A6FF;
       border: none;
@@ -27,64 +39,112 @@
       font-size: 16px;
       margin: 4px 2px;
       cursor: pointer;
+      width: 40%;
     }
-    .buttonsubmit {border-radius: 12px;}
-    </style>
+
+    .buttonsubmit {
+      border-radius: 12px;
+    }
+  </style>
 </head>
+
 <body>
-    <div class="demo-wrap">
-        <img class="demo-bg" src="assets/img/background.jpg" alt="">
-        <div class="demo-content">
-            &#10060
-    <div style="justify-content: center;">
-    <h1>Feedback Form</h1>
-    <p>We would love to hear your thoughts, suggestion, concerns or problems with anything so we can improve!</p>
-    <br>
-    <form>
-        <form action="/action_page.php">
+  <div class="demo-wrap">
+    <img class="demo-bg" src="assets/img/background.jpg" alt="">
+    <div class="demo-content">
+      <a href="overview.html">&#10060</a>
+      <br>
+      <br>
+      <div style="width:800px; margin:0 auto;">
+        <div style="justify-content: center;">
+          <h1>Feedback Form</h1>
+          <p>We would love to hear your thoughts, suggestion, concerns or problems with anything so we can improve!</p>
+          <br>
+          <form>
+
             <label for="name">Name:</label><br>
-            <input type="text" id="fname" name="fname" value=""><br>
+            <input style="width: 300px;" type="text" id="fname" name="fname" value=""><br>
             <br>
             Describe your feedback: <br>
-            <textarea rows="4" cols="50" name="comment" form="usrform">
+            <textarea rows="4" cols="40" name="comment" form="usrform">
             </textarea><br>
-    </form>
-    <p>Rate your experience:</p>
-    <form class="rating">
-    <label>
-        <input type="radio" name="stars" value="1" />
-        <span class="icon">★</span>
-      </label>
-      <label>
-        <input type="radio" name="stars" value="2" />
-        <span class="icon">★</span>
-        <span class="icon">★</span>
-      </label>
-      <label>
-        <input type="radio" name="stars" value="3" />
-        <span class="icon">★</span>
-        <span class="icon">★</span>
-        <span class="icon">★</span>   
-      </label>
-      <label>
-        <input type="radio" name="stars" value="4" />
-        <span class="icon">★</span>
-        <span class="icon">★</span>
-        <span class="icon">★</span>
-        <span class="icon">★</span>
-      </label>
-      <label>
-        <input type="radio" name="stars" value="5" />
-        <span class="icon">★</span>
-        <span class="icon">★</span>
-        <span class="icon">★</span>
-        <span class="icon">★</span>
-        <span class="icon">★</span>
-      </label>
-  </form> 
-</div>
-  <button class="button buttonsubmit" onclick="submitfeedback()">Submit feedback</button>
-</div>
-</div>
+          </form>
+          <p>Rate your experience:</p>
+          <form class="rating">
+            <label>
+              <input type="radio" name="stars" value="1" />
+              <span class="icon">★</span>
+            </label>
+            <label>
+              <input type="radio" name="stars" value="2" />
+              <span class="icon">★</span>
+              <span class="icon">★</span>
+            </label>
+            <label>
+              <input type="radio" name="stars" value="3" />
+              <span class="icon">★</span>
+              <span class="icon">★</span>
+              <span class="icon">★</span>
+            </label>
+            <label>
+              <input type="radio" name="stars" value="4" />
+              <span class="icon">★</span>
+              <span class="icon">★</span>
+              <span class="icon">★</span>
+              <span class="icon">★</span>
+            </label>
+            <label>
+              <input type="radio" name="stars" value="5" />
+              <span class="icon">★</span>
+              <span class="icon">★</span>
+              <span class="icon">★</span>
+              <span class="icon">★</span>
+              <span class="icon">★</span>
+            </label>
+          </form>
+        </div>
+        <button class="button buttonsubmit" onclick="submitfeedback()">Submit Feedback</button>
+      </div>
+      <nav class="navbar-fixed-bottom navbar-default" style="padding-top: 5%;">
+        <div class="tab-nav-container container-fluid text-center">
+          <a href="../index.html">
+            <div>
+              <div class="tab red">
+                <i class="fas fa-home"></i>
+              </div>
+              <p class="tab-text">Home</p>
+            </div>
+          </a>
+          <a>
+            <div>
+              <div class="tab purple">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <p class="tab-text">Map</p>
+            </div>
+          </a>
+          <a>
+            <div>
+              <div class="tab green">
+                <i class="fas fa-calendar-alt"></i>
+              </div>
+              <p class="tab-text text-left">Calendar</p>
+            </div>
+          </a>
+          <a href="../Login/login.html">
+            <div>
+              <div class="tab active orange">
+                <i class="fas fa-user"></i>
+              </div>
+              <p class="tab-text active">Profile</p>
+            </div>
+          </a>
+        </div>
+      </nav>
+    </div>
+
+  </div>
+
 </body>
+
 </html>
