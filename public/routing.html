@@ -1,77 +1,127 @@
 <!DOCTYPE html>
 <html>
-<head>
-  
-  <link rel="stylesheet" href="scripts/style.css">
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet"/>
-  <link href="scripts/gdropdown.css" rel="stylesheet" type="text/css"/>
-    <script src="bundle.js"></script>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>GeoAR.js demo</title>
-    <script src='https://aframe.io/releases/0.9.2/aframe.min.js'></script>
-    <script src='https://raw.githack.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js'></script>
-    <script>
-        THREEx.ArToolkitContext.baseURL = 'https://raw.githack.com/jeromeetienne/ar.js/master/three.js/'
-    </script>
-    <script src="./Trails/info.js"></script>
-    <script async src="scripts/gDropDown.js"></script>
-    <script async src="./scripts/routing.js"></script>
-    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCL1J1qRPLGfBP9AkMp9E0zfD-5_5UZcWs&callback=getLocationUpdate"> </script>
 
-    <style>
-        #map {
-          height: 100%;
-          width: 100%;
-        }
-        html, body {
-          height: 100%;
-          margin: 0;
-          padding: 0;
-          
-        }
-      </style>
+<head>
+
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon" />
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i"
+    rel="stylesheet" />
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+  <link href="assets/css/fa.css" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/routing.css">
+
+
+  <link href="https://code.jquery.com/mobile/1.5.0-rc1/jquery.mobile-1.5.0-rc1.min.css" rel="stylesheet" />
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="scripts/style.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet" />
+  <link href="scripts/gdropdown.css" rel="stylesheet" type="text/css" />
+  <script src="bundle.js"></script>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>GeoAR.js demo</title>
+  <script src='https://aframe.io/releases/0.9.2/aframe.min.js'></script>
+  <script src='https://raw.githack.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js'></script>
+  <script>
+    THREEx.ArToolkitContext.baseURL = 'https://raw.githack.com/jeromeetienne/ar.js/master/three.js/'
+  </script>
+  <script src="./Trails/info.js"></script>
+  <script async src="scripts/gDropDown.js"></script>
+  <script defer src="./scripts/routing.js"></script>
+  <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCL1J1qRPLGfBP9AkMp9E0zfD-5_5UZcWs&callback=start"> </script>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <style>
+    #map {
+      height: 100%;
+      width: 100%;
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+
+    }
+  </style>
 </head>
 
 <link rel="stylesheet" href="./scripts/style.css">
-    
+
 
 
 <body>
-<div id="map"></div>
-<input type="button" style="margin-left: 100px;font-size:larger;margin-top:10px;height:98px; border: 1px solid; padding: 1px 12px; font: bold 20px Roboto, Arial, sans-serif; color: #000000; background-color: #FFFFFF; cursor: pointer;" id="submit" value="Start"  />
-<button id="recenter" style="background-color: white; margin-top: 11px;margin-left: 1px;"> <img src="static/center-icon.jpg" style="width: 89px;height: 89px;background-color: white;"> </button>
-<span id ="instructions"></span>
-<div id="dialog">
-  <p style="font-size:large;">You are more than 700m from the trail, do you want to travel to the trail now?</p>
-  <p style="font-size:medium;">Choose travel mode</p>   
-  <select id = "option" style="width:100px;height:25px;font-size: larger;" >
-    <option value="DRIVING">Driving</option>
-    <option value="WALKING">Walking</option>
-    <option value="BICYCLING">Bicycling</option>
-    <option value="TRANSIT">Transit</option>
-  </select>
-  <input style = "margin-left: 230px;display:none;" type="button" id="submitTravelMode" value="Ok" />
-</div>
-<div id="fardialog" >
-  <p style="font-size:xx-large;">You are less than 700m from the trail, do you want to start the trail now?</p>   
+  
+  <div id="map"></div>
+  <div class="container">
+  <!-- <button id="recenter" style="background-color: white; margin-top: 11px;margin-left: 1px;"> <img
+      src="static/center-icon.jpg" style="width: 89px;height: 89px;background-color: white;"> </button> -->
+  <span id="instructions"></span>
+  <div class="modal" id="dialog" aria-labelledby="modaltitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="width: auto;" data-bs-backdrop="static" data-bs-keyboard="false">
+      <div class="modal-content justify-content-center  ">
+        <div class="modal-header" style="border-bottom: 2px solid gray;">
+          <h1 id="modaltitle" class="modal-title w-100 text-center">Too Far from Trail</h3>
+        </div>
+        <div class="modal-body" style="border-bottom: 1px solid gray;">
+          <p style="font-size: 2rem;">You are more than 700m from the trail</p>
+          <!-- <p style="font-size: 3rem;">Choose travel mode</p>
+          <select id="option" style="font-size: 2.5rem;">
+            <option value="DRIVING">Driving</option>
+            <option value="WALKING">Walking</option>
+            <option value="BICYCLING">Bicycling</option>
+            <option value="TRANSIT">Transit</option>
+          </select> -->
+          
+        </div>
+        <div class="modal-footer">
+          <input type="button" class="btn btn-primary btn-lg" style="font-size: 1.5rem;" id="ok" value="OK" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div id="fardialog">
+    <p style="font-size:xx-large;">You are less than 700m from the trail, do you want to start the trail now?</p>
 
-  <input style = "margin-left: 230px;display:none;" type="button" id="submitTravelMode" value="Ok" />
-</div>
+    <input style="margin-left: 230px;display:none;" type="button" id="submitTravelMode" value="Ok" />
+  </div> -->
 
-<div id = "congraztPage" title="You have completed the trail" class="modal" style="display: none;background-color: rgb(0,0,0);background-color: rgba(0,0,0,0.4);position: fixed;z-index: 1;left: 0;top: 0;width: 100%;height: 100%;">
-  <span class="close" style="color: #aaa;color: #aaa;font-size: 28px;font-weight: bold;">&times;</span>
-  <div id = "content" style="background-color: #fefefe;margin: 15% auto; /* 15% from the top and centered */padding: 20px;border: 1px solid #888;width: 80%; ">
-  <h1 style="text-align: center;">Congratulations!</h1>
-</div>
-</div>
-<script type="module">
-  // Import the functions you need from the SDKs you need
+  <!-- <div id="congraztPage" title="You have completed the trail" class="modal"
+    style="display: none;background-color: rgb(0,0,0);background-color: rgba(0,0,0,0.4);position: fixed;z-index: 1;left: 0;top: 0;width: 100%;height: 100%;">
+    <span class="close" style="color: #aaa;color: #aaa;font-size: 28px;font-weight: bold;">&times;</span>
+    <div id="content"
+      style="background-color: #fefefe;margin: 15% auto; /* 15% from the top and centered */padding: 20px;border: 1px solid #888;width: 80%; ">
+      <h1 style="text-align: center;">Congratulations!</h1>
+    </div>
+  </div> -->
+  </div>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-analytics.js";
   import { getDatabase ,  ref,  onValue} from "https://www.gstatic.com/firebasejs/9.5.0/firebase-database.js";
@@ -107,4 +157,5 @@
 });
 </script>
 </body>
+
 </html>
