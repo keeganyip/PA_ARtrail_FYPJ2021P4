@@ -1,5 +1,5 @@
 // import { Modal } from 'assets/scri'
-let popup,Popup;
+let popup, Popup;
 var watchID, geoLoc, target, travelMode, directionsService, directionRenderer;
 var flag = false;
 var notAtTrail = true
@@ -7,14 +7,15 @@ var centered = false;
 var completeButtonFlag = false;
 var getRouteButtonFlag = false;
 var gMarkers = []
+var markers = {};
 var NYPStart = {
     latitude: 1.379155,
     longitude: 103.849828
 };
 
 var chinatownstart = {
-     
-    latitude:1.2826330692039218,
+
+    latitude: 1.2826330692039218,
     longitude: 103.84501595442900
 };
 var landmarkIndex = 0
@@ -23,10 +24,18 @@ var localStorage = window.localStorage
 var distance = 0
 
 
+if (localStorage.getItem('NYP Progress')) { // Progress exists
+    var NYPPROGRESS = localStorage.getItem('NYP Progress');
+    NYPPROGRESS = JSON.parse(NYPPROGRESS);
 
+} else {
+    var progress = JSON.stringify([0, 0, 0, 0, 0, 0, 0, 0])
+    console.log("PROGRESSS", progress);
+    localStorage.setItem('NYP Progress', progress);
+}
 
 //
-function start(){
+function start() {
     if (navigator.geolocation) {
         geoLoc = navigator.geolocation
         // Get current positon 
@@ -97,18 +106,18 @@ function start(){
 
 //     }
 // }
-function getDistance(mk1,mk2){
+function getDistance(mk1, mk2) {
     var R = 6378137; // Radius of the Earth in miles
-    var rlat1 = mk1.lat * (Math.PI/180); // Convert degrees to radians
-    var rlat2 = mk2.lat * (Math.PI/180); // Convert degrees to radians
-    var difflat = rlat2-rlat1; // Radian difference (latitudes)
-    var difflon = (mk2.lng-mk1.lng) * (Math.PI/180); // Radian difference (longitudes)
-    var d = 2 * R * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difflon/2)*Math.sin(difflon/2)));
+    var rlat1 = mk1.lat * (Math.PI / 180); // Convert degrees to radians
+    var rlat2 = mk2.lat * (Math.PI / 180); // Convert degrees to radians
+    var difflat = rlat2 - rlat1; // Radian difference (latitudes)
+    var difflon = (mk2.lng - mk1.lng) * (Math.PI / 180); // Radian difference (longitudes)
+    var d = 2 * R * Math.asin(Math.sqrt(Math.sin(difflat / 2) * Math.sin(difflat / 2) + Math.cos(rlat1) * Math.cos(rlat2) * Math.sin(difflon / 2) * Math.sin(difflon / 2)));
     return d;
 }
 
-function checkDistanceFromTrail(origin,trail){
-    distance = getDistance(origin,trail)
+function checkDistanceFromTrail(origin, trail) {
+    distance = getDistance(origin, trail)
     // $('#dialog').dialog({
     //     height: "auto",
     //     width: 400,
@@ -138,8 +147,8 @@ function checkDistanceFromTrail(origin,trail){
         var myModal = new bootstrap.Modal(document.getElementById('dialog'))
         myModal.show();
         console.log($('#ok'));
-        $('#ok').on('click',function () {
-            window.location.href='overview.html'
+        $('#ok').on('click', function () {
+            window.location.href = 'overview.html'
         })
     }
 
@@ -224,10 +233,16 @@ function startingTrail(position) {
     trail = queryString
 
     var icons = {
-        marker:{
-            labelOrigin:new google.maps.Point(11, -12),
-            url : "https://i.ibb.co/MGJr4Mq/image-1.png",
-            size: new google.maps.Size(34,65),
+        marker: {
+            labelOrigin: new google.maps.Point(11, -12),
+            url: "https://i.ibb.co/MGJr4Mq/image-1.png",
+            size: new google.maps.Size(34, 65),
+            origin: new google.maps.Point(0, 0),
+            anchor: new google.maps.Point(11, 40),
+        },
+        Completedmarker: {
+            labelOrigin: new google.maps.Point(11, -12),
+            url: "https://maps.google.com/mapfiles/kml/paddle/grn-circle.png",
             origin: new google.maps.Point(0, 0),
             anchor: new google.maps.Point(11, 40),
         }
@@ -237,13 +252,11 @@ function startingTrail(position) {
         var startlat = chinatownstart["latitude"]
         var startlong = chinatownstart["longitude"]
         trail = 'chinatown';
-    }
-    else if (trail == 'NYP'){
+    } else if (trail == 'NYP') {
         var startlat = NYPStart["latitude"]
         var startlong = NYPStart["longitude"]
         trail = 'nyp';
-    }
-    else{
+    } else {
         window.location.href = 'overview.html'
     }
     var origin = {
@@ -251,7 +264,7 @@ function startingTrail(position) {
         lng: position.coords.longitude
     }
     // console.log(trails[trail])
-    checkDistanceFromTrail(origin,trails[trail]['location'])
+    checkDistanceFromTrail(origin, trails[trail]['location'])
     window.map = new google.maps.Map(document.getElementById("map"), { //init Map
         zoom: 19,
         center: {
@@ -285,54 +298,83 @@ function startingTrail(position) {
     var keys = Object.keys(trails);
     console.log(trails[trail], "TRAILS")
     var landmarks = trails[trail]['landmarks']
-    var boundary= new google.maps.LatLngBounds();
+    var boundary = new google.maps.LatLngBounds();
     console.log(landmarks)
-    for (i = 0; i< landmarks.length; i++){
-        boundary.extend(landmarks[i].location)
-        marker = makeMarker(landmarks[i].location, icons.marker,landmarks[i].name) //position, icon, title
-        marker.content = landmarks[i].contentHTML;
+    for (i = 0; i < landmarks.length; i++) {
+        var htmlObject = $(landmarks[i].contentHTML);
+        boundary.extend(landmarks[i].location);
+        if (NYPPROGRESS[i] == 1 && trail == 'nyp') {
+            marker = makeCompletedMarker(landmarks[i].location, icons.Completedmarker, landmarks[i].name);
+        } else {
+            marker = makeMarker(landmarks[i].location, icons.marker, landmarks[i].name) //position, icon, title
+            distance = Math.round(getDistance(origin, landmarks[i].location));
+            console.log(origin, distance, "DISTANCE");
+            htmlObject.find('h5').text(distance + 'm Away');
+            console.log(htmlObject.html(), "HTML");
+            marker.content = htmlObject.html();
+        }
+        console.log(marker);
+        console.log(typeof (marker.content));
         // popup = new Popup(landmarks[i].location,landmarks[i].content)
         // marker.addListener('click',()=>{
         //     popup.setMap(map);
         // });
-        
-        var infowindow = new google.maps.InfoWindow();
-        google.maps.event.addListener(marker,"click", (function (marker,i){
-            return function(){
-                closelastopen(infowindow);
 
-                infowindow.setContent(landmarks[i].contentHTML);
-                infowindow.open({
-                anchor: marker,
-                map,
-                shouldFocus: false,
-                });
-                lastopen = infowindow;
-                var location = position.longitude
-            }
-        })
-        (marker,i));
+        var infowindow = new google.maps.InfoWindow();
+        google.maps.event.addListener(marker, "click", (function (marker, i) {
+                return function () {
+                    closelastopen(infowindow);
+                    infowindow.setContent(marker.content);
+                    infowindow.open({
+                        anchor: marker,
+                        map,
+                        shouldFocus: false,
+                    });
+                    lastopen = infowindow;
+                    var location = position.longitude
+                }
+            })
+            (marker, i));
         gMarkers.push(marker);
     }
-    google.maps.event.addListener(map, "click", function(event) {
+    google.maps.event.addListener(map, "click", function (event) {
         infowindow.close();
     });
     window.map.fitBounds(boundary)
-    
 
-    
+
+
 }
 
-function closelastopen(iw){
+function closelastopen(iw) {
     iw.close();
 }
 
-function getMap(){
+function getMap() {
 
     console.log(map);
     return map;
 }
 
+
+function makeCompletedMarker(position, icon, title) {
+    marker = new google.maps.Marker({
+
+        position: position,
+        label: {
+            color: 'black',
+            fontWeight: 'bold',
+            text: title,
+            fontSize: '25px',
+        },
+        map: map,
+        icon: icon,
+        title: title,
+        opacity: 0.5,
+    });
+
+    return marker
+}
 
 //get current location
 function getLocationUpdate() {
@@ -366,7 +408,7 @@ function getLocationUpdate() {
 
 function makeMarker(position, icon, title) {
     marker = new google.maps.Marker({
-        
+
         position: position,
         label: {
             color: 'black',
@@ -538,20 +580,43 @@ function currentPositionSuccess(position) {
 //draw current location of user
 
 function makeuserlocation(position, icon, title) {
-    marker = new google.maps.Marker({
-        
-        position: position,
-        label: {
-            color: 'black',
-            fontWeight: 'bold',
-            text: title,
-            fontSize: '15px',
-        },
-        map: map,
-        icon: icon,
-        title: title
-    });
+    var id = 'user';
+    var exist = markers[id];
+    if (!exist) {
+        marker = new google.maps.Marker({
 
+            position: position,
+            label: {
+                color: 'black',
+                fontWeight: 'bold',
+                text: title,
+                fontSize: '20px',
+            },
+            map: map,
+            icon: icon,
+            title: title,
+            id: id,
+        });
+        markers[id] = marker;
+    }
+    else{
+        exist.setMap(null);
+        marker = new google.maps.Marker({
+
+            position: position,
+            label: {
+                color: 'black',
+                fontWeight: 'bold',
+                text: title,
+                fontSize: '20px',
+            },
+            map: map,
+            icon: icon,
+            title: title,
+            id: 'user',
+        });
+        markers[id] = marker;
+    }
     return marker
 }
 
@@ -564,7 +629,7 @@ function success(position) {
     // recenterLogic(origin)
     const map = window.map;
     var icon = "assets/img/userLocation.png";
-    makeuserlocation(origin,icon,"You Are Here");
+    makeuserlocation(origin, icon, "You Are Here");
     directionsService = new google.maps.DirectionsService();
     directionRenderer = new google.maps.DirectionsRenderer({
         preserveViewport: true

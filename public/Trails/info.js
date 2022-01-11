@@ -217,12 +217,13 @@ const trails = {
                 src:'landmarks/chinatown/muralletterwriter.html',
                 extraContent:"Fascinating wall murals have been mushrooming all over the city in recent years, thanks to Singaporean artists like Yip Yew Chong. His work isn’t just Instagram-worthy, it’s turning roads, like this one in Chinatown, into street museums.Yew Chong painted these murals from his personal memories of Singapore’s past – he grew up in Sago Lane, a street across the road. The Paper Mask & Puppet Seller (on the right) was inspired by a real person who sold masks on this very street.",
                 contentHTML :
-                '<div id="content">' +
+                '<div id="content" >' +
                 '<div id="siteNotice">' +
                 "</div>" +
-                '<h1 id="firstHeading" class="firstHeading">Block A</h1>' +
-                '<div id="bodyContent">' +
-                "<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large " +
+                '<h4 class="text-center">Block A</h4>' +
+                '<div class="text-center" id="bodyContent">' +
+                '<h5>*Distance Away*</h5>'+
+                "<a href='main.html?BlockA'><button class='btn btn-primary'>NAVIGATE</button></a>"+
                 "</div>" +
                 "</div>"
         
@@ -239,12 +240,13 @@ const trails = {
                 extraContent:"Fascinating wall murals have been mushrooming all over the city in recent years, thanks to Singaporean artists like Yip Yew Chong. His work isn’t just Instagram-worthy, it’s turning roads, like this one in Chinatown, into street museums.Yew Chong painted these murals from his personal memories of Singapore’s past – he grew up in Sago Lane, a street across the road. The Paper Mask & Puppet Seller (on the right) was inspired by a real person who sold masks on this very street.",
 
                 contentHTML :
-                '<div id="content">' +
+                '<div id="content" >' +
                 '<div id="siteNotice">' +
                 "</div>" +
-                '<h1 id="firstHeading" class="firstHeading">Secondary School</h1>' +
-                '<div id="bodyContent">' +
-                "<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large " +
+                '<h4 class="text-center">Secondary School</h4>' +
+                '<div class="text-center" id="bodyContent">' +
+                '<h5>*Distance Away*</h5>'+
+                "<a href='main.html?SecSchool'><button class='btn btn-primary'>NAVIGATE</button></a>"+
                 "</div>" +
                 "</div>"
             },
@@ -260,16 +262,13 @@ const trails = {
                 extraContent:"Fascinating wall murals have been mushrooming all over the city in recent years, thanks to Singaporean artists like Yip Yew Chong. His work isn’t just Instagram-worthy, it’s turning roads, like this one in Chinatown, into street museums.Yew Chong painted these murals from his personal memories of Singapore’s past – he grew up in Sago Lane, a street across the road. The Paper Mask & Puppet Seller (on the right) was inspired by a real person who sold masks on this very street.",
 
                 contentHTML :
-                '<div id="content">' +
+                '<div id="content" >' +
                 '<div id="siteNotice">' +
                 "</div>" +
-                '<h1 id="firstHeading" class="firstHeading">Yio Chu Kang MRT</h1>' +
-                '<div id="bodyContent" style="font-size:xx-large;">' +
-                "<p><b>Yio Chu Kang MRT Station</b>, Yio Chu Kang MRT station is an above-ground Mass Rapid Transit (MRT) station on the North South line in Ang Mo Kio, Singapore, near the junction of Ang Mo Kio Avenue 6 and Ang Mo Kio Avenue 8."+
-
-                "This station primarily serves students of adjacent educational institutions such as Anderson Serangoon Junior College and Nanyang Polytechnic, as well as the residential and industrial estates in the northern part of Ang Mo Kio."+
-                
-                "The section of tracks between this station and Khatib MRT station is the longest between any two stations on the MRT network. Opened on 7 November 1987, Yio Chu Kang station is one of the five stations that collectively make up Singapore's oldest MRT stations. </p" +
+                '<h4 class="text-center">Yio Chu Kang MRT</h4>' +
+                '<div class="text-center" id="bodyContent">' +
+                '<h5>*Distance Away*</h5>'+
+                "<a href='main.html?YCKMRT'><button class='btn btn-primary'>NAVIGATE</button></a>"+
                 "</div>" +
                 "</div>"
         

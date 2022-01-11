@@ -7,8 +7,16 @@ var target = {
     latitude: 1.379155,
     longitude: 103.849828
 };
-if (localStorage.getItem('NYP Progress')) {
+if (localStorage.getItem('NYP Progress')) { // Progress exists
     var NYPPROGRESS = localStorage.getItem('NYP Progress');
+    NYPPROGRESS = JSON.parse(NYPPROGRESS);
+    var bullets = document.querySelectorAll('#ProgressBar');
+    for (let i = 0; i < NYPPROGRESS.length; i++) {
+        if(NYPPROGRESS[i] == 1){
+            bullets[i].getElementsByClassName('bullets')[0].classList.add('completed');
+        }
+      }
+    
 }
 else {
     var progress = JSON.stringify([0, 0, 0, 0, 0, 0, 0, 0])
