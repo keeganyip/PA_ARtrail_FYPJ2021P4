@@ -312,6 +312,22 @@ function startingTrail(position) {
             htmlObject.find('h5').text(distance + 'm Away');
             console.log(htmlObject.html(), "HTML");
             marker.content = htmlObject.html();
+            
+            var infowindow = new google.maps.InfoWindow();
+            google.maps.event.addListener(marker, "click", (function (marker, i) {
+                    return function () {
+                        closelastopen(infowindow);
+                        infowindow.setContent(marker.content);
+                        infowindow.open({
+                            anchor: marker,
+                            map,
+                            shouldFocus: false,
+                        });
+                        lastopen = infowindow;
+                        var location = position.longitude
+                    }
+                })
+                (marker, i));
         }
         console.log(marker);
         console.log(typeof (marker.content));
@@ -320,21 +336,7 @@ function startingTrail(position) {
         //     popup.setMap(map);
         // });
 
-        var infowindow = new google.maps.InfoWindow();
-        google.maps.event.addListener(marker, "click", (function (marker, i) {
-                return function () {
-                    closelastopen(infowindow);
-                    infowindow.setContent(marker.content);
-                    infowindow.open({
-                        anchor: marker,
-                        map,
-                        shouldFocus: false,
-                    });
-                    lastopen = infowindow;
-                    var location = position.longitude
-                }
-            })
-            (marker, i));
+       
         gMarkers.push(marker);
     }
     google.maps.event.addListener(map, "click", function (event) {
