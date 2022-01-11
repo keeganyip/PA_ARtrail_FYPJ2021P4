@@ -18,6 +18,12 @@
 <link href="../public/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
 <link href="../public/assets/css/fa.css" rel="stylesheet" />
 <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>    
+<script>
+    function goToNewPage()
+    {
+        window.location = "chinatownfeedback.html";
+    }
+</script>
 <style>
     .checked {
       color: orange;
@@ -53,11 +59,12 @@
     <div class="w3-dropdown-hover w3-right">
     <select name="trail" id="trail">
         <option value="Choosetrail">Choose a Trail</option>
-        <option value="Chinatown" selected>Chinatown</option>
-        <option value="Peranakan">Peranakan</option>
-        <option value="Little India">Little India</option>
-        <option value="Kampong Glam">Kampong Glam</option>
+        <option value="Chinatown" selected style="color:#F95F62;">Chinatown</option>
+        <option value="Peranakan" style="color:#FF9E6A;">Peranakan</option>
+        <option value="Little India" style="color:#35A113;">Little India</option>
+        <option value="Kampong Glam" style="color:#7E55B7;">Kampong Glam</option>
       </select>
+      <input type=button value="Go" onclick="goToNewPage()" />
     </div>
 </div>
 </div>
@@ -107,7 +114,7 @@
 </div>
     </div>
 </div>
-<nav class="navbar-fixed-bottom navbar-default" style="padding-top: 10%;">
+<nav class="navbar-fixed-bottom navbar-default" style="padding-top: 5%;">
     <div class="tab-nav-container container-fluid text-center">
         <a href="../index.html">
             <div>
