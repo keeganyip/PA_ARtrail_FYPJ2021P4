@@ -6,3 +6,7 @@ a {
     color: black !important;
     text-decoration: none !important;
 }
+
+.container{
+    padding: 0px;
+}

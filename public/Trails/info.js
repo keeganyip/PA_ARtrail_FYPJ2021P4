@@ -228,51 +228,51 @@ const trails = {
                 "</div>"
         
             }, 
-            {
-                name: "Secondary School", 
-                location: { 
-                    lat: 1.382061, // add here latitude if using static data 
-                    lng: 103.843322, // add here longitude if using static data 
+            // {
+            //     name: "Secondary School", 
+            //     location: { 
+            //         lat: 1.382061, // add here latitude if using static data 
+            //         lng: 103.843322, // add here longitude if using static data 
         
-                },
-                content:"Get transported back in time and experience the footsteps \n of migrants in the late 19th century of singapore",
-                src:'landmarks/chinatown/masjidjamae.html',
-                extraContent:"Fascinating wall murals have been mushrooming all over the city in recent years, thanks to Singaporean artists like Yip Yew Chong. His work isn’t just Instagram-worthy, it’s turning roads, like this one in Chinatown, into street museums.Yew Chong painted these murals from his personal memories of Singapore’s past – he grew up in Sago Lane, a street across the road. The Paper Mask & Puppet Seller (on the right) was inspired by a real person who sold masks on this very street.",
+            //     },
+            //     content:"Get transported back in time and experience the footsteps \n of migrants in the late 19th century of singapore",
+            //     src:'landmarks/chinatown/masjidjamae.html',
+            //     extraContent:"Fascinating wall murals have been mushrooming all over the city in recent years, thanks to Singaporean artists like Yip Yew Chong. His work isn’t just Instagram-worthy, it’s turning roads, like this one in Chinatown, into street museums.Yew Chong painted these murals from his personal memories of Singapore’s past – he grew up in Sago Lane, a street across the road. The Paper Mask & Puppet Seller (on the right) was inspired by a real person who sold masks on this very street.",
 
-                contentHTML :
-                '<div id="content" >' +
-                '<div id="siteNotice">' +
-                "</div>" +
-                '<h4 class="text-center">Secondary School</h4>' +
-                '<div class="text-center" id="bodyContent">' +
-                '<h5>*Distance Away*</h5>'+
-                "<a href='main.html?SecSchool'><button class='btn btn-primary'>NAVIGATE</button></a>"+
-                "</div>" +
-                "</div>"
-            },
-            {
-                name: "Yio Chu Kang", 
-                location: { 
-                    lat: 1.381643, // add here latitude if using static data 
-                    lng: 103.845035, // add here longitude if using static data 
+            //     contentHTML :
+            //     '<div id="content" >' +
+            //     '<div id="siteNotice">' +
+            //     "</div>" +
+            //     '<h4 class="text-center">Secondary School</h4>' +
+            //     '<div class="text-center" id="bodyContent">' +
+            //     '<h5>*Distance Away*</h5>'+
+            //     "<a href='main.html?SecSchool'><button class='btn btn-primary'>NAVIGATE</button></a>"+
+            //     "</div>" +
+            //     "</div>"
+            // },
+            // {
+            //     name: "Yio Chu Kang", 
+            //     location: { 
+            //         lat: 1.381643, // add here latitude if using static data 
+            //         lng: 103.845035, // add here longitude if using static data 
         
-                },
-                content:"Get transported back in time and experience the footsteps \n of migrants in the late 19th century of singapore",
-                src:'landmarks/chinatown/sagostreet.html',
-                extraContent:"Fascinating wall murals have been mushrooming all over the city in recent years, thanks to Singaporean artists like Yip Yew Chong. His work isn’t just Instagram-worthy, it’s turning roads, like this one in Chinatown, into street museums.Yew Chong painted these murals from his personal memories of Singapore’s past – he grew up in Sago Lane, a street across the road. The Paper Mask & Puppet Seller (on the right) was inspired by a real person who sold masks on this very street.",
+            //     },
+            //     content:"Get transported back in time and experience the footsteps \n of migrants in the late 19th century of singapore",
+            //     src:'landmarks/chinatown/sagostreet.html',
+            //     extraContent:"Fascinating wall murals have been mushrooming all over the city in recent years, thanks to Singaporean artists like Yip Yew Chong. His work isn’t just Instagram-worthy, it’s turning roads, like this one in Chinatown, into street museums.Yew Chong painted these murals from his personal memories of Singapore’s past – he grew up in Sago Lane, a street across the road. The Paper Mask & Puppet Seller (on the right) was inspired by a real person who sold masks on this very street.",
 
-                contentHTML :
-                '<div id="content" >' +
-                '<div id="siteNotice">' +
-                "</div>" +
-                '<h4 class="text-center">Yio Chu Kang MRT</h4>' +
-                '<div class="text-center" id="bodyContent">' +
-                '<h5>*Distance Away*</h5>'+
-                "<a href='main.html?YCKMRT'><button class='btn btn-primary'>NAVIGATE</button></a>"+
-                "</div>" +
-                "</div>"
+            //     contentHTML :
+            //     '<div id="content" >' +
+            //     '<div id="siteNotice">' +
+            //     "</div>" +
+            //     '<h4 class="text-center">Yio Chu Kang MRT</h4>' +
+            //     '<div class="text-center" id="bodyContent">' +
+            //     '<h5>*Distance Away*</h5>'+
+            //     "<a href='main.html?YCKMRT'><button class='btn btn-primary'>NAVIGATE</button></a>"+
+            //     "</div>" +
+            //     "</div>"
         
-            }
+            // }
         ]
     }
 }

@@ -35,6 +35,13 @@
     width: 250px;
    height: 250px;
 }
+.cg.lightSlider{
+    margin: 0;
+}
+.cg.lightSlider img{
+    width: 275px;
+   height: 300px;
+}
 .lSSlideWrapper {
     max-width: 100%;
     overflow: hidden;

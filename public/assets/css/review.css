@@ -81,3 +81,9 @@
 .demo-content {
   position: relative;
 }
+
+.form-inline {
+  display: flex;
+  align-items: center;
+}
+

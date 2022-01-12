@@ -1,43 +1,100 @@
 <html>
     <head>
-        <title>Testing Apache</title>
-        <style >
-            body,html{
-                height:100%;
-                margin:0;
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../public/assets/css/style.css"/>
+        <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i" rel="stylesheet" />
+        <link href="../public/assets/img/favicon.png" rel="icon" />
+        <link href="../public/assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+        <link href="assets/vendor/bootstrap/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+        <style>
+            img {
+            float: center;
+            max-width:  100%;
+            height:auto;
+        }
+        div.background {
+        background: url();
+        border: 2px solid black;
+        }
+
+        div.transbox {
+        margin: 30px;
+        background-color: grey;
+        border: 1px solid black;
+        opacity: 0.6;
+        }
+
+        div.transbox p {
+        margin: 5%;
+        font-weight: bold;
+        color: #000000;
+        opacity: 1 !important;
+        }
+        .button {
+            background-color: #00A6FF;
+            border: none;
+            color: white;
+            padding: 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            width: 70%;
             }
-            #bg{
-                background-image: url("./static/background.jpeg");
-                height:100%;
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
+        .buttonstart {border-radius: 12px;}
+        .container {
+            position: relative;
+            text-align: center;
+            color: white;
+            font-size: 75px;
+        }
+        .centered {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 90%;
             }
-            #button{
-                position:absolute;
-                margin-top: 1000px;
-                margin-left: 83px;
-                width: 500px;
-                height: 150px;
-                font-size:xx-large;
-                font-weight: bold;
-                color:white;
-                padding-left: 10px;
-                padding-right:10px;
-                border:1px black solid;
-                border-radius: 25px;
-                background-color: purple;
-            }
+        .box2 {
+            background-color: rgba(0,0,0,.5);
+            color: #fff;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 90%;
+            margin: auto;
+            text-align: center;
+        }
+        p{
+            font-family: 'Roboto', sans-serif;
+            padding-top: 125px;
+        }
         </style>
-        <script type="text/javascript">
-            function onClick(){
-                window.location.href="routing.html"
-            }
-        </script>
-    </head>
-    <body>
-        <div id="bg">
-            <input onclick="onClick()" type="button" value="Start the AR Voice Guided Tour" id="button"></input>
-        </div>
+        </head>
+        <body>
+            <div class="container">
+            <div class="background">
+                <img src="assets/img/titlepage/peranakan.jpeg" style="width: 1500;"/>
+                <img src="assets/img/titlepage/Buddha tooth.jpg"/>
+                <img src="assets/img/titlepage/Masjid sultan.jpg"/>
+                <img src="assets/img/titlepage/little-india-singapore.png"/>
+                <div class="centered" style="font-size: 1rem;">
+                <!-- <div class="transbox"> -->
+                    <div class="box box2">
+                  <h3 style="color: white; font-weight: 500;">Are you ready to explore Singapore's Heritage?</h2><br>
+                  <p style="color: white; font-weight: 400;">You are about to dive into Singapore's extensive heritage and rich culture. Get ready to immerse yourself with our AR Heritage Trails!</p>
+                  <div style="margin-top: 88%;"><button class="button buttonstart" onclick="parent.location='overview.html'">Get Started</button></div>
+                </div>
+            </div>
+            </div>
+                <!-- </div> -->
+            </div>
     </body>
 </html>

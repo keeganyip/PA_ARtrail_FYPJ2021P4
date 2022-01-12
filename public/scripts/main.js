@@ -424,7 +424,7 @@ window.onload = () => {
                         label.appendChild(butt);
                         var indexoflandmark = nyp.indexOf(place);
                         console.log("INDEX",indexoflandmark);
-                        image.addEventListener('click', markDone('NYP',indexoflandmark));
+                        butt.addEventListener('click', markDone('NYP',indexoflandmark));
                         document.body.appendChild(container);
                         image.addEventListener('click', textSPeech);
                         setTimeout(() => {
@@ -547,7 +547,8 @@ function currentPositionSuccess(position) {
 
     var backbtn = document.getElementById('back');
     google.maps.event.addListener(map, "click", function (event) {
-
+        var progress = document.getElementById('Progress');
+        progress.style.display = 'None';
         var mapdiv = document.getElementById('map');
         console.log("CLICKED", mapdiv);
         mapdiv.style.position = 'revert';
@@ -560,6 +561,7 @@ function currentPositionSuccess(position) {
                 mapdiv.style.height = '20%';
                 mapdiv.style.width = '40%';
                 window.map.controls[google.maps.ControlPosition.LEFT_TOP].pop();
+                progress.style.display = 'block';
                 map.setCenter(origin);
             }
         }
@@ -598,6 +600,9 @@ function success(position) {
     } else if (queryString == 'BlockL') {
         destinationLocation = nyp[0].location;
         destination = nyp[0].name;
+    } else if (queryString == 'BlockA') {
+        destinationLocation = nyp[1].location;
+        destination = nyp[1].name;
     }
     if (flag) {
         flag = false

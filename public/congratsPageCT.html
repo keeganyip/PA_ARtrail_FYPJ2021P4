@@ -2,24 +2,39 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Congratulations Page</title>
-<link rel="stylesheet" href="../public/assets/css/lightslider.css" />   
-<link rel="stylesheet" href="../public/assets/css/style.css"/>
+<link rel="stylesheet" href="assets/css/lightslider.css" />   
+<link rel="stylesheet" href="assets/css/style.css"/>
 <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i" rel="stylesheet" />
-<link href="../public/assets/img/favicon.png" rel="icon" />
-<link href="../public/assets/img/apple-touch-icon.png" rel="apple-touch-icon" />               
+<link href="assets/img/favicon.png" rel="icon" />
+<link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />               
 <script src="assets/js/jquery-3.6.0.min.js"></script>
 <script src="assets/js/lightslider.js"></script>
+<link href="assets/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" />
 <style>
     img{
         width: 350px;
     }
+    figure{
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 40px;
+    margin-inline-end: 40px;
+}
+h2{
+ font-family: 'Lato',sans-serif;
+}
+p{
+    font-family: 'Lato',sans-serif;
+
+}
 </style>
 <body>
 
 <center><h2>Congratulations!!<br>You have finished <br>the Chinatown <br>Trail.</h2></center>
 <center><p>You have completed 8/8 landmarks!</p></center>
-		<ul id="lightSlider">
+		<ul id="lightSlider" class="cg">
             <li><figure><a href="../public/landmarks/chinatown/chinatownheritagecentre.html"><img src="assets/img/chinatown/CHCcomplete.png" alt="Chinatown Heritage Centre"/></a><figcaption>Chinatown Heritage Centre</figcaption></figure></li>
             <li><figure><a href="../public/landmarks/chinatown/srimariamtemple.html"><img src="assets/img/chinatown/SMTcomplete.png" alt="Sri Mariamman temple"/></a><figcaption>Sri Mariamman Temple</figcaption></figure></li>
             <li><figure><a href="../public/landmarks/chinatown/masjidjamae.html"><img src="assets/img/chinatown/MJcomplete.png"alt="Masjid Jamae"/></a><figcaption>Masjid Jamae</figcaption></figure></li>
@@ -28,8 +43,11 @@
             <li><figure><a href="../public/landmarks/chinatown/pagodastreet.html"><img src="assets/img/chinatown/PScomplete.png" alt="Pagoda Street"/></a><figcaption>Pagoda Street</figcaption></figure></li>
             <li><figure><a href="../public/landmarks/chinatown/sagostreet.html"><img src="assets/img/chinatown/SScomplete.png" alt="Sago Street"/></a><figcaption>Sago Street</figcaption></figure></li>
 			<li><figure><a href="../public/landmarks/chinatown/muralletterwriter.html"><img src="assets/img/chinatown/Mcomplete.png" alt="Mural on letter writer"/></a><figcaption>Mural on letter writer</figcaption></figure></li>
-            <li></li>
+            <!-- <li></li> -->
         </ul>
+        <div class="text-center mt-5">
+        <a href='feedback.html'><button class="btn btn-primary ">Leave Feedback</button></a>
+    </div>
         <script type="text/javascript">
             $(document).ready(function () {
                 $("#lightSlider").lightSlider({autoWidth:true});
