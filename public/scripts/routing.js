@@ -23,15 +23,22 @@ var trail = ""
 var localStorage = window.localStorage
 var distance = 0
 
+var queryString = decodeURIComponent(window.location.search);
+queryString = queryString.substring(1);
+trail = queryString;
+localStorage.setItem('Trail', trail);
+if (trail == 'NYP') {
+    localStorage.setItem('Trail', 'nyp');
+    if (localStorage.getItem('NYP Progress')) { // Progress exists
+        var NYPPROGRESS = localStorage.getItem('NYP Progress');
+        NYPPROGRESS = JSON.parse(NYPPROGRESS);
 
-if (localStorage.getItem('NYP Progress')) { // Progress exists
-    var NYPPROGRESS = localStorage.getItem('NYP Progress');
-    NYPPROGRESS = JSON.parse(NYPPROGRESS);
-
-} else {
-    var progress = JSON.stringify([0, 0, 0, 0, 0, 0, 0, 0])
-    console.log("PROGRESSS", progress);
-    localStorage.setItem('NYP Progress', progress);
+    } else {
+        var NYPPROGRESS = [0, 0, 0, 0, 0, 0, 0, 0]
+        var progress = JSON.stringify(NYPPROGRESS);
+        console.log("PROGRESSS", progress);
+        localStorage.setItem('NYP Progress', progress);
+    }
 }
 
 //
@@ -228,10 +235,12 @@ function checkDistanceFromTrail(origin, trail) {
 
 //init Map based on trail
 function startingTrail(position) {
-    var queryString = decodeURIComponent(window.location.search);
-    queryString = queryString.substring(1);
-    trail = queryString
-
+    if (localStorage.getItem('Trail')) {
+        trail = localStorage.getItem('Trail');
+    } else {
+        window.location.href = 'overview.html';
+    }
+    console.log(trail);
     var icons = {
         marker: {
             labelOrigin: new google.maps.Point(11, -12),
@@ -249,13 +258,13 @@ function startingTrail(position) {
     };
 
     if (trail == 'ctTrail') {
+        console.log('CHINATOWN');
         var startlat = chinatownstart["latitude"]
         var startlong = chinatownstart["longitude"]
         trail = 'chinatown';
-    } else if (trail == 'NYP') {
+    } else if (trail == 'nyp') {
         var startlat = NYPStart["latitude"]
         var startlong = NYPStart["longitude"]
-        trail = 'nyp';
     } else {
         window.location.href = 'overview.html'
     }
@@ -299,12 +308,38 @@ function startingTrail(position) {
     console.log(trails[trail], "TRAILS")
     var landmarks = trails[trail]['landmarks']
     var boundary = new google.maps.LatLngBounds();
-    console.log(landmarks)
+    console.log(landmarks, 'LANDMARKS')
     for (i = 0; i < landmarks.length; i++) {
         var htmlObject = $(landmarks[i].contentHTML);
         boundary.extend(landmarks[i].location);
-        if (NYPPROGRESS[i] == 1 && trail == 'nyp') {
-            marker = makeCompletedMarker(landmarks[i].location, icons.Completedmarker, landmarks[i].name);
+        if (NYPPROGRESS) {
+            if (NYPPROGRESS[i] == 1 && trail == 'nyp') {
+                marker = makeCompletedMarker(landmarks[i].location, icons.Completedmarker, landmarks[i].name);
+            }
+            else {
+                marker = makeMarker(landmarks[i].location, icons.marker, landmarks[i].name) //position, icon, title
+                distance = Math.round(getDistance(origin, landmarks[i].location));
+                console.log(origin, distance, "DISTANCE");
+                htmlObject.find('h5').text(distance + 'm Away');
+                console.log(htmlObject.html(), "HTML");
+                marker.content = htmlObject.html();
+    
+                var infowindow = new google.maps.InfoWindow();
+                google.maps.event.addListener(marker, "click", (function (marker, i) {
+                        return function () {
+                            closelastopen(infowindow);
+                            infowindow.setContent(marker.content);
+                            infowindow.open({
+                                anchor: marker,
+                                map,
+                                shouldFocus: false,
+                            });
+                            lastopen = infowindow;
+                            var location = position.longitude
+                        }
+                    })
+                    (marker, i));
+            }
         } else {
             marker = makeMarker(landmarks[i].location, icons.marker, landmarks[i].name) //position, icon, title
             distance = Math.round(getDistance(origin, landmarks[i].location));
@@ -312,7 +347,7 @@ function startingTrail(position) {
             htmlObject.find('h5').text(distance + 'm Away');
             console.log(htmlObject.html(), "HTML");
             marker.content = htmlObject.html();
-            
+
             var infowindow = new google.maps.InfoWindow();
             google.maps.event.addListener(marker, "click", (function (marker, i) {
                     return function () {
@@ -336,7 +371,7 @@ function startingTrail(position) {
         //     popup.setMap(map);
         // });
 
-       
+
         gMarkers.push(marker);
     }
     google.maps.event.addListener(map, "click", function (event) {
@@ -600,8 +635,7 @@ function makeuserlocation(position, icon, title) {
             id: id,
         });
         markers[id] = marker;
-    }
-    else{
+    } else {
         exist.setMap(null);
         marker = new google.maps.Marker({
 

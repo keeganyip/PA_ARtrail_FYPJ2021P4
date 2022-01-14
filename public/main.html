@@ -53,7 +53,7 @@
       width: 40%;
       position: absolute;
       right: 20px;
-      bottom: 20px;
+      bottom: 15px;
     }
 
     html,
@@ -65,9 +65,11 @@
     }
 
     #camera {
-      height: 85%;
+      position: absolute !important;
+      height: 80%; /*78% workaround*/ 
       margin-left: auto;
       margin-right: auto;
+      z-index: 1000;
     }
   </style>
 </head>
@@ -123,21 +125,26 @@
   </div>
   </div>
 
-  <a-scene id="camera" class="is-pulled-right" cursor='rayOrigin: mouse; fuse: true; fuseTimeout: 0;'
-    raycaster="objects: [gps-entity-place];" vr-mode-ui="enabled: false" embedded
-    arjs='sourceType: webcam;  debugUIEnabled: false;' style="z-index: 9999;">
+
+  <div id="map" style="z-index: 1; position: absolute;"></div>
+
+  <a-scene id="camera" class="is-pulled-right" cursor='rayOrigin: mouse; fuseTimeout: 0;'
+    raycaster="objects: [gps-entity-place];" vr-mode-ui="enabled: false" maxDistance="80" embedded
+    arjs='sourceType: webcam;  debugUIEnabled: false;'>
 
     <a-camera gps-camera far="300" rotation-reader>
     </a-camera>
   </a-scene>
 
-  <i id="back" style="font-size: 20px !important;" class="fas fa-chevron-left ms-3 mt-3"></i>
+  <div id="back" style="height: 8%; width: 15%;">
+  <i style="font-size: 20px !important;" class="fas fa-chevron-left ms-3 mt-3"></i>
+</div>
   <button id="recenter" style="background-color: white;"> <img src="static/center-icon.jpg"
       style="width: 25px;height: 25px;background-color: white;"> </button>
   <!-- <button id ="complete" style="position: absolute;">Complete</button> -->
   <span id="instructions"></span>
 
-  <div id="map"></div>
+  
   <div id="dialog" title="It seems that you are more than 700m from the trail">
     <p>Choose travel mode</p>
     <select id="option">

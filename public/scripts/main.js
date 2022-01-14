@@ -12,15 +12,15 @@ if (localStorage.getItem('NYP Progress')) { // Progress exists
     NYPPROGRESS = JSON.parse(NYPPROGRESS);
     var bullets = document.querySelectorAll('#ProgressBar');
     for (let i = 0; i < NYPPROGRESS.length; i++) {
-        if(NYPPROGRESS[i] == 1){
+        if (NYPPROGRESS[i] == 1) {
             bullets[i].getElementsByClassName('bullets')[0].classList.add('completed');
         }
-      }
-    
-}
-else {
-    var progress = JSON.stringify([0, 0, 0, 0, 0, 0, 0, 0])
-    console.log("PROGRESSS",progress);
+    }
+
+} else {
+    var NYPPROGRESS = [0, 0, 0, 0, 0, 0, 0, 0]
+    var progress = JSON.stringify(NYPPROGRESS)
+    console.log("PROGRESSS", progress);
     localStorage.setItem('NYP Progress', progress);
 }
 if (localStorage.getItem('landmarkIndex')) {
@@ -266,7 +266,7 @@ function loadPlaceFromAPIs(position) {
 
 window.onload = () => {
     const scene = document.querySelector('a-scene');
-
+    // var trail = 
     // first get current user location
     return navigator.geolocation.getCurrentPosition(function (position) {
 
@@ -423,8 +423,8 @@ window.onload = () => {
 
                         label.appendChild(butt);
                         var indexoflandmark = nyp.indexOf(place);
-                        console.log("INDEX",indexoflandmark);
-                        butt.addEventListener('click', markDone('NYP',indexoflandmark));
+                        console.log("INDEX", indexoflandmark);
+                        butt.addEventListener('click', markDone('NYP', indexoflandmark));
                         document.body.appendChild(container);
                         image.addEventListener('click', textSPeech);
                         setTimeout(() => {
@@ -453,7 +453,7 @@ function textSPeech() {
     console.log("hello world");
 }
 
-function markDone(trail,landmarkindex) {
+function markDone(trail, landmarkindex) {
     var trail = trail;
     var currentProgress = localStorage.getItem(trail + ' Progress')
     currentProgress = JSON.parse(localStorage.getItem(trail + ' Progress'));
@@ -546,11 +546,13 @@ function currentPositionSuccess(position) {
     });
 
     var backbtn = document.getElementById('back');
+    var mapdiv = document.getElementById('map');
     google.maps.event.addListener(map, "click", function (event) {
         var progress = document.getElementById('Progress');
+        var camera = document.getElementById('camera');
         progress.style.display = 'None';
-        var mapdiv = document.getElementById('map');
         console.log("CLICKED", mapdiv);
+        camera.style.display = 'None';
         mapdiv.style.position = 'revert';
         mapdiv.style.height = '100%';
         mapdiv.style.width = '100%';
@@ -561,7 +563,8 @@ function currentPositionSuccess(position) {
                 mapdiv.style.height = '20%';
                 mapdiv.style.width = '40%';
                 window.map.controls[google.maps.ControlPosition.LEFT_TOP].pop();
-                progress.style.display = 'block';
+                progress.style.display = 'flex';
+                camera.style.display = 'block';
                 map.setCenter(origin);
             }
         }
