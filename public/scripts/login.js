@@ -1,4 +1,4 @@
-import {initializeApp} from 'https://www.gstatic.com/firebasejs/9.6.3/firebase-app.js'
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.3/firebase-app.js'
 import {
     getAuth,
     signInWithEmailAndPassword} from 'https://www.gstatic.com/firebasejs/9.6.3/firebase-auth.js'
@@ -25,8 +25,7 @@ var button = document.getElementById('login');
 function login() {
     var email = document.getElementById('Email');
     var password = document.getElementById('Password');
-
-    const promise = signInWithEmailAndPassword(auth, email, password)
+    const promise = signInWithEmailAndPassword(auth, email.value, password.value)
     .then((userCredential) => {
       // Signed in 
       const user = userCredential.user;
@@ -37,6 +36,7 @@ function login() {
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
+      alert(errorMessage);
     });
 
 
