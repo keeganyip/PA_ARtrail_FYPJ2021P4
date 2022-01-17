@@ -1,16 +1,98 @@
 {
   "Trails" : {
     "Chinatown" : {
-      "Landmarks":{
-        "Chinatown Heritage Centre":[1,1],
-        "Sri Mariamman Temple":[1,1],
-        "Masjid Jamae (Chulia)":[1,1],
-        "Tong Heng":[1,1],
-        "Buddha Tooth Relic":[1,1],
-        "Pagoda Street & Trengannu Street":[1,1],
-        "Sago Street":[1,1],
-        "Mural on letter writer @ Smith Street":[1,1]
-      }
+      "name":"Chinatown",
+      "location" : {
+        "lat":1.2822180475786821,
+        "lng":103.8444213709885
+      },
+      "Landmarks" : [ 
+        { 
+            "name": "Chinatown Heritage Centre", 
+            "location": { 
+                 
+                "lat": 1.2834358522886367, 
+                "lng": 103.84440228835545
+    
+            },
+            "content":"Get transported back in time and experience the footsteps \n of migrants in the late 19th century of singapore",
+            "src":"landmarks/chinatown/chinatownheritagecentre.html",
+            "contentHTML" :"<div id='content'> <div id='siteNotice'> </div> <h4>Chinatown Heritage Centre</h4> <div class='text-center' id='bodyContent'> <h5>*Distance Away*</h5> <a href='main.html?CHC'><button class='btn btn-primary'>NAVIGATE</button></a> </div> </div>"
+        },
+        { 
+            "name": "Sri Maraimman Temple", 
+            "location":{ 
+                "lat":1.2826974252118535, 
+                "lng": 103.84513546864258
+            },  
+            "content":"This hindu temple is the oldest \n and largest of its kind in singapore",
+            "src":"landmarks/chinatown/srimariamtemple.html",
+            "contentHTML":"<div id='content'> <div id='siteNotice'> </div> <h4>Sri Maraimman Temple</h4> <div class='text-center' id='bodyContent'> <h5>*Distance Away*</h5> <a href='main.html?SMT'><button class='btn btn-primary'>NAVIGATE</button></a> </div> </div>"
+        }, 
+        { 
+            "name": "Masjid Jamae", 
+            "location":{ 
+                "lat":1.2832659109590843,
+                "lng": 103.84544660487347 
+            },
+            "content":"Established in 1826 it is one of the oldest mosque in \n singapore One of the only six in the \n country that conducts sermons in tamil",
+            "src":"landmarks/chinatown/masjidjamae.html",
+            "contentHTML": "<div id='content'> <div id='siteNotice'> </div> <h4>Masjid Jamae</h4> <div class='text-center' id='bodyContent'> <h5>*Distance Away*</h5> <a href='main.html?MJ'><button class='btn btn-primary'>NAVIGATE</button></a> </div> </div>"
+        }, 
+        { 
+            "name": "Tong Heng", 
+            "location":{ 
+                 
+                "lat":1.2816404559768435, 
+                "lng":103.84496985330027
+            },
+            "content":"Tong Heng is the oldest confectioneries. \n Witness a story of resilience, \n determination and resourcefulness.",
+            "src":"landmarks/chinatown/tongheng.html",
+            "contentHTML" : "<div id='content'> <div id='siteNotice'> </div> <h4>Tong Heng</h4> <div class='text-center' id='bodyContent'> <h5>*Distance Away*</h5> <a href='main.html?TH'><button class='btn btn-primary'>NAVIGATE</button></a> </div> </div>"
+        }, 
+        { 
+            "name": "Buddha Tooth Relic", 
+            "location": { 
+                "lat": 1.2815604059789072,
+                "lng": 103.84423719747802
+            },
+            "content":"Get transported back in time and experience the footsteps \n of migrants in the late 19th century of singapore",
+            "src":"landmarks/chinatown/buddhatoothrelic.html",
+            "contentHTML":"<div id='content'> <div id='siteNotice'> </div> <h4>Buddha Tooth Relic</h4> <div class='text-center' id='bodyContent'> <h5>*Distance Away*</h5> <a href='main.html?BTR'><button class='btn btn-primary'>NAVIGATE</button></a> </div> </div>"
+        }, 
+        { 
+            "name": "Pagoda Street & Trengannu Street", 
+            "location":{ 
+                "lat":1.2831788568902647,  
+                "lng":103.84473979738155 
+            }, 
+            "content":"Witness murals that depict the past \n through the eyes of singaporean artist Yip Yew Chong.",
+            "src":"landmarks/chinatown/pagodastreet.html",
+            "contentHTML":
+            "<div id='content'> <div id='siteNotice'> </div> <h4>Pagoda Street & Trengannu Street</h4> <div class='text-center' id='bodyContent'> <h5>*Distance Away*</h5> <a href='main.html?PGTST'><button class='btn btn-primary'>NAVIGATE</button></a> </div> </div>"
+        },
+        { 
+            "name": "Sago Street", 
+            "location":{ 
+                "lat":1.281800536866017,  
+                "lng": 103.84399338201563
+            },
+            "content":"Experience the street of the dead where immigrants of the past with no family lived and died",
+            "src":"landmarks/chinatown/sagostreet.html",
+            "contentHTML":"<div id='content'> <div id='siteNotice'> </div> <h4>Sago Street</h4> <div class='text-center' id='bodyContent'> <h5>*Distance Away*</h5> <a href='main.html?SGST'><button class='btn btn-primary'>NAVIGATE</button></a> </div> </div>"
+        }, 
+        { 
+            "name": "Mural at Mohamed Ali Lane", 
+            "location":{ 
+                "lat":1.2827594818546095,  
+                "lng":103.84583411762635
+            }, 
+            "content":"Witness murals that depict the past \n through the eyes of singaporean artist Yip Yew Chong.",
+            "src":"landmarks/chinatown/muralletterwriter.html",
+            "contentHTML":
+            "<div id='content'> <div id='siteNotice'> </div> <h4 class='text-center'>Mural at Mohamed Ali Lane</h4> <div class='text-center' id='bodyContent'> <h5>*Distance Away*</h5> <a href='main.html?MMAL'><button class='btn btn-primary'>NAVIGATE</button></a> </div> </div>"
+        }
+    ]
     },
     "Kampong Glam" : "Landmarks",
     "Little India" : "Landmarks",
