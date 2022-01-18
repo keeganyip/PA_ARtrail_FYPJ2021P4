@@ -30,6 +30,23 @@ if (localStorage.getItem('landmarkIndex')) {
     var landmarkIndex = 0
 }
 
+AFRAME.registerComponent('rotation-reader', {
+    /**
+     * We use IIFE (immediately-invoked function expression) to only allocate one
+     * vector or euler and not re-create on every tick to save memory.
+     */
+    tick: (function () {
+      var position = new THREE.Vector3();
+      var rotation = new THREE.Euler();
+  
+      return function () {
+        this.el.object3D.getWorldPosition(position);
+        this.el.object3D.getWorldRotation(rotation);
+        // position and rotation now contain vector and euler in world space.
+      };
+    })
+  });
+
 // All of Chinatown's landmarks
 const nyp = trails.nyp.landmarks
 const Chinatown = trails.chinatown.landmarks;
