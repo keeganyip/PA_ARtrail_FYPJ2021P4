@@ -33,9 +33,8 @@ var button = document.getElementById('register');
 
 function writeUserData(userId, name, email, imageUrl) {
   const db = getDatabase(app);
-  const users = ref(db, 'users/');
-  console.log(users);
-  set(ref(db, 'users/' + userId), {
+  const users = ref(db, 'users/' + userId);
+  set(users, {
       username: name,
       email: email,
       profile_picture: imageUrl
