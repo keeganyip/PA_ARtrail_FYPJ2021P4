@@ -42,6 +42,7 @@ function writeUserData(userId, name, email, imageUrl) {
     .then(() => {
       // Data saved successfully!
       alert("SAVED");
+      window.location.href = './profile.html';
     })
     .catch((error) => {
       // The write failed...
@@ -50,7 +51,7 @@ function writeUserData(userId, name, email, imageUrl) {
 }
 
 
-function register() {
+async function register() {
   var email = document.getElementById('Email');
   var password = document.getElementById('Password');
   var fullname = document.getElementById('Name');
@@ -58,13 +59,12 @@ function register() {
     .then((userCredential) => {
       // Signed in 
       const user = userCredential.user;
-      writeUserData(user.uid, fullname.value, email.value, user.photoURL);
       updateProfile(user, {
         displayName: fullname.value
       });
       alert(user.uid);
+      writeUserData(user.uid, fullname.value, email.value, user.photoURL);
       alert('Registered');
-      window.location.href = './profile.html'
     })
     .catch((error) => {
       const errorCode = error.code;
