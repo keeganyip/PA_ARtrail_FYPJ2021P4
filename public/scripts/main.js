@@ -36,16 +36,16 @@ AFRAME.registerComponent('rotation-reader', {
      * vector or euler and not re-create on every tick to save memory.
      */
     tick: (function () {
-      var position = new THREE.Vector3();
-      var rotation = new THREE.Euler();
-  
-      return function () {
-        this.el.object3D.getWorldPosition(position);
-        this.el.object3D.getWorldRotation(rotation);
-        // position and rotation now contain vector and euler in world space.
-      };
+        var position = new THREE.Vector3();
+        var rotation = new THREE.Euler();
+
+        return function () {
+            this.el.object3D.getWorldPosition(position);
+            this.el.object3D.getWorldRotation(rotation);
+            // position and rotation now contain vector and euler in world space.
+        };
     })
-  });
+});
 
 // All of Chinatown's landmarks
 const nyp = trails.nyp.landmarks

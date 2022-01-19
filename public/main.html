@@ -66,7 +66,8 @@
     }
 
     #camera {
-      height: 100%; /*78% workaround*/ 
+      height: 100%;
+      /*78% workaround*/
       margin-left: auto;
       margin-right: auto;
       z-index: 1000;
@@ -79,56 +80,55 @@
 <!-- onload="window.scrollTo(0,document.body.scrollHeight);" -->
 
 <body style="margin : 0px; overflow: hidden;">
-
+  <button id="save" class="btn btn-primary save">SAVE</button>
   <div id="Progress" class="buttons">
-    
     <div class="progress-section align-content-center">
       <div id="ProgressBar">
-          <div class="step">
-              <div id='1' class="bullets"></div>
-          </div>
+        <div class="step">
+          <div id='1' class="bullets"></div>
+        </div>
       </div>
-    </a>
+      </a>
       <div id="ProgressBar">
-          <div class="step">
-              <div id='2' class="bullets"></div>
-          </div>
-      </div>
-      <div id="ProgressBar">
-          <div class="step">
-              <div id='3' class="bullets"></div>
-          </div>
+        <div class="step">
+          <div id='2' class="bullets"></div>
+        </div>
       </div>
       <div id="ProgressBar">
-          <div class="step">
-              <div id='4' class="bullets"></div>
-          </div>
+        <div class="step">
+          <div id='3' class="bullets"></div>
+        </div>
       </div>
       <div id="ProgressBar">
-          <div class="step">
-              <div id='5' class="bullets"></div>
-          </div>
+        <div class="step">
+          <div id='4' class="bullets"></div>
+        </div>
       </div>
       <div id="ProgressBar">
-          <div class="step">
-              <div id='6' class="bullets"></div>
-          </div>
+        <div class="step">
+          <div id='5' class="bullets"></div>
+        </div>
       </div>
       <div id="ProgressBar">
-          <div class="step">
-              <div id='7' class="bullets"></div>
-          </div>
+        <div class="step">
+          <div id='6' class="bullets"></div>
+        </div>
       </div>
       <div id="ProgressBar">
-          <div class="step">
-              <div class="bullets" id='8'></div>
-          </div>
+        <div class="step">
+          <div id='7' class="bullets"></div>
+        </div>
       </div>
-  </div>
+      <div id="ProgressBar">
+        <div class="step">
+          <div class="bullets" id='8'></div>
+        </div>
+      </div>
+    </div>
   </div>
 
 
-  
+
 
   <a-scene id="camera" class="is-pulled-right" cursor='rayOrigin: mouse; fuseTimeout: 0;'
     raycaster="objects: [gps-entity-place];" vr-mode-ui="enabled: false" maxDistance="80" embedded
@@ -141,14 +141,14 @@
   <div id="map" style="position: absolute;"></div>
 
   <div id="back" style="height: 8%; width: 15%;">
-  <i style="font-size: 20px !important;" class="fas fa-chevron-left ms-3 mt-3"></i>
-</div>
+    <i style="font-size: 20px !important;" class="fas fa-chevron-left ms-3 mt-3"></i>
+  </div>
   <button id="recenter" style="background-color: white;"> <img src="static/center-icon.jpg"
       style="width: 25px;height: 25px;background-color: white;"> </button>
   <!-- <button id ="complete" style="position: absolute;">Complete</button> -->
   <span id="instructions"></span>
 
-  
+
   <div id="dialog" title="It seems that you are more than 700m from the trail">
     <p>Choose travel mode</p>
     <select id="option">
@@ -169,6 +169,7 @@
     </div>
   </div>
 
+  <script type="module" src="scripts/saveProgress.js"></script>
 </body>
 
 </html>

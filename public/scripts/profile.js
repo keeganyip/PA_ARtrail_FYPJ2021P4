@@ -35,7 +35,8 @@ onAuthStateChanged(auth, (user) => {
     username.innerHTML = user.displayName
   } else {
     // User is signed out
-    // ...
+    alert("User is not signed in.");
+    window.location.href = './login.html';
   }
 });
 
