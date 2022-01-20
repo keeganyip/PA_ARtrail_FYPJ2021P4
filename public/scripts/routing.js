@@ -39,6 +39,19 @@ if (trail == 'NYP') {
         localStorage.setItem('NYP Progress', progress);
     }
 }
+else if (trail == 'ctTrail'){
+    localStorage.setItem('Trail','Chinatown')
+    if (localStorage.getItem('Chinatown Progress')) { // Progress exists
+        var CTPROGRESS = localStorage.getItem('Chinatown Progress');
+        CTPROGRESS = JSON.parse(CTPROGRESS);
+
+    } else {
+        var CTPROGRESS = [0, 0, 0, 0, 0, 0, 0, 0]
+        var progress = JSON.stringify(CTPROGRESS);
+        console.log("PROGRESSS", progress);
+        localStorage.setItem('Chinatown Progress', progress);
+    }
+}
 
 //
 function start() {
@@ -202,7 +215,7 @@ function startingTrail(position) {
         }
     };
 
-    if (trail == 'ctTrail') {
+    if (trail == 'Chinatown') {
         console.log('CHINATOWN');
         var startlat = chinatownstart["latitude"]
         var startlong = chinatownstart["longitude"]
@@ -285,7 +298,37 @@ function startingTrail(position) {
                     })
                     (marker, i));
             }
-        } else {
+        }
+        else if(CTPROGRESS){
+            if (CTPROGRESS[i] == 1 && trail == 'ctTrail') {
+                marker = makeCompletedMarker(landmarks[i].location, icons.Completedmarker, landmarks[i].name);
+            }
+            else {
+                marker = makeMarker(landmarks[i].location, icons.marker, landmarks[i].name) //position, icon, title
+                distance = Math.round(getDistance(origin, landmarks[i].location));
+                console.log(origin, distance, "DISTANCE");
+                htmlObject.find('h5').text(distance + 'm Away');
+                console.log(htmlObject.html(), "HTML");
+                marker.content = htmlObject.html();
+    
+                var infowindow = new google.maps.InfoWindow();
+                google.maps.event.addListener(marker, "click", (function (marker, i) {
+                        return function () {
+                            closelastopen(infowindow);
+                            infowindow.setContent(marker.content);
+                            infowindow.open({
+                                anchor: marker,
+                                map,
+                                shouldFocus: false,
+                            });
+                            lastopen = infowindow;
+                            var location = position.longitude
+                        }
+                    })
+                    (marker, i));
+            }
+        }
+        else {
             marker = makeMarker(landmarks[i].location, icons.marker, landmarks[i].name) //position, icon, title
             distance = Math.round(getDistance(origin, landmarks[i].location));
             console.log(origin, distance, "DISTANCE");

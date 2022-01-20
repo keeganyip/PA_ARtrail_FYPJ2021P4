@@ -7,22 +7,37 @@ var target = {
     latitude: 1.379155,
     longitude: 103.849828
 };
-if (localStorage.getItem('NYP Progress')) { // Progress exists
-    var NYPPROGRESS = localStorage.getItem('NYP Progress');
-    NYPPROGRESS = JSON.parse(NYPPROGRESS);
-    var bullets = document.querySelectorAll('#ProgressBar');
-    for (let i = 0; i < NYPPROGRESS.length; i++) {
-        if (NYPPROGRESS[i] == 1) {
-            bullets[i].getElementsByClassName('bullets')[0].classList.add('completed');
+var trail = localStorage.getItem('Trail');
+var bullets = document.querySelectorAll('#ProgressBar');
+if (trail == 'nyp') {
+    if (localStorage.getItem('NYP Progress')) { // Progress exists
+        var NYPPROGRESS = localStorage.getItem('NYP Progress');
+        NYPPROGRESS = JSON.parse(NYPPROGRESS);
+        for (let i = 0; i < NYPPROGRESS.length; i++) {
+            if (NYPPROGRESS[i] == 1) {
+                bullets[i].getElementsByClassName('bullets')[0].classList.add('completed');
+            }
+        }
+
+    } else {
+        var NYPPROGRESS = [0, 0, 0, 0, 0, 0, 0, 0]
+        var progress = JSON.stringify(NYPPROGRESS)
+        console.log("PROGRESSS", progress);
+        localStorage.setItem('NYP Progress', progress);
+    }
+}
+else if(trail == 'Chinatown'){
+    if(localStorage.getItem('Chinatown Progress')){
+        var CTPROGRESS = localStorage.getItem('Chinatown Progress');
+        CTPROGRESS = JSON.parse(CTPROGRESS);
+        for (let i = 0; i < CTPROGRESS.length; i++) {
+            if (CTPROGRESS[i] == 1) {
+                bullets[i].getElementsByClassName('bullets')[0].classList.add('completed');
+            }
         }
     }
-
-} else {
-    var NYPPROGRESS = [0, 0, 0, 0, 0, 0, 0, 0]
-    var progress = JSON.stringify(NYPPROGRESS)
-    console.log("PROGRESSS", progress);
-    localStorage.setItem('NYP Progress', progress);
 }
+
 if (localStorage.getItem('landmarkIndex')) {
     var landmarkIndex = parseInt(localStorage.getItem('landmarkIndex'));
 
@@ -570,15 +585,18 @@ function currentPositionSuccess(position) {
         progress.style.display = 'None';
         console.log("CLICKED", mapdiv);
         camera.style.display = 'None';
-        mapdiv.style.position = 'revert';
         mapdiv.style.height = '100%';
         mapdiv.style.width = '100%';
+        mapdiv.style.right = '0';
+        mapdiv.style.bottom = '0';
         if (window.map.controls[google.maps.ControlPosition.LEFT_TOP].length == 0) {
             window.map.controls[google.maps.ControlPosition.LEFT_TOP].push(backbtn);
             backbtn.onclick = function () {
                 mapdiv.style.position = 'absolute';
                 mapdiv.style.height = '20%';
                 mapdiv.style.width = '40%';
+                mapdiv.style.right = '20px';
+                mapdiv.style.bottom = '15px';
                 window.map.controls[google.maps.ControlPosition.LEFT_TOP].pop();
                 progress.style.display = 'flex';
                 camera.style.display = 'block';
@@ -610,14 +628,20 @@ function success(position) {
     if (distanceMsg < 80) {
         icon.setAttribute("src", "./Trails/assets/map-marker.png");
     }
-    console.log("TRAIL:", Chinatown)
+    console.log("TRAIL:", trail)
     console.log(flag);
     var queryString = decodeURIComponent(window.location.search);
     queryString = queryString.substring(1);
-    if (queryString == 'CHC') {
-        destinationLocation = Chinatown[0].location;
-        destination = Chinatown[0].name;
-    } else if (queryString == 'BlockL') {
+    if (trail == 'Chinatown'){
+        for (i = 0; i < Chinatown.length; i++){
+            console.log(queryString,Chinatown[i].legend);
+            if (queryString == Chinatown[i].legend){
+                destinationLocation = Chinatown[i].location;
+                destination = Chinatown[i].name;
+            }
+        }
+    }
+    if (queryString == 'BlockL') {
         destinationLocation = nyp[0].location;
         destination = nyp[0].name;
     } else if (queryString == 'BlockA') {
