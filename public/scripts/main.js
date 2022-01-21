@@ -9,6 +9,25 @@ var target = {
 };
 var trail = localStorage.getItem('Trail');
 var bullets = document.querySelectorAll('#ProgressBar');
+
+// var camera = document.getElementById('camera');
+// var interval = setInterval(function () {
+//     getRotation()
+// }, 1000);
+
+
+
+
+function getRotation() {
+    // console.log(camera.getAttribute('rotation'),"ROTATION");
+    // console.log(camera.getAttribute('position'),"POSITION");
+    //     const frustum = new THREE.Frustum()
+    // const matrix = new THREE.Matrix4().multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse)
+    // frustum.setFromProjectionMatrix(matrix)
+    // if (!frustum.containsPoint(obj.position)) {
+    //     console.log('Out of view')
+    // }
+}
 if (trail == 'nyp') {
     if (localStorage.getItem('NYP Progress')) { // Progress exists
         var NYPPROGRESS = localStorage.getItem('NYP Progress');
@@ -19,15 +38,17 @@ if (trail == 'nyp') {
             }
         }
 
+
     } else {
         var NYPPROGRESS = [0, 0, 0, 0, 0, 0, 0, 0]
         var progress = JSON.stringify(NYPPROGRESS)
         console.log("PROGRESSS", progress);
         localStorage.setItem('NYP Progress', progress);
     }
-}
-else if(trail == 'Chinatown'){
-    if(localStorage.getItem('Chinatown Progress')){
+
+
+} else if (trail == 'Chinatown') {
+    if (localStorage.getItem('Chinatown Progress')) {
         var CTPROGRESS = localStorage.getItem('Chinatown Progress');
         CTPROGRESS = JSON.parse(CTPROGRESS);
         for (let i = 0; i < CTPROGRESS.length; i++) {
@@ -45,22 +66,8 @@ if (localStorage.getItem('landmarkIndex')) {
     var landmarkIndex = 0
 }
 
-AFRAME.registerComponent('rotation-reader', {
-    /**
-     * We use IIFE (immediately-invoked function expression) to only allocate one
-     * vector or euler and not re-create on every tick to save memory.
-     */
-    tick: (function () {
-        var position = new THREE.Vector3();
-        var rotation = new THREE.Euler();
 
-        return function () {
-            this.el.object3D.getWorldPosition(position);
-            this.el.object3D.getWorldRotation(rotation);
-            // position and rotation now contain vector and euler in world space.
-        };
-    })
-});
+
 
 // All of Chinatown's landmarks
 const nyp = trails.nyp.landmarks
@@ -300,6 +307,7 @@ window.onload = () => {
     const scene = document.querySelector('a-scene');
     // var trail = 
     // first get current user location
+
     return navigator.geolocation.getCurrentPosition(function (position) {
 
             // then use it to load from remote APIs some places nearby
@@ -395,6 +403,7 @@ window.onload = () => {
                 // add place icon
                 const icon = document.createElement('a-image');
                 const text = document.createElement('a-text');
+                // console.log(icon.components.camera.camera);
                 // text.setAttribute("name",place.name);
                 text.setAttribute("scale", "20 20 20");
                 icon.setAttribute("scale", '40 40 40');
@@ -407,19 +416,40 @@ window.onload = () => {
                 text.setAttribute('value', place.name);
                 icon.setAttribute('src', './Trails/assets/map-marker.png');
                 icon.setAttribute('material', 'opacity:0.5;');
+                var id = place.name.replace(/ /g, '');
+                id = id.toLowerCase();
+                icon.id = id;
 
 
                 // for debug purposes, just show in a bigger scale, otherwise I have to personally go on places...
                 // icon.setAttribute('scale', '120 120 120');
                 // icon.setAttribute('look-at','[gps-camera]');
-
+                // axes helper
                 text.addEventListener('loaded', () => window.dispatchEvent(new CustomEvent('gps-entity-place-loaded')));
+                AFRAME.registerComponent(id, {
+                    tick: function () {
+                        if (this.el.sceneEl.camera) {
+                            var cam = this.el.sceneEl.camera
+                            var frustum = new THREE.Frustum();
+                            var matrix = new THREE.Matrix4().multiplyMatrices(cam.projectionMatrix,
+                                cam.matrixWorldInverse)
+                            frustum.setFromProjectionMatrix(matrix);
+                            // Your 3d point to check
+                            var pos = document.getElementById(id).getAttribute("position");
+                            if (frustum.containsPoint(pos)) {
+                                // Do something with the position...
+                                console.log("IN VIEW");
+                            } else {
+                                console.log("not in view")
 
+                                console.log(pos);
+                            }
+                        }
+                    }
+                })
 
                 // distanceMsg = setTimeout(function(){icon.getAttribute('distance');},5000);
                 // console.log(distanceMsg);
-
-
 
                 const clickListener = function (ev) {
                     ev.stopPropagation();
@@ -466,10 +496,12 @@ window.onload = () => {
                 };
 
                 icon.addEventListener('click', clickListener);
+                scene.setAttribute(id, '');
                 scene.appendChild(icon);
                 scene.appendChild(text);
             });
             console.log('DONE CREATING AR MARKERS')
+
 
         },
         (err) => console.error('Error in retrieving position', err), {
@@ -632,10 +664,10 @@ function success(position) {
     console.log(flag);
     var queryString = decodeURIComponent(window.location.search);
     queryString = queryString.substring(1);
-    if (trail == 'Chinatown'){
-        for (i = 0; i < Chinatown.length; i++){
-            console.log(queryString,Chinatown[i].legend);
-            if (queryString == Chinatown[i].legend){
+    if (trail == 'Chinatown') {
+        for (i = 0; i < Chinatown.length; i++) {
+            console.log(queryString, Chinatown[i].legend);
+            if (queryString == Chinatown[i].legend) {
                 destinationLocation = Chinatown[i].location;
                 destination = Chinatown[i].name;
             }
@@ -668,4 +700,8 @@ function errorHandler(err) {
 
 function currentPositionError(err) {
     console.warn(`ERROR(${err.code}): ${err.message}`);
+}
+
+function checker() {
+
 }
