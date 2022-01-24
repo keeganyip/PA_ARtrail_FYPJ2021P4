@@ -305,7 +305,12 @@ function loadPlaceFromAPIs(position) {
 
 window.onload = () => {
     const scene = document.querySelector('a-scene');
-    // var trail = 
+    var trail = localStorage.getItem('Trail');
+    if (trail == 'Chinatown') {
+        trail = Chinatown;
+    } else if (trail == 'nyp') {
+        trail = nyp;
+    }
     // first get current user location
 
     return navigator.geolocation.getCurrentPosition(function (position) {
@@ -394,7 +399,7 @@ window.onload = () => {
             //     scene.appendChild(icon);
             //     scene.appendChild(text);
             // });
-            nyp.forEach((place) => {
+            trail.forEach((place) => {
                 const latitude = place.location.lat;
                 const longitude = place.location.lng;
                 const content = place.content;
@@ -416,9 +421,11 @@ window.onload = () => {
                 text.setAttribute('value', place.name);
                 icon.setAttribute('src', './Trails/assets/map-marker.png');
                 icon.setAttribute('material', 'opacity:0.5;');
-                var id = place.name.replace(/ /g, '');
-                id = id.toLowerCase();
-                icon.id = id;
+                var id = place.legend;
+                icon.id = id.toLowerCase();
+                // var id = place.name.replace(/\W/g, '');
+                // id = id.toLowerCase();
+                // icon.id = id;
 
 
                 // for debug purposes, just show in a bigger scale, otherwise I have to personally go on places...
@@ -426,27 +433,34 @@ window.onload = () => {
                 // icon.setAttribute('look-at','[gps-camera]');
                 // axes helper
                 text.addEventListener('loaded', () => window.dispatchEvent(new CustomEvent('gps-entity-place-loaded')));
-                AFRAME.registerComponent(id, {
-                    tick: function () {
-                        if (this.el.sceneEl.camera) {
-                            var cam = this.el.sceneEl.camera
-                            var frustum = new THREE.Frustum();
-                            var matrix = new THREE.Matrix4().multiplyMatrices(cam.projectionMatrix,
-                                cam.matrixWorldInverse)
-                            frustum.setFromProjectionMatrix(matrix);
-                            // Your 3d point to check
-                            var pos = document.getElementById(id).getAttribute("position");
-                            if (frustum.containsPoint(pos)) {
-                                // Do something with the position...
-                                console.log("IN VIEW");
-                            } else {
-                                console.log("not in view")
+                var queryString = decodeURIComponent(window.location.search);
+                queryString = queryString.substring(1);
+                if (queryString == id) {
+                    AFRAME.registerComponent(id, {
+                        init: function () {
+                            setInterval(function () {
+                                var cam = $('#cam')[0].object3DMap.camera;
+                                if (cam) {
+                                    console.log(cam);
+                                    var frustum = new THREE.Frustum();
+                                    var matrix = new THREE.Matrix4().multiplyMatrices(cam.projectionMatrix,
+                                        cam.matrixWorldInverse)
+                                    frustum.setFromProjectionMatrix(matrix);
+                                    // Your 3d point to check
+                                    var pos = document.getElementById(id.toLowerCase()).getAttribute("position");
+                                    if (frustum.containsPoint(pos)) {
+                                        // Do something with the position...
+                                        console.log("IN VIEW");
+                                    } else {
+                                        console.log("not in view")
 
-                                console.log(pos);
-                            }
+                                        console.log(pos);
+                                    }
+                                }
+                            }, 3000)
                         }
-                    }
-                })
+                    })
+                }
 
                 // distanceMsg = setTimeout(function(){icon.getAttribute('distance');},5000);
                 // console.log(distanceMsg);
