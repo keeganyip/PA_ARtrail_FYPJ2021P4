@@ -28,18 +28,13 @@
     <link href="../assets/css/login.css" rel="stylesheet" />
     <link href="../assets/css/profile.css" rel="stylesheet" />
     <link href="https://code.jquery.com/mobile/1.5.0-rc1/jquery.mobile-1.5.0-rc1.min.css" rel="stylesheet" />
-    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
     <link href="../assets/css/lightslider.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
     <link href="../assets/css/style.css" rel="stylesheet" />
 
-    <!-- =======================================================
-  * Template Name: Butterfly - v4.7.0
-  * Template URL: https://bootstrapmade.com/butterfly-free-bootstrap-theme/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+
 </head>
 
 <body>
@@ -51,11 +46,11 @@
             align-items: center;">
                 <div class="">
                     Welcome,
-                    <span class="welcome-text me-3" style="color: #00A6FF;">
+                    <span id="username" class="welcome-text me-3" style="color: #00A6FF;">
                         *username*
                     </span>
                 </div>
-                <a href="login.html">
+                <a id="signout">
                     <div class="position-relative" style="font-size: 1em; float: right; color: red;">
                         <i class="fas fa-sign-out-alt"></i>
                     </div>
@@ -516,6 +511,8 @@
     <script src="../assets/js/main.js"></script>
     <script src="../assets/js/progress.js"></script>
     <script src="../assets/js/lightslider.js"></script>
+    <script type="module" src="../scripts/profile.js"></script>
+
 
     <script>
         $(document).ready(function () {

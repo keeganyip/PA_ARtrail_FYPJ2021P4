@@ -6,7 +6,8 @@ const trails = {
         landmarks:
             [ 
                 { 
-                    name: "Chinatown Heritage Centre", 
+                    name: "Chinatown Heritage Centre",
+                    legend:'CHC',
                     location: { 
                          
                         lat: 1.2834358522886367, // add here latitude if using static data 
@@ -27,7 +28,8 @@ const trails = {
                     "</div>"
                 },
                 { 
-                    name: "Sri Maraimman Temple", 
+                    name: "Sri Maraimman Temple",
+                    legend:'SMT',
                     location:{ 
                         lat:1.2826974252118535, 
                         lng: 103.84513546864258, 
@@ -47,7 +49,8 @@ const trails = {
                     "</div>"
                 }, 
                 { 
-                    name: "Masjid Jamae", 
+                    name: "Masjid Jamae",
+                    legend:'MJ',
                     location:{ 
                         
                         lat:1.2832659109590843,
@@ -67,7 +70,8 @@ const trails = {
                     "</div>"
                 }, 
                 { 
-                    name: "Tong Heng", 
+                    name: "Tong Heng",
+                    legend:'TH', 
                     location:{ 
                          
                         lat:1.2816404559768435, 
@@ -87,7 +91,8 @@ const trails = {
                     "</div>"
                 }, 
                 { 
-                    name: "Buddha Tooth Relic", 
+                    name: "Buddha Tooth Relic",
+                    legend:'BTR',
                     location: { 
                         lat: 1.2815604059789072, // add here latitude if using static data 
                         lng: 103.84423719747802, // add here longitude if using static data 
@@ -109,6 +114,7 @@ const trails = {
                 
                 { 
                     name: "Pagoda Street & Trengannu Street", 
+                    legend:'PGTST',
                     location:{ 
                          
                         lat:1.2831788568902647,  
@@ -130,7 +136,8 @@ const trails = {
                
             
                 { 
-                    name: "Sago Street", 
+                    name: "Sago Street",
+                    legend:'SGST', 
                     location:{ 
                        
                         lat:1.281800536866017,  
@@ -151,7 +158,8 @@ const trails = {
                 }, 
             
                 { 
-                    name: "Mural at Mohamed Ali Lane", 
+                    name: "Mural at Mohamed Ali Lane",
+                    legend:'MMAL',
                     location:{ 
                         lat:1.2827594818546095,  
                         lng:103.84583411762635, 

@@ -7,28 +7,67 @@ var target = {
     latitude: 1.379155,
     longitude: 103.849828
 };
-if (localStorage.getItem('NYP Progress')) { // Progress exists
-    var NYPPROGRESS = localStorage.getItem('NYP Progress');
-    NYPPROGRESS = JSON.parse(NYPPROGRESS);
-    var bullets = document.querySelectorAll('#ProgressBar');
-    for (let i = 0; i < NYPPROGRESS.length; i++) {
-        if (NYPPROGRESS[i] == 1) {
-            bullets[i].getElementsByClassName('bullets')[0].classList.add('completed');
+var trail = localStorage.getItem('Trail');
+var bullets = document.querySelectorAll('#ProgressBar');
+
+// var camera = document.getElementById('camera');
+// var interval = setInterval(function () {
+//     getRotation()
+// }, 1000);
+
+
+
+
+function getRotation() {
+    // console.log(camera.getAttribute('rotation'),"ROTATION");
+    // console.log(camera.getAttribute('position'),"POSITION");
+    //     const frustum = new THREE.Frustum()
+    // const matrix = new THREE.Matrix4().multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse)
+    // frustum.setFromProjectionMatrix(matrix)
+    // if (!frustum.containsPoint(obj.position)) {
+    //     console.log('Out of view')
+    // }
+}
+if (trail == 'nyp') {
+    if (localStorage.getItem('NYP Progress')) { // Progress exists
+        var NYPPROGRESS = localStorage.getItem('NYP Progress');
+        NYPPROGRESS = JSON.parse(NYPPROGRESS);
+        for (let i = 0; i < NYPPROGRESS.length; i++) {
+            if (NYPPROGRESS[i] == 1) {
+                bullets[i].getElementsByClassName('bullets')[0].classList.add('completed');
+            }
         }
+
+
+    } else {
+        var NYPPROGRESS = [0, 0, 0, 0, 0, 0, 0, 0]
+        var progress = JSON.stringify(NYPPROGRESS)
+        console.log("PROGRESSS", progress);
+        localStorage.setItem('NYP Progress', progress);
     }
 
-} else {
-    var NYPPROGRESS = [0, 0, 0, 0, 0, 0, 0, 0]
-    var progress = JSON.stringify(NYPPROGRESS)
-    console.log("PROGRESSS", progress);
-    localStorage.setItem('NYP Progress', progress);
+
+} else if (trail == 'Chinatown') {
+    if (localStorage.getItem('Chinatown Progress')) {
+        var CTPROGRESS = localStorage.getItem('Chinatown Progress');
+        CTPROGRESS = JSON.parse(CTPROGRESS);
+        for (let i = 0; i < CTPROGRESS.length; i++) {
+            if (CTPROGRESS[i] == 1) {
+                bullets[i].getElementsByClassName('bullets')[0].classList.add('completed');
+            }
+        }
+    }
 }
+
 if (localStorage.getItem('landmarkIndex')) {
     var landmarkIndex = parseInt(localStorage.getItem('landmarkIndex'));
 
 } else {
     var landmarkIndex = 0
 }
+
+
+
 
 // All of Chinatown's landmarks
 const nyp = trails.nyp.landmarks
@@ -195,11 +234,11 @@ function recenterLogic(origin) {
     document.getElementById("recenter").addEventListener("click", () => {
         centered = true
         map.setCenter(origin)
-        map.setZoom(18);
+        map.setZoom(16);
     })
     if (centered) {
         map.setCenter(origin)
-        map.setZoom(18);
+        map.setZoom(16);
     }
 }
 
@@ -266,8 +305,14 @@ function loadPlaceFromAPIs(position) {
 
 window.onload = () => {
     const scene = document.querySelector('a-scene');
-    // var trail = 
+    var trail = localStorage.getItem('Trail');
+    if (trail == 'Chinatown') {
+        trail = Chinatown;
+    } else if (trail == 'nyp') {
+        trail = nyp;
+    }
     // first get current user location
+
     return navigator.geolocation.getCurrentPosition(function (position) {
 
             // then use it to load from remote APIs some places nearby
@@ -354,7 +399,7 @@ window.onload = () => {
             //     scene.appendChild(icon);
             //     scene.appendChild(text);
             // });
-            nyp.forEach((place) => {
+            trail.forEach((place) => {
                 const latitude = place.location.lat;
                 const longitude = place.location.lng;
                 const content = place.content;
@@ -363,6 +408,7 @@ window.onload = () => {
                 // add place icon
                 const icon = document.createElement('a-image');
                 const text = document.createElement('a-text');
+                // console.log(icon.components.camera.camera);
                 // text.setAttribute("name",place.name);
                 text.setAttribute("scale", "20 20 20");
                 icon.setAttribute("scale", '40 40 40');
@@ -375,19 +421,49 @@ window.onload = () => {
                 text.setAttribute('value', place.name);
                 icon.setAttribute('src', './Trails/assets/map-marker.png');
                 icon.setAttribute('material', 'opacity:0.5;');
+                var id = place.legend;
+                icon.id = id.toLowerCase();
+                // var id = place.name.replace(/\W/g, '');
+                // id = id.toLowerCase();
+                // icon.id = id;
 
 
                 // for debug purposes, just show in a bigger scale, otherwise I have to personally go on places...
                 // icon.setAttribute('scale', '120 120 120');
                 // icon.setAttribute('look-at','[gps-camera]');
-
+                // axes helper
                 text.addEventListener('loaded', () => window.dispatchEvent(new CustomEvent('gps-entity-place-loaded')));
+                var queryString = decodeURIComponent(window.location.search);
+                queryString = queryString.substring(1);
+                if (queryString == id) {
+                    AFRAME.registerComponent(id, {
+                        init: function () {
+                            setInterval(function () {
+                                var cam = $('#cam')[0].object3DMap.camera;
+                                if (cam) {
+                                    console.log(cam);
+                                    var frustum = new THREE.Frustum();
+                                    var matrix = new THREE.Matrix4().multiplyMatrices(cam.projectionMatrix,
+                                        cam.matrixWorldInverse)
+                                    frustum.setFromProjectionMatrix(matrix);
+                                    // Your 3d point to check
+                                    var pos = document.getElementById(id.toLowerCase()).getAttribute("position");
+                                    if (frustum.containsPoint(pos)) {
+                                        // Do something with the position...
+                                        console.log("IN VIEW");
+                                    } else {
+                                        console.log("not in view")
 
+                                        console.log(pos);
+                                    }
+                                }
+                            }, 3000)
+                        }
+                    })
+                }
 
                 // distanceMsg = setTimeout(function(){icon.getAttribute('distance');},5000);
                 // console.log(distanceMsg);
-
-
 
                 const clickListener = function (ev) {
                     ev.stopPropagation();
@@ -434,10 +510,12 @@ window.onload = () => {
                 };
 
                 icon.addEventListener('click', clickListener);
+                scene.setAttribute(id, '');
                 scene.appendChild(icon);
                 scene.appendChild(text);
             });
             console.log('DONE CREATING AR MARKERS')
+
 
         },
         (err) => console.error('Error in retrieving position', err), {
@@ -547,31 +625,34 @@ function currentPositionSuccess(position) {
 
     var backbtn = document.getElementById('back');
     var mapdiv = document.getElementById('map');
+    var recetnerBtn = document.getElementById("recenter");
     google.maps.event.addListener(map, "click", function (event) {
         var progress = document.getElementById('Progress');
         var camera = document.getElementById('camera');
         progress.style.display = 'None';
         console.log("CLICKED", mapdiv);
         camera.style.display = 'None';
-        mapdiv.style.position = 'revert';
         mapdiv.style.height = '100%';
         mapdiv.style.width = '100%';
+        mapdiv.style.right = '0';
+        mapdiv.style.bottom = '0';
         if (window.map.controls[google.maps.ControlPosition.LEFT_TOP].length == 0) {
             window.map.controls[google.maps.ControlPosition.LEFT_TOP].push(backbtn);
+            window.map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(recetnerBtn);
             backbtn.onclick = function () {
                 mapdiv.style.position = 'absolute';
                 mapdiv.style.height = '20%';
                 mapdiv.style.width = '40%';
+                mapdiv.style.right = '20px';
+                mapdiv.style.bottom = '15px';
                 window.map.controls[google.maps.ControlPosition.LEFT_TOP].pop();
+                window.map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].pop();
                 progress.style.display = 'flex';
                 camera.style.display = 'block';
                 map.setCenter(origin);
             }
         }
     });
-    // Set start button into the map also
-    // var recetnerBtn = document.getElementById("recenter");
-    // window.map.controls[google.maps.ControlPosition.TOP].push(recetnerBtn);
 }
 
 function success(position) {
@@ -593,14 +674,20 @@ function success(position) {
     if (distanceMsg < 80) {
         icon.setAttribute("src", "./Trails/assets/map-marker.png");
     }
-    console.log("TRAIL:", Chinatown)
+    console.log("TRAIL:", trail)
     console.log(flag);
     var queryString = decodeURIComponent(window.location.search);
     queryString = queryString.substring(1);
-    if (queryString == 'CHC') {
-        destinationLocation = Chinatown[0].location;
-        destination = Chinatown[0].name;
-    } else if (queryString == 'BlockL') {
+    if (trail == 'Chinatown') {
+        for (i = 0; i < Chinatown.length; i++) {
+            console.log(queryString, Chinatown[i].legend);
+            if (queryString == Chinatown[i].legend) {
+                destinationLocation = Chinatown[i].location;
+                destination = Chinatown[i].name;
+            }
+        }
+    }
+    if (queryString == 'BlockL') {
         destinationLocation = nyp[0].location;
         destination = nyp[0].name;
     } else if (queryString == 'BlockA') {
@@ -627,4 +714,8 @@ function errorHandler(err) {
 
 function currentPositionError(err) {
     console.warn(`ERROR(${err.code}): ${err.message}`);
+}
+
+function checker() {
+
 }
