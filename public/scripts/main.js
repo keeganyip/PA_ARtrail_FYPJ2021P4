@@ -234,11 +234,11 @@ function recenterLogic(origin) {
     document.getElementById("recenter").addEventListener("click", () => {
         centered = true
         map.setCenter(origin)
-        map.setZoom(18);
+        map.setZoom(16);
     })
     if (centered) {
         map.setCenter(origin)
-        map.setZoom(18);
+        map.setZoom(16);
     }
 }
 
@@ -611,6 +611,7 @@ function currentPositionSuccess(position) {
 
     var backbtn = document.getElementById('back');
     var mapdiv = document.getElementById('map');
+    var recetnerBtn = document.getElementById("recenter");
     google.maps.event.addListener(map, "click", function (event) {
         var progress = document.getElementById('Progress');
         var camera = document.getElementById('camera');
@@ -623,6 +624,7 @@ function currentPositionSuccess(position) {
         mapdiv.style.bottom = '0';
         if (window.map.controls[google.maps.ControlPosition.LEFT_TOP].length == 0) {
             window.map.controls[google.maps.ControlPosition.LEFT_TOP].push(backbtn);
+            window.map.controls[google.maps.ControlPosition.TOP].push(recetnerBtn);
             backbtn.onclick = function () {
                 mapdiv.style.position = 'absolute';
                 mapdiv.style.height = '20%';
@@ -630,15 +632,13 @@ function currentPositionSuccess(position) {
                 mapdiv.style.right = '20px';
                 mapdiv.style.bottom = '15px';
                 window.map.controls[google.maps.ControlPosition.LEFT_TOP].pop();
+                window.map.controls[google.maps.ControlPosition.TOP].pop();
                 progress.style.display = 'flex';
                 camera.style.display = 'block';
                 map.setCenter(origin);
             }
         }
     });
-    // Set start button into the map also
-    // var recetnerBtn = document.getElementById("recenter");
-    // window.map.controls[google.maps.ControlPosition.TOP].push(recetnerBtn);
 }
 
 function success(position) {
