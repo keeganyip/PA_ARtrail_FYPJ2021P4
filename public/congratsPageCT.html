@@ -4,6 +4,8 @@
 <title>Congratulations Page</title>
 <link rel="stylesheet" href="assets/css/lightslider.css" />   
 <link rel="stylesheet" href="assets/css/style.css"/>
+<link rel="stylesheet" href="assets/css/arrow.css"/>
+<link rel="stylesheet" href="assets/css/review.css"/>
 <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i" rel="stylesheet" />
 <link href="assets/img/favicon.png" rel="icon" />
@@ -11,7 +13,8 @@
 <script src="assets/js/jquery-3.6.0.min.js"></script>
 <script src="assets/js/lightslider.js"></script>
 <link href="assets/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" />
-<style>
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<style media="screen">
     img{
         width: 350px;
     }
@@ -21,38 +24,324 @@
     margin-block-end: 1em;
     margin-inline-start: 40px;
     margin-inline-end: 40px;
-}
-h2{
- font-family: 'Lato',sans-serif;
-}
-p{
+    }
+    h2{
     font-family: 'Lato',sans-serif;
+    }
+    p{
+        font-family: 'Lato',sans-serif;
+    }
+    *,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #77b1f3;
+}  
+.popup{
+    background-color: #ffffff;
+    width: 410px;
+    padding: 30px 40px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+    border-radius: 8px;
+    font-family: "Poppins",sans-serif;
+    display: none; 
+    text-align: center;
+    display: none;
+    position: fixed;
 
 }
+.popup button{
+    display: block;
+    margin:  0 0 20px auto;
+    background-color: transparent;
+    font-size: 30px;
+    color: #ffffff;
+    background: #03549a;
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.popup h2{
+  margin-top: -20px;
+}
+.popup p{
+    font-size: 14px;
+    text-align: justify;
+    margin: 20px 0;
+    line-height: 25px;
+}
+.popup a{
+    display: block;
+    width: 150px;
+    position: relative;
+    margin: 10px auto;
+    text-align: center;
+    background-color: #0f72e5;
+    border-radius: 20px;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 8px 0;
+}
+.back a {
+      text-decoration: none;
+      display: inline-block;
+      padding: 13px 20px;
+    }
+    
+    a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+    
+    .previous {
+      background-color: #f1f1f1;
+      color: black;
+    }
+    
+    .round {
+      border-radius: 50%;
+    }
 </style>
 <body>
-
+    <div class="popup" style="z-index:1000">
+        <button id="close">&times;</button>
+        <h2>Leave a feedback!</h2>
+        <p style="text-align: center;">
+            We hope you enjoyed this journey. Leave a feedback so we can better improve ourself, Thank you!
+        </p>
+        <a href="feedback.html">Let's Go</a>
+    </div>
+    <div class="demo-wrap">
+        <img class="demo-bg" src="assets/img/background.jpg" style="height: 3000px;"alt="">
+        <div class="demo-content"> 
+            <div class="back">
+                <a href="../public/overview.html" class="previous round" style="float:left;">&#8249;</a>
+                </div>
 <center><h2>Congratulations!!<br>You have finished <br>the Chinatown <br>Trail.</h2></center>
 <center><p>You have completed 8/8 landmarks!</p></center>
 		<ul id="lightSlider" class="cg">
-            <li><figure><a href="../public/landmarks/chinatown/chinatownheritagecentre.html"><img src="assets/img/chinatown/CHCcomplete.png" alt="Chinatown Heritage Centre"/></a><figcaption>Chinatown Heritage Centre</figcaption></figure></li>
-            <li><figure><a href="../public/landmarks/chinatown/srimariamtemple.html"><img src="assets/img/chinatown/SMTcomplete.png" alt="Sri Mariamman temple"/></a><figcaption>Sri Mariamman Temple</figcaption></figure></li>
-            <li><figure><a href="../public/landmarks/chinatown/masjidjamae.html"><img src="assets/img/chinatown/MJcomplete.png"alt="Masjid Jamae"/></a><figcaption>Masjid Jamae</figcaption></figure></li>
-            <li><figure><a href="../public/landmarks/chinatown/tongheng.html"><img src="assets/img/chinatown/THcomplete.png" alt="Tong Heng"/></a><figcaption>Tong Heng</figcaption></figure></li>
-            <li><figure><a href="../public/landmarks/chinatown/buddhatoothrelic.html"><img src="assets/img/chinatown/BTRcomplete.png" alt="Buddha Tooth Relic"/></a><figcaption>Buddha Tooth Relic</figcaption></figure></li>
-            <li><figure><a href="../public/landmarks/chinatown/pagodastreet.html"><img src="assets/img/chinatown/PScomplete.png" alt="Pagoda Street"/></a><figcaption>Pagoda Street</figcaption></figure></li>
-            <li><figure><a href="../public/landmarks/chinatown/sagostreet.html"><img src="assets/img/chinatown/SScomplete.png" alt="Sago Street"/></a><figcaption>Sago Street</figcaption></figure></li>
-			<li><figure><a href="../public/landmarks/chinatown/muralletterwriter.html"><img src="assets/img/chinatown/Mcomplete.png" alt="Mural on letter writer"/></a><figcaption>Mural on letter writer</figcaption></figure></li>
+            <li><figure><img src="assets/img/chinatown/chccomplete.jpg" alt="Chinatown Heritage Centre"/><figcaption>Chinatown Heritage Centre</figcaption></figure></li>
+            <li><figure><img src="assets/img/chinatown/smtcomplete.jpg" alt="Sri Mariamman temple"/><figcaption>Sri Mariamman Temple</figcaption></figure></li>
+            <li><figure><img src="assets/img/chinatown/mjcomplete.jpg"alt="Masjid Jamae"/><figcaption>Masjid Jamae</figcaption></figure></li>
+            <li><figure><img src="assets/img/chinatown/thcomplete.jpg" alt="Tong Heng"/><figcaption>Tong Heng</figcaption></figure></li>
+            <li><figure><img src="assets/img/chinatown/btrcomplete.jpg" alt="Buddha Tooth Relic"/><figcaption>Buddha Tooth Relic</figcaption></figure></li>
+            <li><figure><img src="assets/img/chinatown/pscomplete.jpg" alt="Pagoda Street" style=" width: 350px;"/><figcaption>Pagoda Street</figcaption></figure></li>
+            <li><figure><img src="assets/img/chinatown/sscomplete.jpg" alt="Sago Street"/><figcaption>Sago Street</figcaption></figure></li>
+			<li><figure><img src="assets/img/chinatown/mcomplete.jpg" alt="Mural on letter writer" style=" width: 350px;"/><figcaption>Mural on letter writer</figcaption></figure></li>
             <!-- <li></li> -->
         </ul>
-        <div class="text-center mt-5">
-        <a href='feedback.html'><button class="btn btn-primary ">Leave Feedback</button></a>
+        <div style="padding-top: 15%;margin-top: 160px;">
+        <div style="text-align: center;">
+            <p>Scroll down for more trails!</p>
+        <a href="#finish" class="scroll bottom">
+            <div class="arrow">
+                <span></span>
+                <span></span>
+                <span></span>
+                <br>
+                <br>
+            </div>
+        </a>
+        </div>
     </div>
+        <!-- <div class="text-center mt-5">
+        <a href='feedback.html'><button class="btn btn-primary ">Leave Feedback</button></a>
+        </div> -->
+        <div style="padding-top: 20%;"></div>
+        <h2 style="color:#35A113;">Little India Trail</h2>
+        <h3>Known as Serangoon before 1980s, the Little India precint melds the old with the new and hosts trades from the
+            past alongside modern businesses.</h3>
+        <ul id="lightSlider1" class="ov">
+            <li>
+                <figure><img src="assets/img/littleindia/Indian Heritage Centre.jpg" alt="Indian Heritage Centre" />
+                    <figcaption>Indian Heritage Centre</figcaption>
+                </figure>
+            </li>
+            <li>
+                <figure><img src="assets/img/littleindia/Former House of Tan Teng Niah.jpeg"
+                        alt="Former House of TanTengNiah" />
+                    <figcaption>Former House of Tan Teng Niah</figcaption>
+                </figure>
+            </li>
+            <li>
+                <figure><img src="assets/img/littleindia/Large Mural by Psyfool on traditional trades of Little India.jpg"
+                        alt="PsyfoolMural" />
+                    <figcaption>Large Mural by Psyfool</figcaption>
+                </figure>
+            </li>
+            <li>
+                <figure><img src="assets/img/littleindia/Sri Veeramakaliammman Temple.jpg"
+                        alt="Sri Veeramakaliammman Temple" />
+                    <figcaption>Sri Veeramakaliammman Temple</figcaption>
+                </figure>
+            </li>
+            <li>
+                <figure><img src="assets/img/littleindia/Stretch of Chinese Clan Associations.jpg"
+                        alt="Stretch of Chinese Clan Associations" />
+                    <figcaption>Stretch of Chinese Clan Associations</figcaption>
+                </figure>
+            </li>
+            <li>
+                <figure><img src="assets/img/littleindia/Foochow Methodist Church.jpg" alt="Foochow Methodist Church" />
+                    <figcaption>Foochow Methodist Church</figcaption>
+                </figure>
+            </li>
+            <li>
+                <figure><img
+                        src="assets/img/littleindia/Former Kandang Karbau Hospital (now Land Transport Authority Building).jpg"
+                        alt="Former Kandang Karbau Hospital" />
+                    <figcaption>Former Kandang Kerbau Hospital</figcaption>
+                </figure>
+            </li>
+            <li>
+                <figure><img src="assets/img/littleindia/Tekka Centre.jpg" alt="Tekka Centre" />
+                    <figcaption>Tekka Centre</figcaption>
+                </figure>
+            </li>
+            <li></li>
+        </ul>
+        <h2 style="color: #FF9E6A;">Peranakan Trail</h2>
+    <h3>Peranakan culture in Singapore has roots tracing all the way back to Sir Stamford Raffles arrival in 1819.</h3>
+    <ul id="lightSlider2" class="ov">
+        <li>
+            <figure><img src="assets/img/peranakan/Koon Seng Road Peranakan Shophouses.jpg" alt="Koon Seng Road Peranakan Shophouse" />
+                <figcaption>Koon Seng Road Peranakan Shophouse</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure><img src="assets/img/peranakan/Katong Antique House.jpg"
+                    alt="Katong Antique House" />
+                <figcaption>Katong Antique House</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure><img src="assets/img/peranakan/holy family.JPG"
+                    alt="Church of the Holy Family" />
+                <figcaption>Church of the Holy Family</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure><img src="assets/img/peranakan/Houses with preserved facade.jpg"
+                    alt="Houses with preserved facade" />
+                <figcaption>Houses with preserved facade</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure><img src="assets/img/peranakan/Kim Choo Gallery.jpg"
+                    alt="Kim Choo Gallery" />
+                <figcaption>Kim Choo Gallery</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure><img src="assets/img/peranakan/Medley Alley.jpg" alt="Medley Alley" />
+                <figcaption>Medley Alley</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure><img
+                    src="assets/img/peranakan/Red House Bakery.jpeg"
+                    alt="Red House Bakery" />
+                <figcaption>Red House Bakery</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure><img src="assets/img/peranakan/Sri Senpaga Vinayagar Temple.jpg" alt="Sri Senpaga Vinayagar Temple" />
+                <figcaption>Sri Senpaga Vinayagar Temple</figcaption>
+            </figure>
+        </li>
+        <li></li>
+    </ul>
+    <h2 style="color:#7E55B7;">Kampong Glam Trail</h2>
+    <h3>Kampong Glam got its name from the Malay word gelam (cajeput tree) which grew locally and has many uses. Its
+        bark can be used for weaving and to caulk boats.</h3>
+    <ul id="lightSlider3" class="ov">
+        <li>
+            <figure><img src="assets/img/kampongglam/Malay Heritage Centre.JPG" alt="Malay Heritage Centre" />
+                <figcaption>Malay Heritage Centre</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure><img src="assets/img/kampongglam/gedung kuning.jpg" alt="gedung kuning" />
+                <figcaption>Gedung Kuning</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure><img src="assets/img/kampongglam/Madrasah Alsagoff Al-Arabiah.JPG"
+                    alt="Madrasah Alsagoff Al-Arabiah" />
+                <figcaption>Alsagoff Al-Arabiah Arab School</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure><img src="assets/img/kampongglam/masjid sultan.JPG" alt="masjid sultan" />
+                <figcaption>Masjid Sultan</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure><img src="assets/img/kampongglam/arab street.png" alt="Arab Street" />
+                <figcaption>Arab Street</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure><img src="assets/img/kampongglam/bali lane.JPG" alt="bali lane" />
+                <figcaption>Bali & Haji Lane</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure><img src="assets/img/kampongglam/Bussorah Street.jpg" alt="Bussorah Street" />
+                <figcaption>Bussorah Street</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure><img src="assets/img/kampongglam/zam zam.jpg" alt="zam zam" />
+                <figcaption>Zam Zam Restaurant</figcaption>
+            </figure>
+        </li>
+    </ul>
         <script type="text/javascript">
             $(document).ready(function () {
                 $("#lightSlider").lightSlider({autoWidth:true});
             });
+            $("#lightSlider1").lightSlider({
+                autoWidth: true
+            });
+            $("#lightSlider2").lightSlider({
+                autoWidth: true
+            });
+            $("#lightSlider3").lightSlider({
+                autoWidth: true
+            });
+            window.addEventListener("load", function(){
+                if(localStorage.getItem('popup') != 'shown'){
+                    setTimeout(
+                    function open(event){
+                        document.querySelector(".popup").style.display = "block";
+                    },
+                    2000 
+                )
+                    localStorage.setItem('popup','shown')
+                }
+                
+            });
+            document.querySelector("#close").addEventListener("click", function(){
+                document.querySelector(".popup").style.display = "none";
+                
+            });
+            //
         </script>
+        </div>
+
+    </div>
+        <div id="finish"></div> 
 </body>
 </html>
 

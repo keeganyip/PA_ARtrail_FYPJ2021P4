@@ -93,7 +93,7 @@ const trails = {
                         lng: 103.84423719747802, // add here longitude if using static data 
             
                     },
-                    content:"Get transported back in time and experience the footsteps \n of migrants in the late 19th century of singapore",
+                    content:"Experience buddhist temple and museum complex located in the Chinatown district of Singapore. \n The temple's monastics and devotees officially practice Chinese Buddhism.",
                     src:'landmarks/chinatown/buddhatoothrelic.html',
                     contentHTML :
                     '<div id="content">' +
@@ -114,7 +114,7 @@ const trails = {
                         lat:1.2831788568902647,  
                         lng:103.84473979738155, 
                     }, 
-                    content:'Witness murals that depict the past \n through the eyes of singaporean artist Yip Yew Chong.',
+                    content:'Located in Chinatown within the Outram Planning Area in Singapore \n Terengannu Street linking Pagoda Street and Sago Street, \n and is intersected by Temple Street and Smith Street.',
                     src:'landmarks/chinatown/pagodastreet.html',
                     contentHTML :
                     '<div id="content">' +
@@ -136,7 +136,7 @@ const trails = {
                         lat:1.281800536866017,  
                         lng: 103.84399338201563, 
                     },
-                    content:'Experience the street of the dead where immigrants of the past with no family lived and died',
+                    content:'Singapore largest historic district, serving mainly as a tourist attraction that houses food outlets, bars, retail shops and offices \n with the streets lined up with pushcarts selling a range of souvenirs and street snacks.',
                     src:'landmarks/chinatown/sagostreet.html',
                     contentHTML :
                     '<div id="content">' +
@@ -156,7 +156,7 @@ const trails = {
                         lat:1.2827594818546095,  
                         lng:103.84583411762635, 
                     }, 
-                    content:'Witness murals that depict the past \n through the eyes of singaporean artist Yip Yew Chong.',
+                    content:'Along Mohammed Ali Lane, you’ll spot a snapshot of history—a quirky scene of Singapore’s street vendors \n from our early years of independence in the 1960s. \n Witness murals that depict the past through the eyes of singaporean artist Yip Yew Chong.',
                     src:'landmarks/chinatown/muralletterwriter.html',
                     contentHTML :
                     '<div id="content" >' +
