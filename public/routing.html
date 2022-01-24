@@ -82,25 +82,28 @@
   <!-- <button id="recenter" style="background-color: white; margin-top: 11px;margin-left: 1px;"> <img
       src="static/center-icon.jpg" style="width: 89px;height: 89px;background-color: white;"> </button> -->
   <span id="instructions"></span>
-  <div class="modal" id="dialog" aria-labelledby="modaltitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" style="width: auto;" data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal" data-bs-backdrop="static" data-bs-keyboard="false"  id="dialog" aria-labelledby="modaltitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="width: auto;">
       <div class="modal-content justify-content-center  ">
         <div class="modal-header" style="border-bottom: 2px solid gray;">
           <h1 id="modaltitle" class="modal-title w-100 text-center">Too Far from Trail</h3>
         </div>
         <div class="modal-body" style="border-bottom: 1px solid gray;">
-          <p style="font-size: 2rem;">You are more than 700m from the trail</p>
-          <!-- <p style="font-size: 3rem;">Choose travel mode</p>
-          <select id="option" style="font-size: 2.5rem;">
+          <p class="text-center" id="body" style="font-size: 2rem;">You are more than 700m from the trail. Would you like to navigate to the trail?</p>
+          <div id="option" class="text-center" style="display:none;">
+          <p style="font-size: 3rem;">Choose travel mode</p>
+          <select id='travelmode' class="form-select my-3" style="font-size:2rem;">
+            <option value="">Travel Mode</option>
             <option value="DRIVING">Driving</option>
             <option value="WALKING">Walking</option>
             <option value="BICYCLING">Bicycling</option>
             <option value="TRANSIT">Transit</option>
-          </select> -->
-          
+          </select>
+        </div>
         </div>
         <div class="modal-footer">
-          <input type="button" class="btn btn-primary btn-lg" style="font-size: 1.5rem;" id="ok" value="OK" />
+          <button class="btn btn-secondary btn-lg" style="font-size: 1.5rem;" id="home">Return to Home</button>
+          <button class="btn btn-primary btn-lg" style="font-size: 1.5rem;" id="navigate">Navigate</button>
         </div>
       </div>
     </div>
