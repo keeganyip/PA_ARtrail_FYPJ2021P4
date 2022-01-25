@@ -209,12 +209,8 @@ var rad = function (x) {
     return x * Math.PI / 180;
 };
 
-function getDistance(mk1) {
+function getDistance(mk1, mk2) {
     var R = 6378137; // Radius of the Earth in miles
-    var mk2 = {
-        lat: 1.2827156284699024,
-        lng: 103.84397634403197
-    }
     var rlat1 = mk1.lat * (Math.PI / 180); // Convert degrees to radians
     var rlat2 = mk2.lat * (Math.PI / 180); // Convert degrees to radians
     var difflat = rlat2 - rlat1; // Radian difference (latitudes)
@@ -422,9 +418,10 @@ window.onload = () => {
                 icon.setAttribute('src', './Trails/assets/map-marker.png');
                 icon.setAttribute('material', 'opacity:0.5;');
                 var id = place.legend;
+                console.log(id);
                 icon.id = id.toLowerCase();
                 // var id = place.name.replace(/\W/g, '');
-                // id = id.toLowerCase();
+               
                 // icon.id = id;
 
 
@@ -447,17 +444,27 @@ window.onload = () => {
                                         cam.matrixWorldInverse)
                                     frustum.setFromProjectionMatrix(matrix);
                                     // Your 3d point to check
+                                    var overlay = $('#overlay');
+                                    
                                     var pos = document.getElementById(id.toLowerCase()).getAttribute("position");
+                                    var distance = getDistance(origin,place.location);
+                                    console.log(distance,place.location,origin,"DISTNACE");
                                     if (frustum.containsPoint(pos)) {
                                         // Do something with the position...
                                         console.log("IN VIEW");
+                                        overlay.css('display',"none");
+                                        overlay.css('z-index','1');
                                     } else {
+                                        if(distance && distance < 100){
+                                            overlay.css('display','block');
+                                            overlay.css('z-index','9999');
+                                        }
                                         console.log("not in view")
 
                                         console.log(pos);
                                     }
                                 }
-                            }, 3000)
+                            }, 1000)
                         }
                     })
                 }
@@ -498,9 +505,9 @@ window.onload = () => {
                         label.appendChild(image);
 
                         label.appendChild(butt);
-                        var indexoflandmark = nyp.indexOf(place);
+                        var indexoflandmark = trail.indexOf(place);
                         console.log("INDEX", indexoflandmark);
-                        butt.addEventListener('click', markDone('NYP', indexoflandmark));
+                        butt.addEventListener('click', markDone('Chinatown', indexoflandmark));
                         document.body.appendChild(container);
                         image.addEventListener('click', textSPeech);
                         setTimeout(() => {
@@ -539,6 +546,7 @@ function markDone(trail, landmarkindex) {
     currentProgress = JSON.stringify(currentProgress)
     localStorage.setItem(trail + ' Progress', currentProgress);
     var bullets = document.querySelectorAll('#ProgressBar')
+    console.log( bullets[landmarkindex].getElementsByClassName('bullets'));
     bullets[landmarkindex].getElementsByClassName('bullets')[0].classList.add('completed');
 }
 

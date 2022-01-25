@@ -194,7 +194,8 @@ const trails = {
         content:"",
         landmarks:[
             {
-                name: "Block L", 
+                name: "Block L",
+                legend:'BlockL', 
                 location: { 
                     lat: 1.379224, // add here latitude if using static data 
                     lng: 103.849622, // add here longitude if using static data 
@@ -216,6 +217,7 @@ const trails = {
             },
             {
                 name: "Block A", 
+                legend:'BlockA',
                 location: { 
                     lat: 1.380098, // add here latitude if using static data 
                     lng: 103.848517, // add here longitude if using static data 

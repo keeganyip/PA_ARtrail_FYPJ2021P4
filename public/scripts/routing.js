@@ -135,7 +135,7 @@ function getDistance(mk1, mk2) {
 
 function checkDistanceFromTrail(origin, traillocation) {
     distance = getDistance(origin, traillocation)
-    distance = 100;
+    // distance = 100;
     if (distance > 1600) {
         localStorage.setItem("status","toTrail");
         var myModal = new bootstrap.Modal(document.getElementById('dialog'))

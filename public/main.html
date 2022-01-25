@@ -15,15 +15,6 @@
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
   <link href="assets/css/main.css" rel="stylesheet">
 
-  <!--bootstrap code-->
-  <!-- Latest compiled and minified CSS -->
-
-  <!-- Optional theme -->
-
-  <!-- Latest compiled and minified JavaScript -->
-
-
-
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -54,7 +45,7 @@
       position: absolute;
       right: 20px;
       bottom: 15px;
-      z-index: 9999;
+      z-index: 9998;
     }
 
     html,
@@ -71,6 +62,28 @@
       margin-left: auto;
       margin-right: auto;
       z-index: 1000;
+    }
+
+    #overlay{
+      display: none;
+      position: fixed;
+      top:0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: 9999;
+      background: rgba(0, 0, 0, 0.5);
+      text-align: center;
+      color: white;
+    }
+    .overlayic{
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 60%;
+      width: 50%;
+      z-index: 9999;
+      filter: brightness(0) invert(1)    
     }
   </style>
 </head>
@@ -127,7 +140,10 @@
     </div>
   </div>
 
-
+  <div id="overlay">
+    <img class="overlayic" src="assets/img/lookaround.png">
+    <h1>You have arrived at the destination. Please look around for the marker</h1>
+  </div>
 
 
   <a-scene id="camera" class="is-pulled-right" cursor='rayOrigin: mouse; fuseTimeout: 0;'
@@ -160,15 +176,7 @@
     <input style="margin-left: 230px;display:none;" type="button" id="submitTravelMode" value="Ok" />
   </div>
 
-  <div id="congraztPage" title="You have completed the trail" class="modal"
-    style="display: none;background-color: rgb(0,0,0);background-color: rgba(0,0,0,0.4);position: fixed;z-index: 1;left: 0;top: 0;width: 100%;height: 100%;">
-    <span class="close" style="color: #aaa;color: #aaa;font-size: 28px;font-weight: bold;">&times;</span>
-    <div id="content"
-      style="background-color: #fefefe;margin: 15% auto; /* 15% from the top and centered */padding: 20px;border: 1px solid #888;width: 80%; ">
-      <h1 style="text-align: center;">Congratulations!</h1>
-    </div>
-  </div>
-
+  
   <!-- <script type="module" src="scripts/saveProgress.js"></script> save to cloud function-->
 </body>
 
