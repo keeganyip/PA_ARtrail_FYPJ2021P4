@@ -135,7 +135,7 @@ function getDistance(mk1, mk2) {
 
 function checkDistanceFromTrail(origin, traillocation) {
     distance = getDistance(origin, traillocation)
-    // distance = 100;
+    distance = 100;
     if (distance > 1600) {
         localStorage.setItem("status","toTrail");
         var myModal = new bootstrap.Modal(document.getElementById('dialog'))
@@ -322,7 +322,7 @@ function startingTrail(position) {
                     (marker, i));
             }
         } else if (CTPROGRESS) {
-            if (CTPROGRESS[i] == 1 && trail == 'ctTrail') {
+            if (CTPROGRESS[i] == 1 && trail == 'chinatown') {
                 marker = makeCompletedMarker(landmarks[i].location, icons.Completedmarker, landmarks[i].name);
             } else {
                 marker = makeMarker(landmarks[i].location, icons.marker, landmarks[i].name) //position, icon, title

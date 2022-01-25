@@ -1,6 +1,6 @@
 var count = 0;
-const nyp = trails.nyp.landmarks;
-const chinatown = trails.chinatown.landmarks;
+const nyptrail = trails.nyp.landmarks
+const chinatowntrail = trails.chinatown.landmarks;
 
 trail = localStorage.getItem('Trail');
 if (trail == 'Chinatown') {
@@ -11,8 +11,11 @@ if (trail == 'Chinatown') {
             count++;
         }
     }
-    if (chinatown.length == count) {
-        document.getElementById("button_complete").innerHTML = "Complete";
+    if (chinatowntrail.length == count) {
+        var buttoncomplete = document.getElementById("button_complete")
+        buttoncomplete.innerHTML = "Complete";
+        buttoncomplete.parentElement.href = '../../congratsPageCT.html'
+        console.log(buttoncomplete.parentElement);
     }
 }
 if (localStorage.getItem('NYP Progress')) { // Progress exists
@@ -24,7 +27,7 @@ if (localStorage.getItem('NYP Progress')) { // Progress exists
             count++;
         }
     }
-    if (nyp.length == count) {
+    if (nyptrail.length == count) {
         document.getElementById("button_complete").innerHTML = "Complete";
     }
 } else {

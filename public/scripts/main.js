@@ -407,7 +407,7 @@ window.onload = () => {
                 // console.log(icon.components.camera.camera);
                 // text.setAttribute("name",place.name);
                 text.setAttribute("scale", "20 20 20");
-                icon.setAttribute("scale", '40 40 40');
+                icon.setAttribute("scale", '30 30 30');
                 text.setAttribute("align", "center");
                 text.setAttribute("baseline", "top");
                 text.setAttribute("look-at", '[gps-camera]');
@@ -455,7 +455,7 @@ window.onload = () => {
                                         overlay.css('display',"none");
                                         overlay.css('z-index','1');
                                     } else {
-                                        if(distance && distance < 100){
+                                        if(distance && distance < 30){
                                             overlay.css('display','block');
                                             overlay.css('z-index','9999');
                                         }
