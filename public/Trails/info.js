@@ -28,11 +28,11 @@ const trails = {
                     "</div>"
                 },
                 { 
-                    name: "Sri Maraimman Temple",
+                    name: "Sri Mariamman Temple",
                     legend:'SMT',
                     location:{ 
                         lat:1.2826974252118535, 
-                        lng: 103.84513546864258, 
+                        lng: 103.84513546864258,
                     },  
                     content:'This hindu temple is the oldest \n and largest of its kind in singapore',
                     src:'landmarks/chinatown/srimariamtemple.html',
@@ -158,7 +158,7 @@ const trails = {
                 }, 
             
                 { 
-                    name: "Mural at Mohamed Ali Lane",
+                    name: "Mural at Mohammed Ali Lane",
                     legend:'MMAL',
                     location:{ 
                         lat:1.2827594818546095,  
