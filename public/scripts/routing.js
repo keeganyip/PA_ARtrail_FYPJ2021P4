@@ -135,13 +135,13 @@ function getDistance(mk1, mk2) {
 
 function checkDistanceFromTrail(origin, traillocation) {
     distance = getDistance(origin, traillocation)
-    distance = 100;
+    // distance = 100;
     if (distance > 1600) {
-        localStorage.setItem("status","toTrail");
+        localStorage.setItem("status", "toTrail");
         var myModal = new bootstrap.Modal(document.getElementById('dialog'))
-        console.log(myModal, "MODAL");
+        // console.log(myModal, "MODAL");
         myModal.show();
-        console.log($('#ok'));
+        // console.log($('#ok'));
         $('#home').on('click', function () {
             window.location.href = 'overview.html'
         })
@@ -152,33 +152,80 @@ function checkDistanceFromTrail(origin, traillocation) {
             $('#home').css("display", 'none');
         })
         $('#travelmode').change(function () {
-            myModal.hide();
             travelMode = $('#travelmode').val();
-            displayRoute(origin, traillocation, travelMode);
+            if (travelMode) {
+                getEstDuration(origin, traillocation, travelMode);
+                if (travelMode == 'TRANSIT') {
+                    $('#transitOptions').css('display', 'inline-block');
+
+                    $('input[type="radio"]').click(function () {
+                        var transitOptions = {"modes": [document.querySelector('input[type="radio"]:checked').value]};
+                        getEstDuration(origin, traillocation, travelMode, transitOptions)
+                    })
+
+                    $('#navigate').on('click', function () {
+                        var transitOptions = {
+                            "modes": [document.querySelector('input[type="radio"]:checked').value]
+                        };
+                        myModal.hide();
+                        console.log(transitOptions);
+                        displayRoute(origin, traillocation, travelMode, transitOptions);
+                    })
+                } else {
+                    $('#navigate').on('click', function () {
+                        myModal.hide();
+                        displayRoute(origin, traillocation, travelMode);
+                    })
+                }
+            } else {
+                var estTime = document.getElementById('estTime');
+                estTime.innerHTML = "";
+            }
         })
     }
     // If at the trail already
     else {
         var status = localStorage.getItem("status");
         if (status && status == "toTrail") {
-            localStorage.setItem('status','atTrail');
+            localStorage.setItem('status', 'atTrail');
             location.reload();
         }
     }
 }
 
-function displayRoute(latlng, destination, travelMode) {
+async function getEstDuration(latlng, destination, travelMode, transitOptions = {}) {
+    // var duration;
+    let a = await directionsService.route({
+        origin: latlng,
+        destination: destination,
+        travelMode: google.maps.TravelMode[travelMode],
+        transitOptions: transitOptions,
+    }).then((response) => {
+        const route = response.routes[0];
+        var leg = route.legs[0]
+        duration = leg.duration.text;
+        console.log(duration, "DURATION");
+        var estTime = document.getElementById('estTime');
+        estTime.innerHTML = "Estimated Time: " + duration;
+    })
+}
+
+function displayRoute(latlng, destination, travelMode, transitOptions = {}) {
     removeMarkers()
     directionsService.route({
         origin: latlng,
         destination: destination,
-        travelMode: google.maps.TravelMode[travelMode]
+        travelMode: google.maps.TravelMode[travelMode],
+        transitOptions: transitOptions,
     }).then((response) => {
         directionRenderer.setDirections(response);
         const route = response.routes[0];
         var leg = route.legs[0]
-        // instructions = leg["steps"][0].instructions + " "+ leg["steps"][0].distance.text + "  "+leg["steps"][0].duration.text
-        // document.getElementById("instructions").innerHTML = instructions
+        var duration = leg.duration;
+        console.log(duration, "DURATION");
+        instructions = "<h1>" + leg["steps"][0].instructions + " "+ leg["steps"][0].distance.text + "  "+leg["steps"][0].duration.text + "</h1>"
+        $("#instructions").css('display','block')
+        document.getElementById("instructions").innerHTML = instructions
         gMarker = makeStartMarker(leg.start_location, leg.end_location)
         gMarkers.push(gMarker)
     })
@@ -259,7 +306,6 @@ function startingTrail(position) {
     window.map = new google.maps.Map(document.getElementById("map"), { //init Map
         zoom: 19,
         center: {
-
             lat: startlat,
             lng: startlong
         },
@@ -268,6 +314,7 @@ function startingTrail(position) {
         mapTypeControlOptions: {
             style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
         },
+        disableDefaultUI: true,
         styles: [{
                 featureType: "poi",
                 elementType: "labels",
