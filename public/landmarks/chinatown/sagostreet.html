@@ -3,6 +3,8 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sago Street</title>
+    <link rel="stylesheet" href="../../assets/css/speech.css"/>
+    <script src="../../assets/js/speech.js"></script>
     <link rel="stylesheet" href="../../assets/css/style.css" />
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
     <link href="../../assets/img/favicon.png" rel="icon" />
@@ -18,7 +20,6 @@
     <link href="../../assets/css/fa.css" rel="stylesheet" />
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
     <script src="../../Trails/info.js"></script>
-    <script src="../../scripts/code.js"></script>
     <style>
         a {
             text-decoration: none;
@@ -58,14 +59,23 @@
 </head>
 
 <body>
-    <a href="C:\Users\khlsdyn\Desktop\PA_ARtrail_FYPJ2021P4\public\overview.html" class="previous round"
+    <a href="../../routing.html?ctTrail" class="previous round"
         style="float:left;">&#8249;</a>
     <center>
         <h1 style="padding-right: 10%;">Sago Street</h1>
         <img src="../../assets/img/chinatown/sago street.JPG" style="width:100%" alt="Sago Street" />
     </center>
+    <div style="text-align: center;"> 
+        <div class=buttons>
+            <button id=play></button> &nbsp;
+            <button id=pause></button> &nbsp;
+            <button id=stop></button>
+          </div>
+        </div>
+    <div style="margin: 15px;">
+    <article>
     <p>While this area may have gotten its name from the sago factories located here during the 1840s, it was more
-        famous for the Chinese death houses that were along the neighbouring Sago Lane* .
+        famous for the Chinese death houses that were along the neighbouring Sago Lane.
         <br>
         <br>As most early immigrants were here without their family, the dying would come and live out their last days
         on the upper floors of the death house – while funerals were held right below, on the ground floor. Though it
@@ -73,10 +83,12 @@
         it was anything but quiet. You would hear priests chanting scriptures, and see mourners burning paper effigies
         in huge bonfires. And the street was also teeming with food stalls that catered to visitors and mourners during
         the day and through the night.</p>
+    </article>
+    </div>
     <div style="text-align: center;">
         <div class="field">
             <a href="../../routing.html?ctTrail">
-                <button id="button_complete" class="button" style="align-content: center;">Next</button>
+                <button id="button_complete" class="button" style="align-content: center;">Complete Landmark<br>&<br>Return to map</button>
             </a>
         </div>
     </div>

@@ -3,6 +3,8 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chinatown Heritage Centre</title>
+    <link rel="stylesheet" href="../../assets/css/speech.css"/>
+    <script src="../../assets/js/speech.js"></script>
     <link rel="stylesheet" href="../../assets/css/style.css" />
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
     <link href="../../assets/img/favicon.png" rel="icon" />
@@ -57,26 +59,37 @@
 </head>
 
 <body>
-    <a href="C:\Users\khlsdyn\Desktop\PA_ARtrail_FYPJ2021P4\public\overview.html" class="previous round"
+    <a href="../../routing.html?ctTrail" class="previous round"
         style="float:left;">&#8249;</a>
     <center>
         <h1 style="padding-right: 10%;">Chinatown Heritage Centre</h1>
         <img src="../../assets/img/chinatown/chinatown heritage centre.JPG" style="width:100%"
             alt="Chinatown Heritage Centre" />
     </center>
+     <div style="text-align: center;"> 
+    <div class=buttons>
+        <button id=play></button> &nbsp;
+        <button id=pause></button> &nbsp;
+        <button id=stop></button>
+      </div>
+    </div>
+    <div style="margin: 15px;">
+        <article>
     <p>There are immersive audio tours and interactive exhibits to help you retrace the footsteps of migrants in the
         late 19th century. Back then, Chinatown was infamously filled with seedy brothels, squalid opium houses, illegal
-        gambling dens and notorious secret societies.
+        gambling dens and notorious secret societies.</p>
         <br>
-        <br>The Chinatown Heritage Centre is also the only place in Singapore where you’ll find the original interiors
+        <p>The Chinatown Heritage Centre is also the only place in Singapore where you’ll find the original interiors
         of its shophouse tenants in the 1950s. An actual tailor shop and the living quarters of Singapore’s early
         settlers have been authentically conserved to provide an intimate glimpse into their lives. Discover the
         personal stories of people who made this shophouse their home, and you’ll walk away with a better understanding
         of Singapore’s Chinatown.</p>
+    </article>
+    </div>
     <div style="text-align: center;">
         <div class="field">
             <a href="../../routing.html?ctTrail">
-                <button id="button_complete" class="button" style="align-content: center;">Next</button>
+                <button id="button_complete" class="button" style="align-content: center;">Complete Landmark<br>&<br>Return to map</button>
             </a>
         </div>
     </div>
@@ -87,10 +100,10 @@
     <div class="tab-nav-container container-fluid text-center">
         <a href="../index.html">
             <div>
-                <div class="tab  active red">
+                <div class="tab active red">
                     <i class="fas fa-home"></i>
                 </div>
-                <p class="tab-text active ">Home</p>
+                <p class="tab-text active">Home</p>
             </div>
         </a>
         <a>
