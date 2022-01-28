@@ -19,10 +19,10 @@
     <link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
     <link href="../../assets/css/fa.css" rel="stylesheet" />
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="../../assets/css/popup.css" rel="stylesheet" />
     <script src="../../Trails/info.js"></script>
-    <script src="../../assets/js/main.js"></script>
-
-
+    <!-- <script src="../../assets/js/main.js"></script> -->
     <style>
         a {
             text-decoration: none;
@@ -60,6 +60,13 @@
 </head>
 
 <body>
+    <div class="popup" style="z-index:1000">
+        <button id="close">&times;</button>
+        <h2>Text to speech</h2>
+        <p style="text-align: center;">
+            Press play to hear the audio, pause to pause audio and stop to restart or stop.
+        </p>
+    </div>
     <a href="../../routing.html?ctTrail" class="previous round" style="float:left;">&#8249;</a>
     <center>
         <h1 style="padding-right: 10%;">Buddha Tooth Relic Temple & Museum</h1>
@@ -78,7 +85,6 @@
         Buddhists regard as the left canine tooth of Buddha. Recovered from his funeral pyre in Kushinagar, India, it’s
         now displayed on its grounds. The sacred relic is housed in a giant stupa that weighs an amazing 3500
         kilogrammes – made from 320 kilogrammes of gold, of which 234 kilogrammes were donated by devotees.</p>
-        <br>
         <p>There are weekly guided tours and talks to help you understand the religion and its teachings. Though the
         temple was built in 2007, its richly designed interiors and comprehensive exhibits tell stories of Buddhist
         culture over thousands of years old.</p>
@@ -131,5 +137,19 @@
     <script src="../../assets/js/finalCheck.js"></script>
 
 </body>
-
+<script type="text/javascript">
+    window.addEventListener("load", function(){
+        setTimeout(
+            function open(event){
+                document.querySelector(".popup").style.display = "block";
+            },
+            1000 
+        )
+    });
+    
+    
+    document.querySelector("#close").addEventListener("click", function(){
+        document.querySelector(".popup").style.display = "none";
+    });
+        </script>
 </html>

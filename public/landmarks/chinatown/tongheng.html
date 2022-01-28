@@ -19,6 +19,8 @@
     <link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
     <link href="../../assets/css/fa.css" rel="stylesheet" />
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="../../assets/css/popup.css" rel="stylesheet" />
     <script src="../../Trails/info.js"></script>
     <style>
         a {
@@ -59,6 +61,13 @@
 </head>
 
 <body>
+    <div class="popup" style="z-index:1000">
+        <button id="close">&times;</button>
+        <h2>Text to speech</h2>
+        <p style="text-align: center;">
+            Press play to hear the audio, pause to pause audio and stop to restart or stop.
+        </p>
+    </div>
     <a href="../../routing.html?ctTrail" class="previous round" style="float:left;">&#8249;</a>
     <center>
         <!-- to center the h1 text -->
@@ -129,5 +138,19 @@
         </a>
     </div>
 </nav>
-
+<script type="text/javascript">
+    window.addEventListener("load", function(){
+        setTimeout(
+            function open(event){
+                document.querySelector(".popup").style.display = "block";
+            },
+            1000 
+        )
+    });
+    
+    
+    document.querySelector("#close").addEventListener("click", function(){
+        document.querySelector(".popup").style.display = "none";
+    });
+        </script>
 </html>

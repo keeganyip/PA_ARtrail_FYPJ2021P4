@@ -19,9 +19,10 @@
     <link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
     <link href="../../assets/css/fa.css" rel="stylesheet" />
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <script src="../../Trails/info.js"></script>
     
-    <style>
+    <style media="screen">
         a {
             text-decoration: none;
             display: inline-block;
@@ -56,10 +57,77 @@
             border-radius: 12px;
             margin: 0;
         }
+        /* popup css */
+        *,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+/* body{
+    background-color: #0855ae;
+} */
+.popup{
+    background-color: #ffffff;
+    width: 420px;
+    padding: 30px 40px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+    border-radius: 8px;
+    font-family: "Poppins",sans-serif;
+    display: none; 
+    text-align: center;
+    position: fixed;
+}
+.popup button{
+    display: block;
+    margin:  0 0 20px auto;
+    background-color: transparent;
+    font-size: 30px;
+    color: #ffffff;
+    background: #03549a;
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.popup h2{
+  margin-top: -20px;
+}
+.popup p{
+    font-size: 14px;
+    text-align: justify;
+    margin: 20px 0;
+    line-height: 25px;
+}
+.popup a{
+    display: block;
+    width: 150px;
+    position: relative;
+    margin: 10px auto;
+    text-align: center;
+    background-color: #0f72e5;
+    border-radius: 20px;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 8px 0;
+}
     </style>
 </head>
 
 <body>
+    <div class="popup" style="z-index:1000">
+        <button id="close">&times;</button>
+        <h2>Text to speech</h2>
+        <p style="text-align: center;">
+            Press play to hear the audio, pause to pause audio and stop to restart or stop.
+        </p>
+    </div>
     <a href="../../routing.html?ctTrail" class="previous round"
         style="float:left;">&#8249;</a>
     <center>
@@ -76,12 +144,11 @@
     <div style="margin: 15px;">
         <article>
     <p>First established in 1826, the Masjid Jamae mosque is unique in many ways. As one of the oldest mosques in
-        Singapore, it's also one of the only six in the country that regularly conducts sermons in Tamil.
-        <br>Designed by Irish architect George Coleman and completed in 1835, the mosque cleverly fuses architectural
+        Singapore, it's also one of the only six in the country that regularly conducts sermons in Tamil.</p>
+        <p>Designed by Irish architect George Coleman and completed in 1835, the mosque cleverly fuses architectural
         features from the
         East and West together. Indo-Islamic motifs are paired with Tuscan pilasters, with accompanying Chinese green
         porcelain tiles.</p>
-        <br>
         <p>Walking in, visitors will quickly notice that the prayer room is
         interestingly not aligned with the facade, but rather to Mecca. For a more in-depth experience, approach the
         mosque's Dawah Officer who will happily answer any questions about the building and even Islam in general.</p>
@@ -132,5 +199,19 @@
         </a>
     </div>
 </nav>
-
+<script type="text/javascript">
+    window.addEventListener("load", function(){
+        setTimeout(
+            function open(event){
+                document.querySelector(".popup").style.display = "block";
+            },
+            1000 
+        )
+    });
+    
+    
+    document.querySelector("#close").addEventListener("click", function(){
+        document.querySelector(".popup").style.display = "none";
+    });
+        </script>
 </html>
