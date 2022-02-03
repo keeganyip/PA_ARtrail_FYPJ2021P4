@@ -19,8 +19,7 @@
     <link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
     <link href="../../assets/css/fa.css" rel="stylesheet" />
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    <link href="../../assets/css/popup.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="../../Trails/info.js"></script>
     <style>
         a {
@@ -57,28 +56,63 @@
             border-radius: 12px;
             margin: 0;
         }
+        h1{
+            font-family:"Dosis", sans-serif;
+            font-size: calc(1.375rem + 1.5vw);
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+        body{
+            font-family: var(--bs-body-font-family);
+            font-size: var(--bs-body-font-size);
+            font-weight: var(--bs-body-font-weight);
+            line-height: var(--bs-body-line-height);
+        }
+        .w3-container{
+            font-family:"Dosis", sans-serif;
+            font-size: calc(1.375rem + 1.5vw);
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            line-height: 1.2;
+        }
     </style>
 </head>
 
 <body>
-    <div class="popup" style="z-index:1000">
-        <button id="close">&times;</button>
-        <h2>Text to speech</h2>
-        <p style="text-align: center;">
-            Press play to hear the audio, pause to pause audio and stop to restart or stop.
-        </p>
-    </div>
+    <div class="w3-container">
+      
+        <div id="id01" class="w3-modal w3-animate-opacity">
+          <div class="w3-modal-content w3-card-4">
+            <header class="w3-container"> 
+              <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-large w3-display-topright">&times;</span>
+            </header>
+            <div class="w3-container" style="text-align: center;">
+              <h2 style="font-family: Dosis, sans-serif;">Text to speech</h2>
+              <p>
+                  Press<br>
+                  <img src="../../assets/img/play.svg" style="height: 20px; width: 20px;"> to play the audio <br>
+                  <img src="https://rpsthecoder.github.io/js-speech-synthesis/pause.svg" style="height: 20px; width: 20px;"> to pause audio<br>
+                  <img src="https://rpsthecoder.github.io/js-speech-synthesis/stop.svg" style="height: 20px; width: 20px;"> to restart or stop the audio.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     <a href="../../routing.html?ctTrail" class="previous round" style="float:left;">&#8249;</a>
     <center>
         <!-- to center the h1 text -->
         <h1 style="padding-right: 10%;">Tong Heng</h1>
         <img src="../../assets/img/chinatown/tong heng.JPG" style="width:100%;" alt="tong heng" />
     </center>
-    <div style="text-align: center;"> 
+    <div style="margin-left: 25%;"> 
         <div class=buttons>
             <button id=play></button> &nbsp;
             <button id=pause></button> &nbsp;
             <button id=stop></button>
+            <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-white"><img src="../../assets/img/info.png" style="height: 15px; width: 15px; display:inline"></button>
           </div>
         </div>
     <div style="margin: 15px;">
@@ -87,7 +121,6 @@
         determination and resourcefulness – the quintessential spirit of early Singapore.
         Though Fong Chee Heng arrived in 1901 as a coolie (unskilled labourer) from China, he managed to save enough
         funds for a pushcart to peddle coffee around Chinatown during the 1920s.</p>
-        <br>
         <p>By the 1930s, he had his own coffee shop at 33 Smith Street. Today, it’s in a bigger, revamped shop just
         across the road. Have a bite of the legendary egg tart, and you’ll see why the business is still going strong
         after more than 100 years.</p>
@@ -96,7 +129,7 @@
     <div style="text-align: center;">
         <div class="field">
             <a href="../../routing.html?ctTrail">
-                <button id="button_complete" class="button" style="align-content: center;">Complete Landmark<br>&<br>Return to map</button>
+                <button id="button_complete" class="button" style="align-content: center;">Complete Landmark</button>
             </a>
         </div>
     </div>
@@ -138,19 +171,4 @@
         </a>
     </div>
 </nav>
-<script type="text/javascript">
-    window.addEventListener("load", function(){
-        setTimeout(
-            function open(event){
-                document.querySelector(".popup").style.display = "block";
-            },
-            1000 
-        )
-    });
-    
-    
-    document.querySelector("#close").addEventListener("click", function(){
-        document.querySelector(".popup").style.display = "none";
-    });
-        </script>
 </html>
