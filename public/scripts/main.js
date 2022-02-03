@@ -314,7 +314,8 @@ window.onload = () => {
             // then use it to load from remote APIs some places nearby
 
 
-            // Chinatown.forEach((place) => {
+
+            // trail.forEach((place) => {
             //     const latitude = place.location.lat;
             //     const longitude = place.location.lng;
             //     const content = place.content;
@@ -323,9 +324,10 @@ window.onload = () => {
             //     // add place icon
             //     const icon = document.createElement('a-image');
             //     const text = document.createElement('a-text');
+            //     // console.log(icon.components.camera.camera);
             //     // text.setAttribute("name",place.name);
             //     text.setAttribute("scale", "20 20 20");
-            //     icon.setAttribute("scale", '40 40 40');
+            //     icon.setAttribute("scale", '30 30 30');
             //     text.setAttribute("align", "center");
             //     text.setAttribute("baseline", "top");
             //     text.setAttribute("look-at", '[gps-camera]');
@@ -335,19 +337,60 @@ window.onload = () => {
             //     text.setAttribute('value', place.name);
             //     icon.setAttribute('src', './Trails/assets/map-marker.png');
             //     icon.setAttribute('material', 'opacity:0.5;');
+            //     var id = place.legend;
+            //     console.log(id);
+            //     icon.id = id.toLowerCase();
+            //     // var id = place.name.replace(/\W/g, '');
+
+            //     // icon.id = id;
 
 
             //     // for debug purposes, just show in a bigger scale, otherwise I have to personally go on places...
             //     // icon.setAttribute('scale', '120 120 120');
             //     // icon.setAttribute('look-at','[gps-camera]');
-
+            //     // axes helper
             //     text.addEventListener('loaded', () => window.dispatchEvent(new CustomEvent('gps-entity-place-loaded')));
+            //     var queryString = decodeURIComponent(window.location.search);
+            //     queryString = queryString.substring(1);
+            //     if (queryString == id) {
+            //         AFRAME.registerComponent(id, {
+            //             init: function () {
+            //                 setInterval(function () {
+            //                     var cam = $('#cam')[0].object3DMap.camera;
+            //                     if (cam) {
+            //                         console.log(cam);
+            //                         var frustum = new THREE.Frustum();
+            //                         var matrix = new THREE.Matrix4().multiplyMatrices(cam.projectionMatrix,
+            //                             cam.matrixWorldInverse)
+            //                         frustum.setFromProjectionMatrix(matrix);
+            //                         // Your 3d point to check
+            //                         var overlay = $('#overlay');
 
+            //                         var pos = document.getElementById(id.toLowerCase()).getAttribute("position");
+            //                         var distance = getDistance(origin,place.location);
+            //                         console.log(distance,place.location,origin,"DISTNACE");
+            //                         if (frustum.containsPoint(pos)) {
+            //                             // Do something with the position...
+            //                             console.log("IN VIEW");
+            //                             overlay.css('display',"none");
+            //                             overlay.css('z-index','1');
+            //                         } else {
+            //                             if(distance && distance < 30){
+            //                                 overlay.css('display','block');
+            //                                 overlay.css('z-index','9999');
+            //                             }
+            //                             console.log("not in view")
+
+            //                             console.log(pos);
+            //                         }
+            //                     }
+            //                 }, 1000)
+            //             }
+            //         })
+            //     }
 
             //     // distanceMsg = setTimeout(function(){icon.getAttribute('distance');},5000);
             //     // console.log(distanceMsg);
-
-
 
             //     const clickListener = function (ev) {
             //         ev.stopPropagation();
@@ -382,7 +425,9 @@ window.onload = () => {
             //             label.appendChild(image);
 
             //             label.appendChild(butt);
-
+            //             var indexoflandmark = trail.indexOf(place);
+            //             console.log("INDEX", indexoflandmark);
+            //             butt.addEventListener('click', markDone('Chinatown', indexoflandmark));
             //             document.body.appendChild(container);
             //             image.addEventListener('click', textSPeech);
             //             setTimeout(() => {
@@ -392,134 +437,140 @@ window.onload = () => {
             //     };
 
             //     icon.addEventListener('click', clickListener);
+            //     scene.setAttribute(id, '');
             //     scene.appendChild(icon);
             //     scene.appendChild(text);
             // });
+
+            // 1 marker
+            var queryString = decodeURIComponent(window.location.search);
+
             trail.forEach((place) => {
-                const latitude = place.location.lat;
-                const longitude = place.location.lng;
-                const content = place.content;
-                const src = place.src;
+                if (place.legend == queryString) {
+                    const latitude = place.location.lat;
+                    const longitude = place.location.lng;
+                    const content = place.content;
+                    const src = place.src;
 
-                // add place icon
-                const icon = document.createElement('a-image');
-                const text = document.createElement('a-text');
-                // console.log(icon.components.camera.camera);
-                // text.setAttribute("name",place.name);
-                text.setAttribute("scale", "20 20 20");
-                icon.setAttribute("scale", '30 30 30');
-                text.setAttribute("align", "center");
-                text.setAttribute("baseline", "top");
-                text.setAttribute("look-at", '[gps-camera]');
-                icon.setAttribute("look-at", "[gps-camera]");
-                text.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude}`);
-                icon.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude}`);
-                text.setAttribute('value', place.name);
-                icon.setAttribute('src', './Trails/assets/map-marker.png');
-                icon.setAttribute('material', 'opacity:0.5;');
-                var id = place.legend;
-                console.log(id);
-                icon.id = id.toLowerCase();
-                // var id = place.name.replace(/\W/g, '');
-               
-                // icon.id = id;
+                    // add place icon
+                    const icon = document.createElement('a-image');
+                    const text = document.createElement('a-text');
+                    // console.log(icon.components.camera.camera);
+                    // text.setAttribute("name",place.name);
+                    text.setAttribute("scale", "20 20 20");
+                    icon.setAttribute("scale", '30 30 30');
+                    text.setAttribute("align", "center");
+                    text.setAttribute("baseline", "top");
+                    text.setAttribute("look-at", '[gps-camera]');
+                    icon.setAttribute("look-at", "[gps-camera]");
+                    text.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude}`);
+                    icon.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude}`);
+                    text.setAttribute('value', place.name);
+                    icon.setAttribute('src', './Trails/assets/map-marker.png');
+                    icon.setAttribute('material', 'opacity:0.5;');
+                    var id = place.legend;
+                    console.log(id);
+                    icon.id = id.toLowerCase();
+                    // var id = place.name.replace(/\W/g, '');
+
+                    // icon.id = id;
 
 
-                // for debug purposes, just show in a bigger scale, otherwise I have to personally go on places...
-                // icon.setAttribute('scale', '120 120 120');
-                // icon.setAttribute('look-at','[gps-camera]');
-                // axes helper
-                text.addEventListener('loaded', () => window.dispatchEvent(new CustomEvent('gps-entity-place-loaded')));
-                var queryString = decodeURIComponent(window.location.search);
-                queryString = queryString.substring(1);
-                if (queryString == id) {
-                    AFRAME.registerComponent(id, {
-                        init: function () {
-                            setInterval(function () {
-                                var cam = $('#cam')[0].object3DMap.camera;
-                                if (cam) {
-                                    console.log(cam);
-                                    var frustum = new THREE.Frustum();
-                                    var matrix = new THREE.Matrix4().multiplyMatrices(cam.projectionMatrix,
-                                        cam.matrixWorldInverse)
-                                    frustum.setFromProjectionMatrix(matrix);
-                                    // Your 3d point to check
-                                    var overlay = $('#overlay');
-                                    
-                                    var pos = document.getElementById(id.toLowerCase()).getAttribute("position");
-                                    var distance = getDistance(origin,place.location);
-                                    console.log(distance,place.location,origin,"DISTNACE");
-                                    if (frustum.containsPoint(pos)) {
-                                        // Do something with the position...
-                                        console.log("IN VIEW");
-                                        overlay.css('display',"none");
-                                        overlay.css('z-index','1');
-                                    } else {
-                                        if(distance && distance < 30){
-                                            overlay.css('display','block');
-                                            overlay.css('z-index','9999');
+                    // for debug purposes, just show in a bigger scale, otherwise I have to personally go on places...
+                    // icon.setAttribute('scale', '120 120 120');
+                    // icon.setAttribute('look-at','[gps-camera]');
+                    // axes helper
+                    text.addEventListener('loaded', () => window.dispatchEvent(new CustomEvent('gps-entity-place-loaded')));
+                    queryString = queryString.substring(1);
+                    if (queryString == id) {
+                        AFRAME.registerComponent(id, {
+                            init: function () {
+                                setInterval(function () {
+                                    var cam = $('#cam')[0].object3DMap.camera;
+                                    if (cam) {
+                                        console.log(cam);
+                                        var frustum = new THREE.Frustum();
+                                        var matrix = new THREE.Matrix4().multiplyMatrices(cam.projectionMatrix,
+                                            cam.matrixWorldInverse)
+                                        frustum.setFromProjectionMatrix(matrix);
+                                        // Your 3d point to check
+                                        var overlay = $('#overlay');
+
+                                        var pos = document.getElementById(id.toLowerCase()).getAttribute("position");
+                                        var distance = getDistance(origin, place.location);
+                                        console.log(distance, place.location, origin, "DISTNACE");
+                                        if (frustum.containsPoint(pos)) {
+                                            // Do something with the position...
+                                            console.log("IN VIEW");
+                                            overlay.css('display', "none");
+                                            overlay.css('z-index', '1');
+                                        } else {
+                                            if (distance && distance < 30) {
+                                                overlay.css('display', 'block');
+                                                overlay.css('z-index', '9999');
+                                            }
+                                            console.log("not in view")
+
+                                            console.log(pos);
                                         }
-                                        console.log("not in view")
-
-                                        console.log(pos);
                                     }
-                                }
-                            }, 1000)
-                        }
-                    })
-                }
-
-                // distanceMsg = setTimeout(function(){icon.getAttribute('distance');},5000);
-                // console.log(distanceMsg);
-
-                const clickListener = function (ev) {
-                    ev.stopPropagation();
-                    ev.preventDefault();
-
-                    const name = ev.target.getAttribute('name');
-
-                    const el = ev.detail.intersection && ev.detail.intersection.object.el;
-
-                    if (el && el === ev.target) {
-                        const label = document.createElement('span');
-                        const container = document.createElement('div');
-                        const para = document.createElement('p');
-                        const butt = document.createElement('a');
-                        const image = document.createElement('img');
-                        image.setAttribute("style", "width:0.8cm;height0.8cm;opacity:0.95;margin-right:10px;");
-                        image.setAttribute("src", "./Trails/assets/125-1258034_free-download-and-vector-speaker-icon-animated-gif-removebg-preview.png");
-                        image.onclick = function () {
-                            let utterance = new SpeechSynthesisUtterance(extraContent);
-                            speechSynthesis.speak(utterance);
-                        }
-                        butt.setAttribute('class', 'button');
-                        butt.setAttribute('href', src);
-                        butt.setAttribute('style', 'border-radius:4px;background-color:#555555;text-color:#808080');
-                        container.setAttribute('id', 'place-label');
-                        label.innerText = place.name;
-                        para.innerText = place.content;
-                        extraContent = place.extraContent;
-                        butt.innerText = "More Info";
-                        container.appendChild(label);
-                        label.appendChild(para);
-                        label.appendChild(image);
-
-                        label.appendChild(butt);
-                        var indexoflandmark = trail.indexOf(place);
-                        console.log("INDEX", indexoflandmark);
-                        butt.addEventListener('click', markDone('Chinatown', indexoflandmark));
-                        document.body.appendChild(container);
-                        image.addEventListener('click', textSPeech);
-                        setTimeout(() => {
-                            container.parentElement.removeChild(container);
-                        }, 3500);
+                                }, 1000)
+                            }
+                        })
                     }
-                };
 
-                icon.addEventListener('click', clickListener);
-                scene.setAttribute(id, '');
-                scene.appendChild(icon);
-                scene.appendChild(text);
+                    // distanceMsg = setTimeout(function(){icon.getAttribute('distance');},5000);
+                    // console.log(distanceMsg);
+
+                    const clickListener = function (ev) {
+                        ev.stopPropagation();
+                        ev.preventDefault();
+
+                        const name = ev.target.getAttribute('name');
+
+                        const el = ev.detail.intersection && ev.detail.intersection.object.el;
+
+                        if (el && el === ev.target) {
+                            const label = document.createElement('span');
+                            const container = document.createElement('div');
+                            const para = document.createElement('p');
+                            const butt = document.createElement('a');
+                            const image = document.createElement('img');
+                            image.setAttribute("style", "width:0.8cm;height0.8cm;opacity:0.95;margin-right:10px;");
+                            image.setAttribute("src", "./Trails/assets/125-1258034_free-download-and-vector-speaker-icon-animated-gif-removebg-preview.png");
+                            image.onclick = function () {
+                                let utterance = new SpeechSynthesisUtterance(extraContent);
+                                speechSynthesis.speak(utterance);
+                            }
+                            butt.setAttribute('class', 'button');
+                            butt.setAttribute('href', src);
+                            butt.setAttribute('style', 'border-radius:4px;background-color:#555555;text-color:#808080');
+                            container.setAttribute('id', 'place-label');
+                            label.innerText = place.name;
+                            para.innerText = place.content;
+                            extraContent = place.extraContent;
+                            butt.innerText = "More Info";
+                            container.appendChild(label);
+                            label.appendChild(para);
+                            label.appendChild(image);
+
+                            label.appendChild(butt);
+                            var indexoflandmark = trail.indexOf(place);
+                            console.log("INDEX", indexoflandmark);
+                            butt.addEventListener('click', markDone('Chinatown', indexoflandmark));
+                            document.body.appendChild(container);
+                            image.addEventListener('click', textSPeech);
+                            setTimeout(() => {
+                                container.parentElement.removeChild(container);
+                            }, 3500);
+                        }
+                    };
+
+                    icon.addEventListener('click', clickListener);
+                    scene.setAttribute(id, '');
+                    scene.appendChild(icon);
+                    scene.appendChild(text);
+                }
             });
             console.log('DONE CREATING AR MARKERS')
 
@@ -546,7 +597,7 @@ function markDone(trail, landmarkindex) {
     currentProgress = JSON.stringify(currentProgress)
     localStorage.setItem(trail + ' Progress', currentProgress);
     var bullets = document.querySelectorAll('#ProgressBar')
-    console.log( bullets[landmarkindex].getElementsByClassName('bullets'));
+    console.log(bullets[landmarkindex].getElementsByClassName('bullets'));
     bullets[landmarkindex].getElementsByClassName('bullets')[0].classList.add('completed');
 }
 
