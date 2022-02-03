@@ -254,6 +254,7 @@ function click(open,leg) {
 
 function displayRoute(latlng, destination, travelMode, transitOptions = {}) {
     removeMarkers();
+    directionRenderer.setOptions({suppressMarkers:true});
     directionsService.route({
         origin: latlng,
         destination: destination,
@@ -292,7 +293,16 @@ function displayRoute(latlng, destination, travelMode, transitOptions = {}) {
         //         document.getElementById("instructions").innerHTML = instructions;
         //     })
         // })
+        var marker = {
+            labelOrigin: new google.maps.Point(11, -12),
+            url: "https://i.ibb.co/MGJr4Mq/image-1.png",
+            size: new google.maps.Size(34, 65),
+            origin: new google.maps.Point(0, 0),
+            anchor: new google.maps.Point(11, 40),
+        }
+        var trail = localStorage.getItem('Trail');
         gMarker = makeStartMarker(leg.start_location, leg.end_location)
+        endMarker = makeMarker(leg.end_location,marker,trail);
         gMarkers.push(gMarker)
     })
     // google.maps.event.trigger(map, 'resize');
