@@ -4,6 +4,7 @@ var notAtTrail = true
 var centered = false;
 var completeButtonFlag = false;
 var getRouteButtonFlag = false;
+var isopen = false;
 var gMarkers = []
 var markers = {};
 var NYPStart = {
@@ -154,21 +155,28 @@ function checkDistanceFromTrail(origin, traillocation) {
         $('#travelmode').change(function () {
             travelMode = $('#travelmode').val();
             if (travelMode) {
+                localStorage.setItem('travelMode', travelMode);
                 getEstDuration(origin, traillocation, travelMode);
                 if (travelMode == 'TRANSIT') {
                     $('#transitOptions').css('display', 'inline-block');
 
                     $('input[type="radio"]').click(function () {
-                        var transitOptions = {"modes": [document.querySelector('input[type="radio"]:checked').value]};
+                        var transitOptions = {
+                            "modes": [document.querySelector('input[type="radio"]:checked').value]
+                        };
                         getEstDuration(origin, traillocation, travelMode, transitOptions)
                     })
 
                     $('#navigate').on('click', function () {
-                        var transitOptions = {
-                            "modes": [document.querySelector('input[type="radio"]:checked').value]
-                        };
+                        if (document.querySelector('input[type="radio"]:checked')) {
+                            var transitOptions = {
+                                "modes": [document.querySelector('input[type="radio"]:checked').value]
+                            };
+                            localStorage.setItem('transitOptions', JSON.stringify(transitOptions));
+                            // console.log(transitOptions);
+                        }
                         myModal.hide();
-                        console.log(transitOptions);
+                        localStorage.setItem('status', 'Navigating');
                         displayRoute(origin, traillocation, travelMode, transitOptions);
                     })
                 } else {
@@ -210,28 +218,86 @@ async function getEstDuration(latlng, destination, travelMode, transitOptions = 
     })
 }
 
+function click(open,leg) {
+    if (open == false) {
+        $('#instructions').css('overflow', 'scroll');
+        $('#instructions').css('height', '15%');
+        var table = document.createElement('table')
+        var count = 0;
+        leg['steps'].forEach(step => {
+            var row = table.insertRow();
+            var cell = row.insertCell()
+            
+            var text = step.instructions + " " + step.distance.text + " " + step.duration.text
+            if(count==0){
+                text = "<div style='margin:auto'>" +  step.instructions + " " + step.distance.text + " " + step.duration.text +'</div>'
+                cell.style="width:100%;text-align: center;justify-content: center;align-items: center;display:inline-flex";
+                var uparrow = "<div><i class='fas fa-angle-double-down'></i><div>"
+                text +=uparrow;
+                count++;
+            }
+            cell.innerHTML = text;
+        });
+        var height = $('#instructions').height();
+        console.log(height, 'h')
+        table.style = 'height:' + height + 'px';
+        $('#instructions').html(table);
+        isopen = true;
+    }
+    else{
+        $('#instructions').css('height', '2.5%');
+        document.getElementById("instructions").innerHTML = instructions;
+        isopen= false;
+    }
+}
+
+
 function displayRoute(latlng, destination, travelMode, transitOptions = {}) {
-    removeMarkers()
+    removeMarkers();
     directionsService.route({
         origin: latlng,
         destination: destination,
         travelMode: google.maps.TravelMode[travelMode],
         transitOptions: transitOptions,
     }).then((response) => {
+        directionRenderer.setMap(window.map);
         directionRenderer.setDirections(response);
         const route = response.routes[0];
         var leg = route.legs[0]
-        var duration = leg.duration;
-        console.log(duration, "DURATION");
-        instructions = "<h1>" + leg["steps"][0].instructions + " "+ leg["steps"][0].distance.text + "  "+leg["steps"][0].duration.text + "</h1>"
-        $("#instructions").css('display','block')
+        console.log(leg, "LEG");
+        instructions = "<h1>" + leg["steps"][0].instructions + " " + leg["steps"][0].distance.text + "  " + leg["steps"][0].duration.text + "</h1>"
+        var uparrow = "<div><i class='fas fa-angle-double-up'></i><div>"
+        instructions += uparrow;
+        $("#instructions").css('display', 'inline-flex')
         document.getElementById("instructions").innerHTML = instructions
+        $('#instructions').on('click', function () {
+            click(isopen,leg);
+        });
+        // $('#instructions').on('click', function () {
+        //     $('#instructions').css('overflow', 'scroll');
+        //     $('#instructions').css('height', '15%');
+        //     var table = document.createElement('table')
+        //     leg['steps'].forEach(step => {
+        //         var row = table.insertRow();
+        //         var cell = row.insertCell()
+        //         var text = step.instructions + " " + step.distance.text + " " + step.duration.text
+        //         cell.innerHTML = text;
+        //     });
+        //     var height = $('#instructions').height();
+        //     console.log(height, 'h')
+        //     table.style = 'height:' + height + 'px';
+        //     $('#instructions').html(table);
+        //     $('#instructions').on('click', function () {
+        //         $('#instructions').css('height', '2.5%');
+        //         document.getElementById("instructions").innerHTML = instructions;
+        //     })
+        // })
         gMarker = makeStartMarker(leg.start_location, leg.end_location)
         gMarkers.push(gMarker)
     })
-    google.maps.event.trigger(map, 'resize');
+    // google.maps.event.trigger(map, 'resize');
     map.setCenter(origin)
-    map.setZoom(20);
+    // map.setZoom(20);
 }
 
 function removeMarkers() {
@@ -302,6 +368,7 @@ function startingTrail(position) {
     }
     // console.log(trails[trail])
     checkDistanceFromTrail(origin, trails[trail]['location']);
+    localStorage.setItem('trailLocation', JSON.stringify(trails[trail]['location']));
     console.log("DISTANCE CHECK")
     window.map = new google.maps.Map(document.getElementById("map"), { //init Map
         zoom: 19,
@@ -332,7 +399,12 @@ function startingTrail(position) {
         ],
     });
     const map = window.map;
-
+    map.addListener('drag', function () {
+        markers['user'].setAnimation(null);
+    })
+    map.addListener('click', function () {
+        markers['user'].setAnimation(null);
+    })
     var keys = Object.keys(trails);
     console.log(trails[trail], "TRAILS")
     var landmarks = trails[trail]['landmarks']
@@ -688,6 +760,7 @@ function makeuserlocation(position, icon, title) {
             icon: icon,
             title: title,
             id: id,
+            animation: google.maps.Animation.BOUNCE,
         });
         markers[id] = marker;
     } else {
@@ -705,10 +778,15 @@ function makeuserlocation(position, icon, title) {
             icon: icon,
             title: title,
             id: 'user',
+            animation: google.maps.Animation.BOUNCE,
         });
         markers[id] = marker;
     }
     return marker
+}
+
+function stopMarker(marker) {
+    marker.setAnimation(null);
 }
 
 //when position changes
@@ -725,42 +803,23 @@ function success(position) {
     directionRenderer = new google.maps.DirectionsRenderer({
         preserveViewport: true
     });
+    var status = localStorage.getItem('status');
+    var location = JSON.parse(localStorage.getItem('trailLocation'));
+    var travelMode = localStorage.getItem('travelMode');
+    if (localStorage.getItem('transitOptions') && localStorage.getItem('transitOptions') != undefined) {
+        var transitOptions = JSON.parse(localStorage.getItem('transitOptions'));
+    }
+    console.log(location, "LOCO")
+    if (status == 'Navigating') {
+        if (location && travelMode && transitOptions) {
+            displayRoute(origin, location, travelMode, transitOptions);
 
+        } else if (location && travelMode) {
+            displayRoute(origin, location, travelMode);
+
+        }
+    }
     directionRenderer.setMap(map);
-    // // Set complete button     
-    // if (!getRouteButtonFlag) {
-    //     getRouteButtonFlag = true
-    //     document.getElementById("submit").origin = origin
-    //     document.getElementById("submit").addEventListener("click", checkDistance)
-    // }
-
-    // distance = getDistance(origin,trail.location)
-
-    // // If not at trail yet
-    // if (distance>1600){
-    //     flag = false
-    //     if (flag){
-    //         directionRenderer.set('directions', null)
-    //         displayRoute(origin,Chinatown[0].location,travelMode)
-    //     }
-    //     document.getElementById("submit").removeEventListener('click',showFarDialogOnClick,false)
-    //     document.getElementById("submit").addEventListener("click", showDialog)     
-    //     }
-
-    // // If at the trail already
-    // else{
-    //     flag = false
-    //     if (flag){
-    //         showFarDialog()
-    //     } 
-
-    //     if (!getRouteButtonFlag){
-    //         // Set get route button 
-    //         getRouteButtonFlag = true
-    //         document.getElementById("submit").removeEventListener('click',showDialog,false)
-    //         document.getElementById("submit").addEventListener("click", showFarDialogOnClick); 
-    //     }
-    // }
 }
 
 
