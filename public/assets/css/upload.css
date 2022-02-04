@@ -1,0 +1,13 @@
+.ipBox {
+    max-width: 80vw;
+    max-height: 40vh;
+}
+
+.ipBox img {
+    width: 100%;
+    display: none;
+    margin-bottom: 30px;
+}
+input {
+    display:none;
+  }
