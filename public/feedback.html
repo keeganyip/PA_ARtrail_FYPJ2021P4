@@ -20,9 +20,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <style>
-    /* *{
-     font-family: 'Lato', san-serif;
-    } */
+    * {
+      font-family:"Dosis", sans-serif;
+      font-weight: 500;
+    } 
     .button {
       background-color: #00A6FF;
       border: none;
@@ -34,7 +35,7 @@
       font-size: 16px;
       margin: 4px 2px;
       cursor: pointer;
-      width: 40%;
+      width: 30%;
     }
     .buttonsubmit {
       border-radius: 12px;
@@ -45,25 +46,25 @@
       margin-bottom:16px;
     }
     .buttonmodal {
-      background-color: #00A6FF;
+      background-color: #03549a;
       border: none;
       color: white;
-      padding: 15px;
+      padding: 10px;
       text-align: center;
       text-decoration: none;
       display: inline-block;
       font-size: 16px;
       margin: 2px;
       cursor: pointer;
-      width: 40%;
+      width: 25%;
       border-radius: 12px;
-      margin-left: 30%;
+      margin-left: 38%;
+      align-items: center;
     }
   </style>
 </head>
 
 <body>
-
   <div class="demo-wrap" style="height: 150%;">
     <img class="demo-bg" src="assets/img/background.jpg" alt="">
     <div class="demo-content">
@@ -80,7 +81,7 @@
             <input style="width: 300px;" type="text" id="fname" name="fname" value="" placeholder="Your Username"><br>
             <br>
             Describe your feedback: <br>
-            <textarea rows="4" cols="40" name="comment" form="usrform">
+            <textarea rows="4" cols="40" name="comment" form="usrform" placeholder="Describe here...">
             </textarea><br>
           </form>
           <p>Rate your experience:</p>
@@ -125,12 +126,12 @@
     <div class="modal-dialog">
     
       <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
+      <div class="modal-content" style="border-radius:8px">
+        <div class="modal-header" style="border-radius:8px">
           <img src="assets/img/hero-img.png">
         </div>
         <div class="modal-body">
-          <p style="text-align: center;">Thank You for your feedback!</p>
+          <p style="text-align: center; font-size: 20px;">Thank You for your feedback!</p>
           <a href="congratsPageCT.html">
             <button type="button" class="buttonmodal">Close</button>
           </a>
@@ -139,7 +140,7 @@
     </div>
   </div>
 </div>
-      <nav class="navbar-fixed-bottom navbar-default" style="padding-top: 15%;">
+      <nav class="navbar-fixed-bottom navbar-default" >
         <div class="tab-nav-container container-fluid text-center">
           <a href="../index.html">
             <div>
