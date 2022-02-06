@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-    <title>Upload Image</title>
+    <title>Aprrove Image</title>
     <meta content="" name="description" />
     <meta content="" name="keywords" />
 
@@ -43,13 +43,13 @@
     <div class="bg-wrap">
         <img class="bg-img" src="assets/img/background.jpg" alt="">
         <section class="vh-100 content" style="overflow-x: scroll;">
-          
+
             <div class="welcome-text text-center" style="display: inline-flex;
             align-items: center; margin:auto">
-                 <div class="px-3" style="position: absolute; left: 5px;">
+                <div class="px-3" style="position: absolute; left: 5px;">
                     <a href="CommunityJournal.html"><i class="fas fa-chevron-left"></i></a>
                 </div>
-                Community Journal - Upload Request
+                Community Journal - Image Approval
             </div>
 
 
@@ -58,7 +58,7 @@
                     <div class="container ipBox">
                         <img id="imgpreview">
                     </div>
-                    <div id="textboxes" class="mb-3" style="display: none;">
+                    <div id="textboxes" class="mb-3">
                         <div class="px-5">
                             <label for="title" class="form-label">Title:</label>
                             <input type="text" class="form-control" id="title" placeholder="Title">
@@ -68,12 +68,11 @@
                             <input type="text" class="form-control" id="caption" placeholder="Caption" rows="2">
                         </div>
                     </div>
-                    <label class="btn btn-primary" for="img">Choose Image</label>
-                    <input type="file" id="img" name="img" accept="image/*" onchange="showPreview(event);">
-                    <button id="btnUpload" style="display: none;" type="button" class="btn btn-success">Upload</button>
+                    <button id="btnApprove" type="button" class="btn btn-success">Approve Post</button>
+                    <button id="btnDisapprove" type="button" class="btn btn-danger">Disapprove Post</button>
                 </div>
             </div>
-            <nav class="navbar-fixed-bottom navbar-default" style="padding-top: 10%;">
+            <!-- <nav class="navbar-fixed-bottom navbar-default" style="padding-top: 10%;">
                 <div class="tab-nav-container container-fluid text-center">
                     <a href="../index.html">
                         <div>
@@ -108,8 +107,24 @@
                         </div>
                     </a>
                 </div>
-            </nav>
-
+            </nav> -->
+            <div id="ResultModal" class="modal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 id="mTitle" class="modal-title"></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p id="mBody"></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="close" class="btn btn-secondary" data-bs-dismiss="modal"
+                            onclick="location.href='CommunityJournal.html'">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
     </div>
     </div>
 
@@ -135,18 +150,34 @@
     <script src="assets/js/main.js"></script>
 
     <script>
-        function showPreview(event) {
-            if (event.target.files.length > 0) {
-                var src = URL.createObjectURL(event.target.files[0]);
-                var preview = document.getElementById("imgpreview");
-                preview.src = src;
-                preview.style.display = "block";
-                var btnUpload = document.getElementById('btnUpload');
-                btnUpload.style.display = "inline-block";
-                var textboxes = document.getElementById('textboxes');
-                textboxes.style.display = "block";
-            }
+        var disapprovebtn = document.getElementById('btnDisapprove');
+        var approvebtn = document.getElementById('btnApprove');
+        var myModal = new bootstrap.Modal(document.getElementById('ResultModal'))
+        var modaltitle = document.getElementById('mTitle');
+        var modalBody = document.getElementById('mBody');
+        var img = "";
+
+        function retrieveImg() {
+
         }
+
+        function approveImg(img) {
+            modaltitle.innerHTML = 'Approved Image Post';
+            modalBody.innerHTML = 'You have approved this post successfully';
+            myModal.show()
+        }
+
+        function disapproveImg(img) {
+            modaltitle.innerHTML = 'Disapproved Image Post';
+            modalBody.innerHTML = 'You have disapproved this post successfully';
+            myModal.show();
+        }
+        disapprovebtn.onclick = function () {
+            disapproveImg(img)
+        };
+        approvebtn.onclick = function () {
+            approveImg(img)
+        };
     </script>
 </body>
 
