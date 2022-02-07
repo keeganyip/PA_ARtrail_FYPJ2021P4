@@ -43,10 +43,10 @@
     <div class="bg-wrap">
         <img class="bg-img" src="assets/img/background.jpg" alt="">
         <section class="vh-100 content" style="overflow-x: scroll;">
-          
+
             <div class="welcome-text text-center" style="display: inline-flex;
             align-items: center; margin:auto">
-                 <div class="px-3" style="position: absolute; left: 5px;">
+                <div class="px-3" style="position: absolute; left: 5px;">
                     <a href="CommunityJournal.html"><i class="fas fa-chevron-left"></i></a>
                 </div>
                 Community Journal - Upload Request
@@ -147,6 +147,81 @@
                 textboxes.style.display = "block";
             }
         }
+    </script>
+
+    <script type="module">
+
+
+        import {
+            initializeApp
+        } from 'https://www.gstatic.com/firebasejs/9.6.3/firebase-app.js'
+        import {
+            getStorage, ref, uploadBytes, getDownloadURL
+        } from 'https://www.gstatic.com/firebasejs/9.6.3/firebase-storage.js'
+
+        import { 
+            getDatabase, ref as dbRef ,set 
+        } from 'https://www.gstatic.com/firebasejs/9.6.3/firebase-database.js'
+
+        // Set the configuration for your app
+        // TODO: Replace with your app's config object
+        const firebaseConfig = {
+            apiKey: "AIzaSyAiWhsurmpe0XHv5fT6woKqY6hURnd4Kno",
+            authDomain: "fypj-f74df.firebaseapp.com",
+            databaseURL: "https://fypj-f74df-default-rtdb.asia-southeast1.firebasedatabase.app",
+            storageBucket:  "fypj-f74df.appspot.com",
+        };
+        const firebaseApp = initializeApp(firebaseConfig);
+
+        var timestamp = "";
+        var file;
+        var filename = ""
+        const imgSelector = document.getElementById('img');
+        imgSelector.addEventListener('change', (event) => {
+            const imgList = event.target.files;
+            console.log(imgList[0]);
+            file = imgList[0]
+            const dateobj = new Date();
+            const date = dateobj.getDate().toString();
+            const month = dateobj.getMonth().toString();
+            const year = dateobj.getFullYear().toString();
+            const hours = dateobj.getHours().toString();
+            const minutes = dateobj.getMinutes().toString();
+            const seconds = dateobj.getSeconds().toString();
+            timestamp = date + month + year + hours + minutes + seconds;
+            console.log(timestamp);
+            filename = timestamp + file.name;
+        });
+        // Get a reference to the storage service, which is used to create references in your storage bucket
+        const storage = getStorage(firebaseApp);
+        const uploadbtn = document.getElementById('btnUpload');
+        function writetoDB(filename,title,caption,imageUrl) {
+            const db = getDatabase();
+            console.log(filename)
+            set(dbRef(db,'UploadRequests/' + timestamp), {
+                title: title,
+                caption: caption,
+                image: imageUrl,
+                approved:false,
+            })
+        }
+        uploadbtn.addEventListener('click',(event)=>{
+            const storageRef = ref(storage,filename);
+
+            uploadBytes(storageRef, file).then((snapshot)=> {
+                console.log(snapshot);
+                
+                console.log('Uploaded Successfully');
+                //TODO:Upload ALERT
+                getDownloadURL(storageRef).then((url) => {
+                    console.log(url,"URL")
+                    writetoDB(filename,"","",url);
+                });
+            })
+           
+        });
+       
+
     </script>
 </body>
 

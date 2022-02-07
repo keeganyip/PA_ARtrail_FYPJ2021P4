@@ -55,7 +55,7 @@
                 <hr style="width:80%; margin: auto; height:2px">
                 <div id="content" class="mb-md-5 mt-md-4" style="max-width: 100%;">
                     <div id="journal" style="overflow-y: scroll; height: 75vh;">
-                        <div class="gallery mt-3">
+                        <div id="gallery" class="gallery mt-3">
                             <img src="assets/img/gallery/gallery-1.jpg" style="width:100%">
                             <img src="assets/img/gallery/gallery-2.jpg" style="width:100%">
                             <img src="assets/img/gallery/gallery-3.jpg" style="width:100%">
@@ -163,6 +163,51 @@
 
     <!-- <script src="assets/js/lightslider.js"></script> -->
     <!-- <script type="module" src="../scripts/profile.js"></script> -->
+    <script type="module">
+        import {
+            initializeApp
+        } from 'https://www.gstatic.com/firebasejs/9.6.3/firebase-app.js'
+        import { 
+            getDatabase, ref, child, get
+        } from 'https://www.gstatic.com/firebasejs/9.6.3/firebase-database.js'
+
+
+        // Set the configuration for your app
+        // TODO: Replace with your app's config object
+        const firebaseConfig = {
+            apiKey: "AIzaSyAiWhsurmpe0XHv5fT6woKqY6hURnd4Kno",
+            authDomain: "fypj-f74df.firebaseapp.com",
+            databaseURL: "https://fypj-f74df-default-rtdb.asia-southeast1.firebasedatabase.app",
+            storageBucket: "fypj-f74df.appspot.com",
+        };
+        const firebaseApp = initializeApp(firebaseConfig);
+
+
+        const dbRef = ref(getDatabase());
+        function createimgHtml(src) {
+            var gallery = document.getElementById('gallery');
+            const newImg = document.createElement('img');
+            newImg.src = src;
+            newImg.style = "width:100%;height:100%";
+            gallery.appendChild(newImg);
+        }
+        get(child(dbRef, 'UploadRequests/')).then((snapshot)=> {
+            if(snapshot.exists()){
+                var allimages = snapshot.val()
+               for(var image in allimages){
+                   console.log(allimages[image]);
+                   if(allimages[image].approved){
+                       console.log(allimages[image].image)
+                       createimgHtml(allimages[image].image);
+                   }
+               }
+            }
+        })
+    
+        
+       
+    </script>
+
     <script>
         var images = document.querySelectorAll('.gallery img');
         images.forEach(image => {
