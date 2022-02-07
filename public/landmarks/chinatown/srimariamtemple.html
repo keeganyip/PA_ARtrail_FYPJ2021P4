@@ -3,6 +3,8 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sri Mariamman Temple</title>
+    <link rel="stylesheet" href="../../assets/css/speech.css"/>
+    <script src="../../assets/js/speech.js"></script>
     <link rel="stylesheet" href="../../assets/css/style.css" />
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
     <link href="../../assets/img/favicon.png" rel="icon" />
@@ -16,7 +18,7 @@
     <link href="../../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
     <link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
     <link href="../../assets/css/fa.css" rel="stylesheet" />
-    <script src="../../scripts/code.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="../../Trails/info.js"></script>
     <style>
         a {
@@ -53,28 +55,98 @@
             border-radius: 12px;
             margin: 0;
         }
+        h1{
+            font-family:"Dosis", sans-serif;
+            font-size: calc(1.375rem + 1.5vw);
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+        body{
+            font-family: var(--bs-body-font-family);
+            font-size: var(--bs-body-font-size);
+            font-weight: var(--bs-body-font-weight);
+            line-height: var(--bs-body-line-height);
+        }
+        .w3-container{
+            font-family:"Dosis", sans-serif;
+            font-size: calc(1.375rem + 1.5vw);
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+        .times {
+            color: #ffffff;
+            background: #03549a;
+            border-radius: 90%;
+        }
+        element.style {
+            border-radius: 90%;
+        }
+        .w3-large {
+            font-size: 18px!important;
+        }
+        .w3-display-topright {
+            position: absolute;
+            right: 5;
+            top: 6;
+        }
     </style>
 </head>
 
 <body>
-    <a href="../../overview.html" class="previous round" style="float:left;">&#8249;</a>
+    <div class="w3-container">
+      
+        <div id="id01" class="w3-modal w3-animate-opacity">
+          <div class="w3-modal-content w3-card-4" style="border-radius:8px">
+            <header class="w3-container"> 
+                <div class="times">
+              <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-large w3-display-topright" style="border-radius:90%">&times;</span>
+            </div>
+            </header>
+            <div class="w3-container" style="text-align: center;">
+              <h2 style="font-family: Dosis, sans-serif;">Text to speech</h2>
+              <p>
+                  Press<br>
+                  <img src="../../assets/img/play.svg" style="height: 20px; width: 20px;"> to play the audio <br>
+                  <img src="https://rpsthecoder.github.io/js-speech-synthesis/pause.svg" style="height: 20px; width: 20px;"> to pause audio<br>
+                  <img src="https://rpsthecoder.github.io/js-speech-synthesis/stop.svg" style="height: 20px; width: 20px;"> to restart or stop the audio.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <a href="../../routing.html?ctTrail" class="previous round" style="float:left;">&#8249;</a>
     <center>
         <h1 style="padding-right: 10%;">Sri Mariamman Temple</h1>
         <img src="../../assets/img/chinatown/Sri mariam temple.JPG" style="width:100%" alt="Sri Mariamman temple" />
     </center>
+    <div style="margin-left: 27%;"> 
+        <div class=buttons>
+            <button id=play></button> &nbsp;
+            <button id=pause></button> &nbsp;
+            <button id=stop></button>
+            <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-white"><img src="../../assets/img/info.png" style="height: 20px; width: 20px; display:inline"></button>
+          </div>
+        </div>
+    <div style="margin: 15px;">
+    <article>
     <p>Founded in 1827 by Narayana Pillay (the first Indian to set foot in Singapore), this temple was dedicated to
         Mariamman,
         the goddess known for curing illnesses and diseases. It’s the largest and oldest Hindu temple in Singapore, and
         it has played an important role in the Hindu community. In the 1800s, it was a place of refuge for new
-        immigrants to stay until they found work and accommodation.
-        <br>
-        <br>Theemithi (fire-walking ceremony) is its most important festival since 1840. Legend has it that Draupathi –
+        immigrants to stay until they found work and accommodation.</p>
+        <p>Theemithi (fire-walking ceremony) is its most important festival since 1840. Legend has it that Draupathi –
         heroine of the epic poem, the Mahabharata – had to prove her virtuousness by walking barefoot over hot coals.
         It’s believed that virtuous devotees will also be unharmed when they cross the coals.</p>
+    </article>
+    </div>
     <div style="text-align: center;">
         <div class="field">
             <a href="../../routing.html?ctTrail">
-                <button id="button_complete" class="button" style="align-content: center;">Next</button>
+                <button id="button_complete" class="button" style="align-content: center;">Complete Landmark</button>
             </a>
         </div>
     </div>
@@ -117,5 +189,4 @@
         </a>
     </div>
 </nav>
-
 </html>

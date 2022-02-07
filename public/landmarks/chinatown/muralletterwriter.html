@@ -2,6 +2,8 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mural on letter writer @ Smith Street</title>
+<link rel="stylesheet" href="../../assets/css/speech.css"/>
+    <script src="../../assets/js/speech.js"></script>
 <link rel="stylesheet" href="../../assets/css/style.css" />
 <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 <link href="../../assets/img/favicon.png" rel="icon" />
@@ -14,6 +16,7 @@
 <link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
 <link href="../../assets/css/fa.css" rel="stylesheet" />
 <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script src="../../Trails/info.js"></script>
 <style>
     a {
@@ -48,22 +51,94 @@
       border-radius: 12px;
       margin: 0;
     }
+    h1{
+            font-family:"Dosis", sans-serif;
+            font-size: calc(1.375rem + 1.5vw);
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+        body{
+            font-family: var(--bs-body-font-family);
+            font-size: var(--bs-body-font-size);
+            font-weight: var(--bs-body-font-weight);
+            line-height: var(--bs-body-line-height);
+        }
+        .w3-container{
+            font-family:"Dosis", sans-serif;
+            font-size: calc(1.375rem + 1.5vw);
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+        .times {
+            color: #ffffff;
+            background: #03549a;
+            border-radius: 90%;
+        }
+        element.style {
+            border-radius: 90%;
+        }
+        .w3-large {
+            font-size: 18px!important;
+        }
+        .w3-display-topright {
+            position: absolute;
+            right: 5;
+            top: 6;
+        }
     </style>
 </head>
 <body>
-    <a href="../../overview.html" class="previous round" style="float:left;">&#8249;</a>
+    <div class="w3-container">
+      
+        <div id="id01" class="w3-modal w3-animate-opacity">
+          <div class="w3-modal-content w3-card-4" style="border-radius:8px">
+            <header class="w3-container"> 
+                <div class="times">
+              <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-large w3-display-topright" style="border-radius:90%">&times;</span>
+            </div>
+            </header>
+            <div class="w3-container" style="text-align: center;">
+              <h2 style="font-family: Dosis, sans-serif;">Text to speech</h2>
+              <p>
+                  Press<br>
+                  <img src="../../assets/img/play.svg" style="height: 20px; width: 20px;"> to play the audio <br>
+                  <img src="https://rpsthecoder.github.io/js-speech-synthesis/pause.svg" style="height: 20px; width: 20px;"> to pause audio<br>
+                  <img src="https://rpsthecoder.github.io/js-speech-synthesis/stop.svg" style="height: 20px; width: 20px;"> to restart or stop the audio.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <a href="../../routing.html?ctTrail" class="previous round" style="float:left;">&#8249;</a>
     <center>
     <h1 style="padding-right: 10%;">Mural on letter writer @ Smith Street</h1>
 <img src="../../assets/img/chinatown/Mural on letter writer.JPG" style="width:100%;" alt="Mural on letter writer"/>
 </center>
+<div style="margin-left: 27%;"> 
+    <div class=buttons>
+        <button id=play></button> &nbsp;
+        <button id=pause></button> &nbsp;
+        <button id=stop></button>
+        <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-white"><img src="../../assets/img/info.png" style="height:20px; width: 20px; display:inline"></button>
+      </div>
+    </div>
+<div style="margin: 15px;">
+    <article>
 <p>A Singaporean artist who practises different visual mediums like murals, canvas, sketches, installations, digital drawing, photography and video-making. Here, you will see more of my public murals because they are the most visible, 
-being on the streets. I used to do art on a part-time basis from 2015 till 2018 while working in the accounting profession. 
-In mid-2018, I left finance and have since spent much more time creating art.   
+being on the streets.</p>
+<p>I used to do art on a part-time basis from 2015 till 2018 while working in the accounting profession. 
+In mid-2018, I left finance and have since spent much more time creating art.</p>  
 </p>
+</article>
+</div>
 <div style="text-align: center;">
     <div class="field">
         <a href="../../routing.html?ctTrail">
-        <button id="button_complete" class="button" style="align-content: center;">Next</button>
+        <button id="button_complete" class="button" style="align-content: center;">Complete Landmark</button>
         </a>
     </div>
     </div>

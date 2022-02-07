@@ -3,6 +3,8 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chinatown Heritage Centre</title>
+    <link rel="stylesheet" href="../../assets/css/speech.css"/>
+    <script src="../../assets/js/speech.js"></script>
     <link rel="stylesheet" href="../../assets/css/style.css" />
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
     <link href="../../assets/img/favicon.png" rel="icon" />
@@ -17,6 +19,10 @@
     <link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
     <link href="../../assets/css/fa.css" rel="stylesheet" />
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="../../assets/css/popup.css" rel="stylesheet" /> -->
     <!-- <script src="../../scripts/code.js"></script> -->
     <style>
         a {
@@ -53,30 +59,101 @@
             border-radius: 12px;
             margin: 0;
         }
+        h1{
+            font-family:"Dosis", sans-serif;
+            font-size: calc(1.375rem + 1.5vw);
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+        body{
+            font-family: var(--bs-body-font-family);
+            font-size: var(--bs-body-font-size);
+            font-weight: var(--bs-body-font-weight);
+            line-height: var(--bs-body-line-height);
+        }
+        .w3-container{
+            font-family:"Dosis", sans-serif;
+            font-size: calc(1.375rem + 1.5vw);
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+        .times {
+            color: #ffffff;
+            background: #03549a;
+            border-radius: 90%;
+        }
+        element.style {
+            border-radius: 90%;
+        }
+        .w3-large {
+            font-size: 18px!important;
+        }
+        .w3-display-topright {
+            position: absolute;
+            right: 5;
+            top: 6;
+        }
     </style>
 </head>
 
 <body>
-    <a href="C:\Users\khlsdyn\Desktop\PA_ARtrail_FYPJ2021P4\public\overview.html" class="previous round"
+    <div class="w3-container" style="border-radius:8px">
+      
+        <div id="id01" class="w3-modal w3-animate-opacity">
+          <div class="w3-modal-content w3-card-4" style="border-radius:8px">
+            <header class="w3-container"> 
+                <div class="times">
+              <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-large w3-display-topright" style="border-radius:90%">&times;</span>
+            </div>
+            </header>
+            <div class="w3-container" style="text-align: center;">
+              <h2 style="font-family: Dosis, sans-serif;">Text to speech</h2>
+              <p>
+                  Press<br>
+                  <img src="../../assets/img/play.svg" style="height: 20px; width: 20px;"> to play the audio <br>
+                  <img src="https://rpsthecoder.github.io/js-speech-synthesis/pause.svg" style="height: 20px; width: 20px;"> to pause audio<br>
+                  <img src="https://rpsthecoder.github.io/js-speech-synthesis/stop.svg" style="height: 20px; width: 20px;"> to restart or stop the audio.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <a href="../../routing.html?ctTrail" class="previous round"
         style="float:left;">&#8249;</a>
     <center>
         <h1 style="padding-right: 10%;">Chinatown Heritage Centre</h1>
         <img src="../../assets/img/chinatown/chinatown heritage centre.JPG" style="width:100%"
             alt="Chinatown Heritage Centre" />
     </center>
+     <div style="margin-left: 27%;"> 
+    <div class=buttons>
+        <button id=play></button> &nbsp;
+        <button id=pause></button> &nbsp;
+        <button id=stop></button>
+        <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-white"><img src="../../assets/img/info.png" style="height: 20px; width: 20px; display:inline"></button>
+      </div>
+    </div>
+    
+    <div style="margin: 15px;">
+        <article>
     <p>There are immersive audio tours and interactive exhibits to help you retrace the footsteps of migrants in the
         late 19th century. Back then, Chinatown was infamously filled with seedy brothels, squalid opium houses, illegal
-        gambling dens and notorious secret societies.
-        <br>
-        <br>The Chinatown Heritage Centre is also the only place in Singapore where you’ll find the original interiors
+        gambling dens and notorious secret societies.</p>
+        <p>The Chinatown Heritage Centre is also the only place in Singapore where you’ll find the original interiors
         of its shophouse tenants in the 1950s. An actual tailor shop and the living quarters of Singapore’s early
         settlers have been authentically conserved to provide an intimate glimpse into their lives. Discover the
         personal stories of people who made this shophouse their home, and you’ll walk away with a better understanding
         of Singapore’s Chinatown.</p>
+    </article>
+    </div>
     <div style="text-align: center;">
         <div class="field">
             <a href="../../routing.html?ctTrail">
-                <button id="button_complete" class="button" style="align-content: center;">Next</button>
+                <button id="button_complete" class="button" style="align-content: center;">Complete Landmark</button>
             </a>
         </div>
     </div>
@@ -87,10 +164,10 @@
     <div class="tab-nav-container container-fluid text-center">
         <a href="../index.html">
             <div>
-                <div class="tab  active red">
+                <div class="tab active red">
                     <i class="fas fa-home"></i>
                 </div>
-                <p class="tab-text active ">Home</p>
+                <p class="tab-text active">Home</p>
             </div>
         </a>
         <a>
@@ -119,5 +196,19 @@
         </a>
     </div>
 </nav>
-
+<!-- <script type="text/javascript">
+    window.addEventListener("load", function(){
+        setTimeout(
+            function open(event){
+                document.querySelector(".popup").style.display = "block";
+            },
+            1000 
+        )
+    });
+    
+    
+    document.querySelector("#close").addEventListener("click", function(){
+        document.querySelector(".popup").style.display = "none";
+    });
+        </script> -->
 </html>

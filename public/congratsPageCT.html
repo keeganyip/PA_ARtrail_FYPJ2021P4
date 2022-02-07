@@ -39,8 +39,8 @@
     box-sizing: border-box;
 }
 body{
-    background-color: #77b1f3;
-}  
+    background-color: #d3e5fa;
+}   
 .popup{
     background-color: #ffffff;
     width: 410px;
@@ -80,18 +80,7 @@ body{
     margin: 20px 0;
     line-height: 25px;
 }
-.popup a{
-    display: block;
-    width: 150px;
-    position: relative;
-    margin: 10px auto;
-    text-align: center;
-    background-color: #0f72e5;
-    border-radius: 20px;
-    color: #ffffff;
-    text-decoration: none;
-    padding: 8px 0;
-}
+
 .back a {
       text-decoration: none;
       display: inline-block;
@@ -127,8 +116,10 @@ body{
             <div class="back">
                 <a href="../public/overview.html" class="previous round" style="float:left;">&#8249;</a>
                 </div>
-<center><h2>Congratulations!!<br>You have finished <br>the Chinatown <br>Trail.</h2></center>
-<center><p>You have completed 8/8 landmarks!</p></center>
+        <div style="padding: 13%;">
+            <center><h2>Congratulations!!<br>You have finished <br>the Chinatown <br>Trail.</h2></center>
+            <center><p>You have completed 8/8 landmarks!</p></center>
+        </div>
 		<ul id="lightSlider" class="cg">
             <li><figure><img src="assets/img/chinatown/chccomplete.jpg" alt="Chinatown Heritage Centre"/><figcaption>Chinatown Heritage Centre</figcaption></figure></li>
             <li><figure><img src="assets/img/chinatown/smtcomplete.jpg" alt="Sri Mariamman temple"/><figcaption>Sri Mariamman Temple</figcaption></figure></li>
@@ -140,12 +131,11 @@ body{
 			<li><figure><img src="assets/img/chinatown/mcomplete.jpg" alt="Mural on letter writer" style=" width: 350px;"/><figcaption>Mural on letter writer</figcaption></figure></li>
             <!-- <li></li> -->
         </ul>
-        <div style="padding-top: 15%;margin-top: 160px;">
+        <div style="padding-top: 15%;margin-top: 100px;">
         <div style="text-align: center;">
             <p>Scroll down for more trails!</p>
         <a href="#finish" class="scroll bottom">
             <div class="arrow">
-                <span></span>
                 <span></span>
                 <span></span>
                 <br>
@@ -210,6 +200,7 @@ body{
             </li>
             <li></li>
         </ul>
+        <br>
         <h2 style="color: #FF9E6A;">Peranakan Trail</h2>
     <h3>Peranakan culture in Singapore has roots tracing all the way back to Sir Stamford Raffles arrival in 1819.</h3>
     <ul id="lightSlider2" class="ov">
@@ -261,6 +252,7 @@ body{
         </li>
         <li></li>
     </ul>
+    <br>
     <h2 style="color:#7E55B7;">Kampong Glam Trail</h2>
     <h3>Kampong Glam got its name from the Malay word gelam (cajeput tree) which grew locally and has many uses. Its
         bark can be used for weaving and to caulk boats.</h3>
@@ -307,6 +299,7 @@ body{
             </figure>
         </li>
     </ul>
+    <br>
         <script type="text/javascript">
             $(document).ready(function () {
                 $("#lightSlider").lightSlider({autoWidth:true});
@@ -336,7 +329,6 @@ body{
                 document.querySelector(".popup").style.display = "none";
                 
             });
-            //
         </script>
         </div>
 

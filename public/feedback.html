@@ -14,18 +14,16 @@
   <link href="../public/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
   <link href="../public/assets/css/fa.css" rel="stylesheet" />
   <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i" rel="stylesheet" />
   <script src="/public/assets/js/review.js"></script>
-  <script>
-    function submitfeedback() {
-      alert("Thank you for your feedback!")
-        window.location = "congratsPageCT.html";
-        
-    }
-  </script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <style>
+    * {
+      font-family:"Dosis", sans-serif;
+      font-weight: 500;
+    } 
     .button {
       background-color: #00A6FF;
       border: none;
@@ -37,17 +35,37 @@
       font-size: 16px;
       margin: 4px 2px;
       cursor: pointer;
-      width: 40%;
+      width: 30%;
     }
-
     .buttonsubmit {
       border-radius: 12px;
+    }
+    img{
+      width: 200px;
+      height: auto;
+      margin-bottom:16px;
+    }
+    .buttonmodal {
+      background-color: #03549a;
+      border: none;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 2px;
+      cursor: pointer;
+      width: 25%;
+      border-radius: 12px;
+      margin-left: 38%;
+      align-items: center;
     }
   </style>
 </head>
 
 <body>
-  <div class="demo-wrap" style="height: 100%;">
+  <div class="demo-wrap" style="height: 150%;">
     <img class="demo-bg" src="assets/img/background.jpg" alt="">
     <div class="demo-content">
       <a href="congratsPageCT.html">&#10060</a>
@@ -58,13 +76,12 @@
           <h1>Feedback Form</h1>
           <p>We would love to hear your thoughts, suggestion, concerns or problems with anything so we can improve!</p>
           <br>
-          <form action="feedbackoverview.html" method="get"> 
-
-            <label for="username">Username:</label><br>
-            <input style="width: 300px;" type="text" id="fname" name="fname" value="" required><br>
+          <form> 
+            <p>Username:</p>
+            <input style="width: 300px;" type="text" id="fname" name="fname" value="" placeholder="Your Username"><br>
             <br>
             Describe your feedback: <br>
-            <textarea rows="4" cols="40" name="comment" form="usrform">
+            <textarea rows="4" cols="40" name="comment" form="usrform" placeholder="Describe here...">
             </textarea><br>
           </form>
           <p>Rate your experience:</p>
@@ -101,9 +118,29 @@
             </label>
           </form>
         </div>
-        <button class="button buttonsubmit" value="submit" onclick="submitfeedback()">Submit Feedback</button>
+        <div class="container">
+        <button class="button buttonsubmit" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" value="submit">Submit Feedback</button>
       </div>
-      <nav class="navbar-fixed-bottom navbar-default" style="padding-top: 15%;">
+      <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content" style="border-radius:8px">
+        <div class="modal-header" style="border-radius:8px">
+          <img src="assets/img/hero-img.png">
+        </div>
+        <div class="modal-body">
+          <p style="text-align: center; font-size: 20px;">Thank You for your feedback!</p>
+          <a href="congratsPageCT.html">
+            <button type="button" class="buttonmodal">Close</button>
+          </a>
+      </div>
+      
+    </div>
+  </div>
+</div>
+      <nav class="navbar-fixed-bottom navbar-default" >
         <div class="tab-nav-container container-fluid text-center">
           <a href="../index.html">
             <div>
@@ -139,10 +176,20 @@
           </a>
         </div>
       </nav>
+    <!-- <script type="text/javascript">
+        window.addEventListener("load", function(){
+        setTimeout(
+            function open(event){
+                document.querySelector(".popup").style.display = "block";
+            },
+            1000
+        )
+    });
+        </script> -->
     </div>
 
   </div>
-
+</div>
 </body>
 
 </html>
