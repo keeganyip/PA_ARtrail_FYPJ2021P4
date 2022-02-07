@@ -207,6 +207,7 @@ const trails = {
                     lng: 103.849622, // add here longitude if using static data 
         
                 },
+                marker:'assets/btrmarker.png',
                 content:"Get transported back in time and experience the footsteps \n of migrants in the late 19th century of singapore",
                 src:'landmarks/chinatown/buddhatoothrelic.html',
                 extraContent:"Fascinating wall murals have been mushrooming all over the city in recent years, thanks to Singaporean artists like Yip Yew Chong. His work isn’t just Instagram-worthy, it’s turning roads, like this one in Chinatown, into street museums.Yew Chong painted these murals from his personal memories of Singapore’s past – he grew up in Sago Lane, a street across the road. The Paper Mask & Puppet Seller (on the right) was inspired by a real person who sold masks on this very street.",

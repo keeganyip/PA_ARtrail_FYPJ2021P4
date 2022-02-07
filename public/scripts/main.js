@@ -443,10 +443,12 @@ window.onload = () => {
             // });
 
             // 1 marker
-            var queryString = decodeURIComponent(window.location.search);
-
+            var queryString = decodeURIComponent(window.location.search).substring(1);
             trail.forEach((place) => {
+                console.log(place.legend == queryString,place.legend,queryString)
+
                 if (place.legend == queryString) {
+                    console.log("HEELO");
                     const latitude = place.location.lat;
                     const longitude = place.location.lng;
                     const content = place.content;
@@ -454,18 +456,11 @@ window.onload = () => {
 
                     // add place icon
                     const icon = document.createElement('a-image');
-                    const text = document.createElement('a-text');
                     // console.log(icon.components.camera.camera);
                     // text.setAttribute("name",place.name);
-                    text.setAttribute("scale", "20 20 20");
                     icon.setAttribute("scale", '30 30 30');
-                    text.setAttribute("align", "center");
-                    text.setAttribute("baseline", "top");
-                    text.setAttribute("look-at", '[gps-camera]');
-                    icon.setAttribute("look-at", "[gps-camera]");
-                    text.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude}`);
+                    icon.setAttribute("look-at", "[camera]");
                     icon.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude}`);
-                    text.setAttribute('value', place.name);
                     icon.setAttribute('src', './Trails/'+place.marker);
                     icon.setAttribute('material', 'opacity:0.5;');
                     var id = place.legend;
@@ -480,7 +475,7 @@ window.onload = () => {
                     // icon.setAttribute('scale', '120 120 120');
                     // icon.setAttribute('look-at','[gps-camera]');
                     // axes helper
-                    text.addEventListener('loaded', () => window.dispatchEvent(new CustomEvent('gps-entity-place-loaded')));
+                    // text.addEventListener('loaded', () => window.dispatchEvent(new CustomEvent('gps-entity-place-loaded')));
                     queryString = queryString.substring(1);
                     if (queryString == id) {
                         AFRAME.registerComponent(id, {
@@ -569,7 +564,7 @@ window.onload = () => {
                     icon.addEventListener('click', clickListener);
                     scene.setAttribute(id, '');
                     scene.appendChild(icon);
-                    scene.appendChild(text);
+                    // scene.appendChild(text);
                 }
             });
             console.log('DONE CREATING AR MARKERS')
@@ -727,12 +722,12 @@ function success(position) {
         suppressMarkers: true
     });
     icon = document.querySelector("a-image");
-    distanceMsg = icon.getAttribute('distance')
-    console.log(distanceMsg);
+    // distanceMsg = icon.getAttribute('distance')
+    // console.log(distanceMsg);
 
-    if (distanceMsg < 80) {
-        icon.setAttribute("src", "./Trails/assets/map-marker.png");
-    }
+    // if (distanceMsg < 80) {
+    //     icon.setAttribute("src", "./Trails/assets/map-marker.png");
+    // }
     console.log("TRAIL:", trail)
     console.log(flag);
     var queryString = decodeURIComponent(window.location.search);
@@ -746,6 +741,15 @@ function success(position) {
             }
         }
     }
+    // if (trail == 'nyp') {
+    //     for (i = 0; i < nyp.length; i++) {
+    //         console.log(queryString, nyp[i].legend);
+    //         if (queryString == nyp[i].legend) {
+    //             destinationLocation = nyp[i].location;
+    //             destination = nyp[i].name;
+    //         }
+    //     }
+    // }
     if (queryString == 'BlockL') {
         destinationLocation = nyp[0].location;
         destination = nyp[0].name;
