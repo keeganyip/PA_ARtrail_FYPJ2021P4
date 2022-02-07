@@ -205,16 +205,17 @@
                    }
                }
             }
-        })
-    
-        var images = document.querySelectorAll('.gallery img');
-        console.log(images);
-        images.forEach(image => {
+            var images = document.querySelectorAll('.gallery img');
+            console.log(images);
+            images.forEach(image => {
 
             image.addEventListener('click', function () {
                 window.location.href = 'imagepreview.html?' + image.getAttribute('src')
             });
         });
+        })
+    
+        
         var icon = document.getElementById('upload')
         var tooltip = new bootstrap.Tooltip(icon)
         var shown = localStorage.getItem('tooltipShown');
@@ -230,9 +231,7 @@
        
     </script>
 
-    <script>
-       
-    </script>
+   
 </body>
 
 </html>
