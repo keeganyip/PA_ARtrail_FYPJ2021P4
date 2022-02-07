@@ -14,6 +14,7 @@ const trails = {
                         lng: 103.84440228835545, // add here longitude if using static data 
             
                     },
+                    marker:'assets/chcmarker.png',
                     content:"Get transported back in time and experience the footsteps \n of migrants in the late 19th century of singapore",
                     src:'landmarks/chinatown/chinatownheritagecentre.html',
                     contentHTML :
@@ -34,6 +35,7 @@ const trails = {
                         lat:1.2826974252118535, 
                         lng: 103.84513546864258,
                     },  
+                    marker:'assets/smtmarker.png',
                     content:'This hindu temple is the oldest \n and largest of its kind in singapore',
                     src:'landmarks/chinatown/srimariamtemple.html',
 
@@ -56,6 +58,7 @@ const trails = {
                         lat:1.2832659109590843,
                         lng: 103.84544660487347, 
                     },
+                    marker:'assets/mjmarker.png',
                     content:'Established in 1826 it is one of the oldest mosque in \n singapore One of the only six in the \n country that conducts sermons in tamil' ,
                     src:'landmarks/chinatown/masjidjamae.html',
                     contentHTML :
@@ -77,6 +80,7 @@ const trails = {
                         lat:1.2816404559768435, 
                         lng:103.84496985330027, 
                     },
+                    marker:'assets/thmarker.png',
                     content:'Tong Heng is the oldest confectioneries. \n Witness a story of resilience, \n determination and resourcefulness.' ,
                     src:'landmarks/chinatown/tongheng.html',
                     contentHTML :
@@ -98,6 +102,7 @@ const trails = {
                         lng: 103.84423719747802, // add here longitude if using static data 
             
                     },
+                    marker:'assets/btrmarker.png',
                     content:"Experience buddhist temple and museum complex located in the Chinatown district of Singapore. \n The temple's monastics and devotees officially practice Chinese Buddhism.",
                     src:'landmarks/chinatown/buddhatoothrelic.html',
                     contentHTML :
@@ -119,7 +124,8 @@ const trails = {
                          
                         lat:1.2831788568902647,  
                         lng:103.84473979738155, 
-                    }, 
+                    },
+                    marker:'assets/psmarker.png',
                     content:'Located in Chinatown within the Outram Planning Area in Singapore \n Terengannu Street linking Pagoda Street and Sago Street, \n and is intersected by Temple Street and Smith Street.',
                     src:'landmarks/chinatown/pagodastreet.html',
                     contentHTML :
@@ -133,8 +139,6 @@ const trails = {
                     "</div>" +
                     "</div>"
                 },
-               
-            
                 { 
                     name: "Sago Street",
                     legend:'SGST', 
@@ -143,6 +147,7 @@ const trails = {
                         lat:1.281800536866017,  
                         lng: 103.84399338201563, 
                     },
+                    marker:'assets/ssmarker.png',
                     content:'Singapore largest historic district, serving mainly as a tourist attraction that houses food outlets, bars, retail shops and offices \n with the streets lined up with pushcarts selling a range of souvenirs and street snacks.',
                     src:'landmarks/chinatown/sagostreet.html',
                     contentHTML :
@@ -164,6 +169,7 @@ const trails = {
                         lat:1.2827594818546095,  
                         lng:103.84583411762635, 
                     }, 
+                    marker:'assets/muralmarker.png',
                     content:'Along Mohammed Ali Lane, you’ll spot a snapshot of history—a quirky scene of Singapore’s street vendors \n from our early years of independence in the 1960s. \n Witness murals that depict the past through the eyes of singaporean artist Yip Yew Chong.',
                     src:'landmarks/chinatown/muralletterwriter.html',
                     contentHTML :

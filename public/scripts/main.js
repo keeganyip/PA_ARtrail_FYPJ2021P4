@@ -466,7 +466,7 @@ window.onload = () => {
                     text.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude}`);
                     icon.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude}`);
                     text.setAttribute('value', place.name);
-                    icon.setAttribute('src', './Trails/assets/map-marker.png');
+                    icon.setAttribute('src', './Trails/'+place.marker);
                     icon.setAttribute('material', 'opacity:0.5;');
                     var id = place.legend;
                     console.log(id);
