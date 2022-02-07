@@ -204,12 +204,8 @@
             }
         })
     
-        
-       
-    </script>
-
-    <script>
         var images = document.querySelectorAll('.gallery img');
+        console.log(images);
         images.forEach(image => {
 
             image.addEventListener('click', function () {
@@ -228,6 +224,11 @@
             };
             localStorage.setItem('tooltipShown', true);
         }
+       
+    </script>
+
+    <script>
+       
     </script>
 </body>
 
