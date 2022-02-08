@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-    <title>Aprrove Image</title>
+    <title>Approve Image</title>
     <meta content="" name="description" />
     <meta content="" name="keywords" />
 
@@ -120,7 +120,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" id="close" class="btn btn-secondary" data-bs-dismiss="modal"
-                            onclick="location.href='CommunityJournal.html'">Close</button>
+                                onclick="location.href='CommunityJournal.html'">Close</button>
                         </div>
                     </div>
                 </div>
@@ -149,16 +149,38 @@
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
 
-    <script>
+    <script type="module">
+         import {
+            initializeApp
+        } from 'https://www.gstatic.com/firebasejs/9.6.3/firebase-app.js'
+        import {
+            getStorage, ref, uploadBytes, getDownloadURL
+        } from 'https://www.gstatic.com/firebasejs/9.6.3/firebase-storage.js'
+
+        import { 
+            getDatabase, ref as dbRef ,set 
+        } from 'https://www.gstatic.com/firebasejs/9.6.3/firebase-database.js'
+
+        // Set the configuration for your app
+        // TODO: Replace with your app's config object
+        const firebaseConfig = {
+            apiKey: "AIzaSyAiWhsurmpe0XHv5fT6woKqY6hURnd4Kno",
+            authDomain: "fypj-f74df.firebaseapp.com",
+            databaseURL: "https://fypj-f74df-default-rtdb.asia-southeast1.firebasedatabase.app",
+            storageBucket:  "fypj-f74df.appspot.com",
+        };
+        const firebaseApp = initializeApp(firebaseConfig);
+
         var disapprovebtn = document.getElementById('btnDisapprove');
         var approvebtn = document.getElementById('btnApprove');
         var myModal = new bootstrap.Modal(document.getElementById('ResultModal'))
         var modaltitle = document.getElementById('mTitle');
         var modalBody = document.getElementById('mBody');
         var img = "";
-
+        var queryString = decodeURIComponent(window.location.search);
+        queryString = queryString.substring(1);
         function retrieveImg() {
-
+           
         }
 
         function approveImg(img) {
