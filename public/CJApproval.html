@@ -59,13 +59,23 @@
                         <img id="imgpreview">
                     </div>
                     <div id="textboxes" class="mb-3">
-                        <div class="px-5">
+                        <div class="px-5 mb-2">
                             <label for="title" class="form-label">Title:</label>
-                            <input type="text" class="form-control" id="title" placeholder="Title">
+                            <input type="text" class="form-control" id="title" placeholder="Title" readonly>
                         </div>
-                        <div class="px-5">
+                        <div class="px-5 mb-2">
                             <label for="caption" class="form-label">Caption:</label>
-                            <input type="text" class="form-control" id="caption" placeholder="Caption" rows="2">
+                            <input type="text" class="form-control" id="caption" placeholder="Caption" maxlength="240"
+                                readonly>
+                        </div>
+                        <div class="px-5 mb-2">
+                            <label for="trail" class="form-label">Select Trail:</label>
+                            <select class="form-select" id="trail" style="border-color:black;">
+                                <option value="Little India">Little India</option>
+                                <option value="Peranakan">Peranakan</option>
+                                <option value="Kampong Glam">Kampong Glam</option>
+                                <option value="Chinatown">Chinatown</option>
+                            </select>
                         </div>
                     </div>
                     <button id="btnApprove" type="button" class="btn btn-success">Approve Post</button>
@@ -150,7 +160,7 @@
     <script src="assets/js/main.js"></script>
 
     <script type="module">
-         import {
+        import {
             initializeApp
         } from 'https://www.gstatic.com/firebasejs/9.6.3/firebase-app.js'
         import {
@@ -158,7 +168,7 @@
         } from 'https://www.gstatic.com/firebasejs/9.6.3/firebase-storage.js'
 
         import { 
-            getDatabase, ref as dbRef ,set 
+            getDatabase, ref as dbRef ,child,get,update
         } from 'https://www.gstatic.com/firebasejs/9.6.3/firebase-database.js'
 
         // Set the configuration for your app
@@ -170,7 +180,7 @@
             storageBucket:  "fypj-f74df.appspot.com",
         };
         const firebaseApp = initializeApp(firebaseConfig);
-
+        const database = getDatabase();
         var disapprovebtn = document.getElementById('btnDisapprove');
         var approvebtn = document.getElementById('btnApprove');
         var myModal = new bootstrap.Modal(document.getElementById('ResultModal'))
@@ -179,26 +189,59 @@
         var img = "";
         var queryString = decodeURIComponent(window.location.search);
         queryString = queryString.substring(1);
+        const imageRef = dbRef(getDatabase());
+        var trailselect = document.getElementById('trail');
+
         function retrieveImg() {
+           get(child(imageRef,'UploadRequests/' + queryString)).then((snapshot)=>{
+               if(snapshot.exists()){
+                   console.log(snapshot.val());
+                   var data = snapshot.val();
+                   var imgpreview = document.getElementById('imgpreview')
+                   var title = document.getElementById('title');
+                   var caption = document.getElementById('caption');
+                   imgpreview.style.display = 'block';
+                   imgpreview.src = data.image;
+                   title.value = data.title;
+                   caption.value = data.caption;
+                   trailselect.value = data.trail;
+
+
+               }
+           })
+        }
+        window.onload = retrieveImg;
+
+        function approveImg() {
+            var trail = trailselect.value;
+            update(dbRef(database,'UploadRequests/' + queryString),{
+                approved:true,
+                trail:trail,
+            }).then(()=> {
+                modaltitle.innerHTML = 'Approved Image Post';
+                modalBody.innerHTML = 'You have approved this post successfully';
+                myModal.show()
+            })
            
         }
 
-        function approveImg(img) {
-            modaltitle.innerHTML = 'Approved Image Post';
-            modalBody.innerHTML = 'You have approved this post successfully';
-            myModal.show()
-        }
-
-        function disapproveImg(img) {
-            modaltitle.innerHTML = 'Disapproved Image Post';
-            modalBody.innerHTML = 'You have disapproved this post successfully';
-            myModal.show();
+        function disapproveImg() {
+            var trail = trailselect.value;
+            update(dbRef(database,'UploadRequests/' + queryString),{
+                approved:false,
+                trail:trail,
+            }).then(()=> {
+                modaltitle.innerHTML = 'Disapproved Image Post';
+                modalBody.innerHTML = 'You have disapproved this post successfully';
+                myModal.show();
+            })
+           
         }
         disapprovebtn.onclick = function () {
-            disapproveImg(img)
+            disapproveImg()
         };
         approvebtn.onclick = function () {
-            approveImg(img)
+            approveImg()
         };
     </script>
 </body>
