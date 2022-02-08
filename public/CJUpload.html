@@ -190,8 +190,6 @@
             getDatabase, ref as dbRef ,set 
         } from 'https://www.gstatic.com/firebasejs/9.6.3/firebase-database.js'
 
-        // Set the configuration for your app
-        // TODO: Replace with your app's config object
         const firebaseConfig = {
             apiKey: "AIzaSyAiWhsurmpe0XHv5fT6woKqY6hURnd4Kno",
             authDomain: "fypj-f74df.firebaseapp.com",
@@ -249,16 +247,7 @@
                 });
                 var hostname = location.hostname;
                 var body =  hostname+"/public/CJApproval.html?"+timestamp
-                // var token = "64167d63-21f6-4795-b5d1-87d3a042b880";
-                // Email.send({
-                //     SecureToken : token,
-                //     To : 'dragonaccyip@yahoo.com.sg',
-                //     From : "pa.heartland.trails@gmail.com",
-                //     Subject : "Upload Request",
-                //     Body : body,
-                // }).then(
-                // message => alert(message)
-                // );
+               
                 Email.send({
                     Host : "smtp-relay.sendinblue.com",
                     Port: "587",
