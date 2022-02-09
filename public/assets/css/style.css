@@ -1321,13 +1321,17 @@ section {
 .tab-nav-container{
   background-color: white;
   display: flex;
-  padding: 5px 15px;
+  max-width: 100%;
+  padding: 5px 5px 0px 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   justify-content: space-between;
-  width: 100%;
+  width: 100vw;
   bottom: 0;
   position: fixed;
   z-index: 999;
   max-height: 65px;
+  overflow-x: hidden;
 }
 .tab-nav-container a{
   font-weight: normal;
@@ -1337,7 +1341,9 @@ section {
   font-weight: 500;
   color: black;
 }
+
 .tab{
+  padding-top: 10px;
   background-color: rgb(226, 226, 226);
   border-radius: 50px;
   cursor: pointer;
@@ -1375,13 +1381,16 @@ section {
 }
 .tab.active.red{
   color: #F95F62;
+  background-color: #ffc2c4;
 }
 .tab.active.purple{
   color: #976DD0;
+  background-color:#a388c9;
 }
 .tab.active.green{
   color: #35A113;
 }
 .tab.active.orange{
-  color: #FF9E6A;
+  color: #fc884a;
+  background-color: #ffd9c5;
 }

@@ -39,17 +39,22 @@
 
 <body>
     <div class="bg-wrap">
-       
-
-        
         <section class="vh-100 content" style="overflow-x: scroll;">
             <div style="position: absolute; top: 0; left: 0; z-index: 1;">
                 <a id="upload" data-bs-placement="right" title="Upload your pictures here!" href="CJUpload.html">
                     <i class="fas fa-upload mt-2 ms-2" style="font-size: 2rem;"></i></a>
             </div>
-            <div class="welcome-text text-center" style="display: inline-flex;
+            <div id="title" class="welcome-text text-center" style="display: inline-flex;
             align-items: center; margin:auto">
-                Community Journal
+                Gallery
+            </div>
+            <div>
+                <select class="form-select" id="trailfilter">
+                    <option value="Little India">Little India</option>
+                    <option value="Peranakan">Peranakan</option>
+                    <option value="Kampong Glam">Kampong Glam</option>
+                    <option value="Chinatown">Chinatown</option>
+                </select>
             </div>
             <img class="bg-img" src="assets/img/background.jpg" alt="">
 
@@ -59,42 +64,6 @@
                 <div id="content" class="mb-md-5 mt-md-4" style="max-width: 100%;">
                     <div id="journal" style="overflow-y: scroll; height: 75vh;">
                         <div id="gallery" class="gallery mt-3">
-                            <img src="assets/img/gallery/gallery-1.jpg" style="width:100%">
-                            <img src="assets/img/gallery/gallery-2.jpg" style="width:100%">
-                            <img src="assets/img/gallery/gallery-3.jpg" style="width:100%">
-                            <img src="assets/img/gallery/gallery-4.jpg" style="width:100%">
-                            <img src="assets/img/gallery/gallery-5.jpg" style="width:100%">
-                            <img src="assets/img/gallery/gallery-6.jpg" style="width:100%">
-                            <img src="assets/img/gallery/gallery-7.jpg" style="width:100%">
-
-
-                            <img src="assets/img/gallery/gallery-1.jpg" style="width:100%">
-                            <img src="assets/img/gallery/gallery-2.jpg" style="width:100%">
-                            <img src="assets/img/gallery/gallery-3.jpg" style="width:100%">
-                            <img src="assets/img/gallery/gallery-4.jpg" style="width:100%">
-                            <img src="assets/img/gallery/gallery-5.jpg" style="width:100%">
-                            <img src="assets/img/gallery/gallery-6.jpg" style="width:100%">
-                            <img src="assets/img/gallery/gallery-7.jpg" style="width:100%">
-
-
-                            <img src="assets/img/gallery/gallery-1.jpg" style="width:100%">
-                            <img src="assets/img/gallery/gallery-2.jpg" style="width:100%">
-                            <img src="assets/img/gallery/gallery-3.jpg" style="width:100%">
-                            <img src="assets/img/gallery/gallery-4.jpg" style="width:100%">
-                            <img src="assets/img/gallery/gallery-5.jpg" style="width:100%">
-                            <img src="assets/img/gallery/gallery-6.jpg" style="width:100%">
-                            <img src="assets/img/gallery/gallery-7.jpg" style="width:100%">
-
-
-                            <img src="assets/img/gallery/gallery-1.jpg" style="width:100%">
-                            <img src="assets/img/gallery/gallery-2.jpg" style="width:100%">
-                            <img src="assets/img/gallery/gallery-3.jpg" style="width:100%">
-                            <img src="assets/img/gallery/gallery-4.jpg" style="width:100%">
-                            <img src="assets/img/gallery/gallery-5.jpg" style="width:100%">
-                            <img src="assets/img/gallery/gallery-6.jpg" style="width:100%">
-                            <img src="assets/img/gallery/gallery-7.jpg" style="width:100%">
-
-                            <!-- </div> -->
                         </div>
                     </div>
                     <!-- <div class='pagination'><span>1 / 2</span></div> -->
@@ -102,9 +71,9 @@
                 </div>
             </div>
 
-            <nav class="navbar-fixed-bottom navbar-default" style="padding-top: 10%;">
-                <div class="tab-nav-container container-fluid text-center">
-                    <a href="../index.html">
+            <nav class="navbar-fixed-bottom navbar-default" style="padding-top: 15%; ">
+                <div class="tab-nav-container text-center" style="background-color: #70a0ca;"">
+                    <a href="overview.html">
                         <div>
                             <div class="tab red">
                                 <i class="fas fa-home"></i>
@@ -120,20 +89,20 @@
                             <p class="tab-text">Map</p>
                         </div>
                     </a>
-                    <a>
+                    <!-- <a>
                         <div>
                             <div class="tab green">
                                 <i class="fas fa-calendar-alt"></i>
                             </div>
                             <p class="tab-text text-left">Calendar</p>
                         </div>
-                    </a>
-                    <a href="../Login/login.html">
+                    </a> -->
+                    <a href="CommunityJournal.html">
                         <div>
                             <div class="tab active orange">
-                                <i class="fas fa-user"></i>
+                                <i class="fas fa-images"></i>
                             </div>
-                            <p class="tab-text active">Profile</p>
+                            <p class="tab-text active">Gallery</p>
                         </div>
                     </a>
                 </div>
@@ -160,12 +129,9 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js"
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
-
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
 
-    <!-- <script src="assets/js/lightslider.js"></script> -->
-    <!-- <script type="module" src="../scripts/profile.js"></script> -->
     <script type="module">
         import {
             initializeApp
@@ -174,9 +140,6 @@
             getDatabase, ref, child, get
         } from 'https://www.gstatic.com/firebasejs/9.6.3/firebase-database.js'
 
-
-        // Set the configuration for your app
-        // TODO: Replace with your app's config object
         const firebaseConfig = {
             apiKey: "AIzaSyAiWhsurmpe0XHv5fT6woKqY6hURnd4Kno",
             authDomain: "fypj-f74df.firebaseapp.com",
@@ -185,36 +148,57 @@
         };
         const firebaseApp = initializeApp(firebaseConfig);
 
+        var title = document.getElementById('title');
+        var filter = document.getElementById('trailfilter');
+        var gallery = document.getElementById('gallery');
+        var journal = document.getElementById('journal')
+
+        const noImages = document.createElement('h2');
 
         const dbRef = ref(getDatabase());
-        function createimgHtml(src) {
-            var gallery = document.getElementById('gallery');
+        function createimgHtml(src,uiid) {
             const newImg = document.createElement('img');
             newImg.src = src;
             newImg.style = "width:100%;height:100%";
             gallery.appendChild(newImg);
+            newImg.onclick = function(){window.location.href = 'imagepreview.html?' + uiid}
         }
-        get(child(dbRef, 'UploadRequests/')).then((snapshot)=> {
-            if(snapshot.exists()){
-                var allimages = snapshot.val()
-               for(var image in allimages){
-                   console.log(allimages[image]);
-                   if(allimages[image].approved){
-                       console.log(allimages[image].image)
-                       createimgHtml(allimages[image].image);
-                   }
-               }
-            }
-            var images = document.querySelectorAll('.gallery img');
-            console.log(images);
-            images.forEach(image => {
-
-            image.addEventListener('click', function () {
-                window.location.href = 'imagepreview.html?' + image.getAttribute('src')
+        function getimages(){
+            get(child(dbRef, 'UploadRequests/')).then((snapshot)=> {
+                if(snapshot.exists()){
+                    var allimages = snapshot.val()
+                    for(var image in allimages){
+                        if(allimages[image].approved){
+                            if(allimages[image].trail == trailfilter.value){
+                                createimgHtml(allimages[image].image,image);
+                            }
+                            else{
+                                noImages.innerText = "No Images Found. Upload yours now!"
+                                if(journal.childElementCount == 1){
+                                    journal.appendChild(noImages);
+                                }
+                            }
+                        }
+                    }
+                }
+                else{
+                    noImages.innerText = "No Images Found. Upload yours now!"
+                    if(journal.childElementCount == 1){
+                        journal.appendChild(noImages);
+                    }
+                }
             });
-        });
-        })
-    
+        }
+        window.onload = function () {
+            title.innerHTML = 'Gallery - ' +trailfilter.value
+            getimages();
+        }
+        trailfilter.onchange = function () {
+            title.innerHTML = 'Gallery - ' +trailfilter.value
+            getimages();
+            journal.removeChild(noImages);
+        }
+        
         
         var icon = document.getElementById('upload')
         var tooltip = new bootstrap.Tooltip(icon)
@@ -231,7 +215,7 @@
        
     </script>
 
-   
+
 </body>
 
 </html>

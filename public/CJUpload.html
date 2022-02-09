@@ -25,7 +25,6 @@
     <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
     <link href="assets/css/fa.css" rel="stylesheet" />
-    <link href="assets/css/login.css" rel="stylesheet" />
     <link href="assets/css/Community Journal.css" rel="stylesheet" />
     <link href="https://code.jquery.com/mobile/1.5.0-rc1/jquery.mobile-1.5.0-rc1.min.css" rel="stylesheet" />
     <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
@@ -53,19 +52,28 @@
             </div>
 
 
-            <div id="container" class="pt-5 h-100">
+            <div id="container" class="pt-5 h-100" style="overflow: scroll;">
                 <div class="mx-auto mt-5">
                     <div class="container ipBox">
                         <img id="imgpreview">
                     </div>
                     <div id="textboxes" class="mb-3" style="display: none;">
-                        <div class="px-5">
+                        <div class="px-5 mb-2">
                             <label for="title" class="form-label">Title:</label>
                             <input type="text" class="form-control" id="title" placeholder="Title">
                         </div>
-                        <div class="px-5">
+                        <div class="px-5 mb-2">
                             <label for="caption" class="form-label">Caption:</label>
-                            <input type="text" class="form-control" id="caption" placeholder="Caption" rows="2">
+                            <input type="text" class="form-control" id="caption" placeholder="Caption" maxlength="240">
+                        </div>
+                        <div class="px-5 mb-2">
+                            <label for="trail" class="form-label">Select Trail:</label>
+                            <select class="form-select" id="trail" style="border-color:black;">
+                                <option value="Little India">Little India</option>
+                                <option value="Peranakan">Peranakan</option>
+                                <option value="Kampong Glam">Kampong Glam</option>
+                                <option value="Chinatown">Chinatown</option>
+                            </select>
                         </div>
                     </div>
                     <label class="btn btn-primary" for="img">Choose Image</label>
@@ -73,6 +81,7 @@
                     <button id="btnUpload" style="display: none;" type="button" class="btn btn-success">Upload</button>
                 </div>
             </div>
+
             <nav class="navbar-fixed-bottom navbar-default" style="padding-top: 10%;">
                 <div class="tab-nav-container container-fluid text-center">
                     <a href="../index.html">
@@ -109,7 +118,24 @@
                     </a>
                 </div>
             </nav>
-
+            <!-- Modal -->
+            <div class="modal fade" id="uploadedModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="modalTitle" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalTitle">Successful Request</h5>
+                        </div>
+                        <div class="modal-body">
+                            Your upload request is successful.
+                        </div>
+                        <div class="modal-footer">
+                            <a href="CommunityJournal.html"><button type="button"
+                                    class="btn btn-primary">Understood</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
     </div>
     </div>
 
@@ -133,6 +159,7 @@
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
 
     <script>
         function showPreview(event) {
@@ -163,8 +190,6 @@
             getDatabase, ref as dbRef ,set 
         } from 'https://www.gstatic.com/firebasejs/9.6.3/firebase-database.js'
 
-        // Set the configuration for your app
-        // TODO: Replace with your app's config object
         const firebaseConfig = {
             apiKey: "AIzaSyAiWhsurmpe0XHv5fT6woKqY6hURnd4Kno",
             authDomain: "fypj-f74df.firebaseapp.com",
@@ -183,7 +208,7 @@
             file = imgList[0]
             const dateobj = new Date();
             const date = dateobj.getDate().toString();
-            const month = dateobj.getMonth().toString();
+            const month = (dateobj.getMonth() + 1).toString();
             const year = dateobj.getFullYear().toString();
             const hours = dateobj.getHours().toString();
             const minutes = dateobj.getMinutes().toString();
@@ -195,12 +220,13 @@
         // Get a reference to the storage service, which is used to create references in your storage bucket
         const storage = getStorage(firebaseApp);
         const uploadbtn = document.getElementById('btnUpload');
-        function writetoDB(filename,title,caption,imageUrl) {
+        function writetoDB(filename,title,caption,trail,imageUrl) {
             const db = getDatabase();
             console.log(filename)
             set(dbRef(db,'UploadRequests/' + timestamp), {
                 title: title,
                 caption: caption,
+                trail:trail,
                 image: imageUrl,
                 approved:false,
             })
@@ -212,11 +238,30 @@
                 console.log(snapshot);
                 
                 console.log('Uploaded Successfully');
-                //TODO:Upload ALERT
                 getDownloadURL(storageRef).then((url) => {
-                    console.log(url,"URL")
-                    writetoDB(filename,"","",url);
+                    console.log(url,"URL");
+                    var title = document.getElementById('title').value;
+                    var caption = document.getElementById('caption').value;
+                    var trail = document.getElementById('trail').value;
+                    writetoDB(filename,title,caption,trail,url);
                 });
+                var hostname = location.hostname;
+                var body =  hostname+"/public/CJApproval.html?"+timestamp
+               
+                Email.send({
+                    Host : "smtp-relay.sendinblue.com",
+                    Port: "587",
+                    Username : "pa.heartland.trails@gmail.com",
+                    Password : "awdWO7mI0hBVRrb4",
+                    To : 'dragonaccyip@yahoo.com.sg',
+                    From : "pa.heartland.trails@gmail.com",
+                    Subject : "Upload Request",
+                    Body : body
+                }).then(
+                message => alert(message)
+                );
+                var modal = new bootstrap.Modal(document.getElementById("uploadedModal"))
+                modal.show();
             })
            
         });

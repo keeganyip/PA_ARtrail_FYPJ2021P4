@@ -31,13 +31,6 @@
 
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet" />
-
-    <!-- =======================================================
-  * Template Name: Butterfly - v4.7.0
-  * Template URL: https://bootstrapmade.com/butterfly-free-bootstrap-theme/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body>
@@ -56,9 +49,9 @@
                         </div>
 
                     </div>
-                    <div id="caption" class="container caption my-5">
+                    <div class="container caption my-5">
                         <h4 id="title">TITLE</h1>
-                        <p id="body">
+                        <p id="caption">
                         test
                     </p>    
                     </div>
@@ -86,10 +79,38 @@
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
 
-    <script>
+    <script type="module">
         var queryString = decodeURIComponent(window.location.search);
         queryString = queryString.substring(1);
-        document.getElementById('img').src = queryString
+        import {
+            initializeApp
+        } from 'https://www.gstatic.com/firebasejs/9.6.3/firebase-app.js'
+        import { 
+            getDatabase, ref, child, get
+        } from 'https://www.gstatic.com/firebasejs/9.6.3/firebase-database.js'
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAiWhsurmpe0XHv5fT6woKqY6hURnd4Kno",
+            authDomain: "fypj-f74df.firebaseapp.com",
+            databaseURL: "https://fypj-f74df-default-rtdb.asia-southeast1.firebasedatabase.app",
+            storageBucket: "fypj-f74df.appspot.com",
+        };
+        const firebaseApp = initializeApp(firebaseConfig);
+
+        const dbRef = ref(getDatabase());
+        var title = document.getElementById('title');
+        var caption = document.getElementById('caption');
+        get(child(dbRef, 'UploadRequests/' + queryString)).then((snapshot) => {
+            if(snapshot.exists()){
+                var data = snapshot.val();
+                console.log(data)
+                document.getElementById('img').src = data.image;
+                title.innerText = data.title;
+                caption.innerText = data.caption;
+
+            }
+        })
+
     </script>
 </body>
 

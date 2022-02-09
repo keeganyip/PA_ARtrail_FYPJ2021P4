@@ -180,6 +180,7 @@ function checkDistanceFromTrail(origin, traillocation) {
                         displayRoute(origin, traillocation, travelMode, transitOptions);
                     })
                 } else {
+                    $('#transitOptions').css('display', 'none');
                     $('#navigate').on('click', function () {
                         myModal.hide();
                         displayRoute(origin, traillocation, travelMode);

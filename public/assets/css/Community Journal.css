@@ -93,6 +93,15 @@ figcaption {
   font-weight: 700;
 }
 
+select{
+  justify-content: right;
+  position: relative;
+  max-width: 30%;
+  z-index: 1;
+  border-color:black !important;
+  float: right;
+}
+
 @media (max-height: 650px) {
   #content {
     margin-top: 1rem !important;
