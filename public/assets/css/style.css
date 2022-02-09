@@ -1336,6 +1336,8 @@ section {
 .tab-nav-container a{
   font-weight: normal;
   color: black !important;
+  text-decoration: none;
+  font-family: 'lato';
 }
 .tab-nav-container a:active{
   font-weight: 500;
