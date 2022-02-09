@@ -59,13 +59,15 @@
     #map {
       height: 100%;
       width: 100%;
+      overflow: hidden;
     }
 
     html,
     body {
-      height: 100%;
+      height: 100vh!important;
       margin: 0;
       padding: 0;
+      /* overflow-y: hidden; */
 
     }
     #transitOptions{
@@ -91,7 +93,7 @@
     <div class="modal" data-bs-backdrop="static" data-bs-keyboard="false" id="dialog" aria-labelledby="modaltitle"
       aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" style="width: auto;">
-        <div class="modal-content justify-content-center  ">
+        <div class="modal-content justify-content-center" style="border-radius: 15px;">
           <div class="modal-header" style="border-bottom: 2px solid gray;">
             <h1 id="modaltitle" class="modal-title w-100 text-center">Too Far from Trail</h3>
           </div>
@@ -100,7 +102,7 @@
               like to navigate to the trail?</p>
             <div id="option" class="text-center" style="display:none;">
               <p style="font-size: 3rem;">Choose travel mode</p>
-              <select id='travelmode' class="form-select my-3" style="font-size:2rem;">
+              <select id='travelmode' class="form-select my-3" style="font-size:2rem; border-color: black;">
                 <option value="">Travel Mode</option>
                 <option value="DRIVING">Driving</option>
                 <option value="WALKING">Walking</option>
@@ -137,42 +139,6 @@
     </div>
    
   </div>
-  <!-- <script type="module">
-    // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-analytics.js";
-  import { getDatabase ,  ref,  onValue} from "https://www.gstatic.com/firebasejs/9.5.0/firebase-database.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyAiWhsurmpe0XHv5fT6woKqY6hURnd4Kno",
-    authDomain: "fypj-f74df.firebaseapp.com",
-    databaseURL: "https://fypj-f74df-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "fypj-f74df",
-    storageBucket: "fypj-f74df.appspot.com",
-    messagingSenderId: "934697055143",
-    appId: "1:934697055143:web:b193780aae92b9e111bc82",
-    measurementId: "G-9K8TFP4H0D",
-    databaseURL:"https://fypj-f74df-default-rtdb.asia-southeast1.firebasedatabase.app/"
-  };
-
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-  const database = getDatabase(app);
-  const locations = ref(database, 'Trails');
- 
-
-  onValue(locations, (snapshot) => {
-  const data = snapshot.val();
-  //updateStarCount(postElement, data);
-  console.log(data);
-});
-</script> -->
 </body>
 
 </html>
