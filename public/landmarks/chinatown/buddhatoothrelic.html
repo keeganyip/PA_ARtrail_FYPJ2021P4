@@ -93,6 +93,13 @@
             right: 5;
             top: 6;
         }
+        .box {
+            border: 1px solid black;
+            padding: 0;
+            border-radius: 8px;
+            width:80%;
+            margin-left: 10%;
+        }
     </style>
 </head>
 
@@ -107,7 +114,7 @@
             </div>
             </header>
             <div class="w3-container" style="text-align: center; border-radius:8px">
-              <h2 style="font-family: Dosis, sans-serif;">Text to speech</h2>
+              <h2 style="font-family: Dosis, sans-serif;">Audio Guide</h2>
               <p>
                   Press<br>
                   <img src="../../assets/img/play.svg" style="height: 20px; width: 20px;"> to play the audio <br>
@@ -120,15 +127,19 @@
       </div>
     <a href="../../routing.html?ctTrail" class="previous round" style="float:left;">&#8249;</a>
     <center>
-        <h1 style="padding-right: 10%;">Buddha Tooth Relic Temple & Museum</h1>
+        <h1 style="padding-right: 10%; color: #ff0004;">Buddha Tooth Relic Temple & Museum</h1>
         <img src="../../assets/img/chinatown/buddha tooth.JPG" style="width:100%" alt="buddha tooth" />
     </center>
-    <div style="margin-left: 27%;"> 
-        <div class=buttons>
-            <button id=play></button> &nbsp;
-            <button id=pause></button> &nbsp;
-            <button id=stop></button>
-            <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-white"><img src="../../assets/img/info.png" style="height: 20px; width: 20px;"></button>
+    <br>
+    <div class="box">
+        <div style="margin-left: 24%;"> 
+            <div class=buttons>
+                <p style="margin-left: 18%;">Audio Guide</p>
+                <button id=play></button> &nbsp;
+                <button id=pause></button> &nbsp;
+                <button id=stop></button>
+                <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-white"><img src="../../assets/img/info.png" style="height: 20px; width: 20px;"></button>
+            </div>
         </div>
     </div>
     <div style="margin: 15px;">

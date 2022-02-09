@@ -24,6 +24,9 @@
       font-family:"Dosis", sans-serif;
       font-weight: 500;
     } 
+    p {
+      font-size: 20px;
+    }
     .button {
       background-color: #00A6FF;
       border: none;
@@ -65,22 +68,25 @@
 </head>
 
 <body>
-  <div class="demo-wrap" style="height: 150%;">
-    <img class="demo-bg" src="assets/img/background.jpg" alt="">
+  <div style="background-color:#d3e5fa">
+  <div class="demo-wrap" style="height: 100%;">
+    <!-- <img class="demo-bg" src="assets/img/background.jpg" alt=""> -->
     <div class="demo-content">
       <a href="congratsPageCT.html">&#10060</a>
       <br>
       <br>
+      <div style="margin-left:10%">
       <div style="width:800px; margin:0 auto;">
         <div style="justify-content: center;">
           <h1>Feedback Form</h1>
-          <p>We would love to hear your thoughts, suggestion, concerns or problems with anything so we can improve!</p>
+          <p style="font-size: 19px;">We would love to hear your thoughts, <br>suggestion, concerns or
+            problems with<br>anything so we can improve!</p>
           <br>
           <form> 
-            <p>Username:</p>
-            <input style="width: 300px;" type="text" id="fname" name="fname" value="" placeholder="Your Username"><br>
+            <p>Nickname:</p>
+            <input style="width: 300px;" type="text" id="fname" name="fname" value="" placeholder="Your Nickname"><br>
             <br>
-            Describe your feedback: <br>
+            <p>Describe your feedback:</p>
             <textarea rows="4" cols="40" name="comment" form="usrform" placeholder="Describe here...">
             </textarea><br>
           </form>
@@ -118,9 +124,10 @@
             </label>
           </form>
         </div>
-        <div class="container">
+        <div class="container" style="margin-left:3%; margin-top: 20%;">
         <button class="button buttonsubmit" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" value="submit">Submit Feedback</button>
       </div>
+    </div>
       <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
@@ -140,7 +147,8 @@
     </div>
   </div>
 </div>
-      <nav class="navbar-fixed-bottom navbar-default" >
+</div>
+      <!-- <nav class="navbar-fixed-bottom navbar-default" >
         <div class="tab-nav-container container-fluid text-center">
           <a href="../index.html">
             <div>
@@ -175,7 +183,7 @@
             </div>
           </a>
         </div>
-      </nav>
+      </nav> -->
     <!-- <script type="text/javascript">
         window.addEventListener("load", function(){
         setTimeout(
