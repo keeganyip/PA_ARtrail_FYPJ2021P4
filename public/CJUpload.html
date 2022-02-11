@@ -257,11 +257,11 @@
                     From : "pa.heartland.trails@gmail.com",
                     Subject : "Upload Request",
                     Body : body
-                }).then(
-                // message => alert(message)
-                );
-                var modal = new bootstrap.Modal(document.getElementById("uploadedModal"))
-                modal.show();
+                }).then(() =>{
+                    var modal = new bootstrap.Modal(document.getElementById("uploadedModal"))
+                    modal.show();
+                });
+                
             })
            
         });
