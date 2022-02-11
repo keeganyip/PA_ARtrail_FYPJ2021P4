@@ -86,10 +86,10 @@
                 <div class="tab-nav-container text-center" style="background-color: #70a0ca;"">
                     <a href=" overview.html">
                     <div>
-                        <div class="tab active red">
+                        <div class="tab red">
                             <i class="fas fa-home"></i>
                         </div>
-                        <p class="tab-text active">Home</p>
+                        <p class="tab-text">Home</p>
                     </div>
                     </a>
                     <a>
@@ -110,10 +110,10 @@
                     </a> -->
                     <a href="CommunityJournal.html">
                         <div>
-                            <div class="tab orange">
+                            <div class="tab active orange">
                                 <i class="fas fa-images"></i>
                             </div>
-                            <p class="tab-text">Gallery</p>
+                            <p class="tab-text active">Gallery</p>
                         </div>
                     </a>
                 </div>
@@ -258,7 +258,7 @@
                     Subject : "Upload Request",
                     Body : body
                 }).then(
-                message => alert(message)
+                // message => alert(message)
                 );
                 var modal = new bootstrap.Modal(document.getElementById("uploadedModal"))
                 modal.show();
