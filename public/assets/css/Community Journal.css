@@ -96,7 +96,8 @@ figcaption {
 select{
   justify-content: right;
   position: relative;
-  max-width: 30%;
+  max-width: 35%;
+  width: auto;
   z-index: 1;
   border-color:black !important;
   float: right;
