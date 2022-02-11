@@ -73,13 +73,13 @@
 
             <nav class="navbar-fixed-bottom navbar-default" style="padding-top: 15%; ">
                 <div class="tab-nav-container text-center" style="background-color: #70a0ca;"">
-                    <a href="overview.html">
-                        <div>
-                            <div class="tab red">
-                                <i class="fas fa-home"></i>
-                            </div>
-                            <p class="tab-text">Home</p>
+                    <a href=" overview.html">
+                    <div>
+                        <div class="tab red">
+                            <i class="fas fa-home"></i>
                         </div>
+                        <p class="tab-text">Home</p>
+                    </div>
                     </a>
                     <a>
                         <div>
@@ -154,6 +154,7 @@
         var journal = document.getElementById('journal')
 
         const noImages = document.createElement('h2');
+        noImages.id = 'noimg';
 
         const dbRef = ref(getDatabase());
         function createimgHtml(src,uiid) {
@@ -164,6 +165,7 @@
             newImg.onclick = function(){window.location.href = 'imagepreview.html?' + uiid}
         }
         function getimages(){
+            gallery.innerHTML = "";
             get(child(dbRef, 'UploadRequests/')).then((snapshot)=> {
                 if(snapshot.exists()){
                     var allimages = snapshot.val()
@@ -194,9 +196,13 @@
             getimages();
         }
         trailfilter.onchange = function () {
-            title.innerHTML = 'Gallery - ' +trailfilter.value
+            title.innerHTML = 'Gallery - ' +trailfilter.value;
+            console.log(journal.children)
+
+            if(journal.querySelector('#noimg')){
+                journal.removeChild(noImages);
+            }
             getimages();
-            journal.removeChild(noImages);
         }
         
         
