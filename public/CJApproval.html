@@ -53,8 +53,8 @@
             </div>
 
 
-            <div id="container" class="pt-5 h-100">
-                <div class="mx-auto mt-5">
+            <div id="container" class="pt-5 h-100" style="overflow: scroll;">
+                <div class="mx-auto my-5">
                     <div class="container ipBox">
                         <img id="imgpreview">
                     </div>
@@ -68,9 +68,9 @@
                             <input type="text" class="form-control" id="caption" placeholder="Caption" maxlength="240"
                                 readonly>
                         </div>
-                        <div class="px-5 mb-2">
-                            <label for="trail" class="form-label">Select Trail:</label>
-                            <select class="form-select" id="trail" style="border-color:black;">
+                        <div class="px-5 mb-2 form-group">
+                            <label for="trail" class="form-label pt-2">Select Trail:</label>
+                            <select class="form-select" id="trail" style="border-color:black; max-width: fit-content;">
                                 <option value="Little India">Little India</option>
                                 <option value="Peranakan">Peranakan</option>
                                 <option value="Kampong Glam">Kampong Glam</option>
@@ -164,11 +164,11 @@
             initializeApp
         } from 'https://www.gstatic.com/firebasejs/9.6.3/firebase-app.js'
         import {
-            getStorage, ref, uploadBytes, getDownloadURL
+            getStorage, ref, uploadBytes, getDownloadURL, listAll, deleteObject
         } from 'https://www.gstatic.com/firebasejs/9.6.3/firebase-storage.js'
 
         import { 
-            getDatabase, ref as dbRef ,child,get,update
+            getDatabase, ref as dbRef ,child,get,update,remove
         } from 'https://www.gstatic.com/firebasejs/9.6.3/firebase-database.js'
 
         // Set the configuration for your app
@@ -227,14 +227,33 @@
 
         function disapproveImg() {
             var trail = trailselect.value;
-            update(dbRef(database,'UploadRequests/' + queryString),{
-                approved:false,
-                trail:trail,
-            }).then(()=> {
-                modaltitle.innerHTML = 'Disapproved Image Post';
-                modalBody.innerHTML = 'You have disapproved this post successfully';
-                myModal.show();
-            })
+            const storage = getStorage();
+
+            // Create a reference under which you want to list
+            const listRef = ref(storage);
+
+            // Find all the prefixes and items.
+            listAll(listRef)
+            .then((res) => {
+                res.items.forEach((itemRef) => {
+                // All the items under listRef.
+                    console.log(itemRef._location.path)
+                    if(itemRef._location.path.includes(queryString)){
+                        console.log("SUCCESS")
+                        const delFileRef = ref(storage, itemRef._location.path)
+                        deleteObject(delFileRef).then(() => {
+                            remove(dbRef(database,'UploadRequests/' + queryString)).then(()=> {
+                                modaltitle.innerHTML = 'Disapproved Image Post';
+                                modalBody.innerHTML = 'You have disapproved this post successfully';
+                                myModal.show();
+                            })
+                        })
+                    }
+                });
+            }).catch((error) => {
+                // Uh-oh, an error occurred!
+            });
+           
            
         }
         disapprovebtn.onclick = function () {

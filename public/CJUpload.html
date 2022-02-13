@@ -68,7 +68,7 @@
                         </div>
                         <div class="px-5 mb-2">
                             <label for="trail" class="form-label">Select Trail:</label>
-                            <select class="form-select" id="trail" style="border-color:black;">
+                            <select class="form-select" id="trail" style="border-color:black;max-width: fit-content;">
                                 <option value="Little India">Little India</option>
                                 <option value="Peranakan">Peranakan</option>
                                 <option value="Kampong Glam">Kampong Glam</option>
@@ -83,7 +83,7 @@
             </div>
 
             <nav class="navbar-fixed-bottom navbar-default" style="padding-top: 15%; ">
-                <div class="tab-nav-container text-center" style="background-color: #70a0ca;"">
+                <div class="tab-nav-container text-center" style="background-color: #70a0ca;">
                     <a href=" overview.html">
                     <div>
                         <div class="tab red">
@@ -100,14 +100,6 @@
                             <p class="tab-text">Map</p>
                         </div>
                     </a>
-                    <!-- <a>
-                        <div>
-                            <div class="tab green">
-                                <i class="fas fa-calendar-alt"></i>
-                            </div>
-                            <p class="tab-text text-left">Calendar</p>
-                        </div>
-                    </a> -->
                     <a href="CommunityJournal.html">
                         <div>
                             <div class="tab active orange">
@@ -246,20 +238,21 @@
                     writetoDB(filename,title,caption,trail,url);
                 });
                 var hostname = location.hostname;
-                var body =  hostname+"/public/CJApproval.html?"+timestamp
+                var body =  "http://"+hostname+"/public/CJApproval.html?"+timestamp
                
                 Email.send({
                     Host : "smtp-relay.sendinblue.com",
                     Port: "587",
                     Username : "pa.heartland.trails@gmail.com",
                     Password : "awdWO7mI0hBVRrb4",
-                    To : 'dragonaccyip@yahoo.com.sg',
+                    To : "dragonaccyip@yahoo.com.sg",
                     From : "pa.heartland.trails@gmail.com",
                     Subject : "Upload Request",
                     Body : body
-                }).then(() =>{
+                }).then((message) =>{
                     var modal = new bootstrap.Modal(document.getElementById("uploadedModal"))
                     modal.show();
+                    console.log(message);
                 });
                 
             })
