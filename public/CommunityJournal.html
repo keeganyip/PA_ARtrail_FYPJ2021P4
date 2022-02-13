@@ -155,7 +155,7 @@
 
         const noImages = document.createElement('h2');
         noImages.id = 'noimg';
-
+        var imgcount = 0;
         const dbRef = ref(getDatabase());
         function createimgHtml(src,uiid) {
             const newImg = document.createElement('img');
@@ -163,14 +163,18 @@
             newImg.style = "width:100%;height:100%";
             gallery.appendChild(newImg);
             newImg.onclick = function(){window.location.href = 'imagepreview.html?' + uiid}
+            imgcount++;
         }
         function getimages(){
             gallery.innerHTML = "";
+
             get(child(dbRef, 'UploadRequests/')).then((snapshot)=> {
                 if(snapshot.exists()){
+
                     var allimages = snapshot.val()
                     for(var image in allimages){
                         if(allimages[image].approved){
+
                             if(allimages[image].trail == trailfilter.value){
                                 createimgHtml(allimages[image].image,image);
                             }
@@ -182,9 +186,17 @@
                             }
                         }
                     }
+                    if(imgcount == 0){
+                        noImages.innerText = "No Images Found. Upload yours now!"
+                                if(journal.childElementCount == 1){
+                                    journal.appendChild(noImages);
+                                }
+                    }
                 }
                 else{
                     noImages.innerText = "No Images Found. Upload yours now!"
+                    console.log(journal.childElementCount);
+
                     if(journal.childElementCount == 1){
                         journal.appendChild(noImages);
                     }
