@@ -77,53 +77,6 @@ function start() {
     }
 }
 
-// function checkDistance(evt) {
-//     origin = evt.currentTarget.origin
-//     if (trail == "China Town") {
-//         trail = trails.chinatown
-//     } else if (trail == "NYP") {
-//         trail = trails.nyp
-//     }
-//     distance = getDistance(origin, trail.location)
-
-//     // If not at trail yet
-//     if (distance > 1600) {
-//         flag = false
-//         if (flag) {
-//             directionRenderer.set('directions', null)
-//             displayRoute(origin, Chinatown[0].location, travelMode)
-//         }
-//         flag = false
-//         $("#dialog").dialog("open");
-//         $('#Ok').click(function () {
-//             flag = true
-//             travelMode = $('#option').val();
-//             displayRoute(origin, Chinatown[0].location, travelMode)
-//             map.setCenter(origin)
-//         })
-//     }
-
-//     // If at the trail already
-//     else {
-//         flag = false
-//         if (flag) {
-//             $("#fardialog").dialog("open");
-//             $("#farOk").click(function () {
-//                 window.location.href = "https://finalyearproject-631fc.web.app/headphone.html"
-
-//             })
-//         }
-//         // Set get route button 
-//         getRouteButtonFlag = true
-//         flag = true
-//         $("#fardialog").dialog("open");
-//         $("#farOk").click(function () {
-//             window.location.href = "https://finalyearproject-631fc.web.app/headphone.html"
-
-//         })
-
-//     }
-// }
 function getDistance(mk1, mk2) {
     var R = 6378137; // Radius of the Earth in miles
     var rlat1 = mk1.lat * (Math.PI / 180); // Convert degrees to radians
