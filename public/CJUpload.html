@@ -238,7 +238,8 @@
                     writetoDB(filename,title,caption,trail,url);
                 });
                 var hostname = location.hostname;
-                var body =  "http://"+hostname+"/public/CJApproval.html?"+timestamp
+                var link =  "\nhttp://"+hostname+"/CJApproval.html?"+timestamp
+                var body = "Dear admin,\n Please take a look at this upload request.\n Request:" + link;
                
                 Email.send({
                     Host : "smtp-relay.sendinblue.com",
