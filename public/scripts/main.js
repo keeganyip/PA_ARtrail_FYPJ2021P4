@@ -477,7 +477,7 @@ window.onload = () => {
                     // axes helper
                     // text.addEventListener('loaded', () => window.dispatchEvent(new CustomEvent('gps-entity-place-loaded')));
                     queryString = queryString.substring(1);
-                    if (queryString == id) {
+                    if (queryString.toLowerCase() == id) {
                         AFRAME.registerComponent(id, {
                             init: function () {
                                 setInterval(function () {
@@ -493,14 +493,14 @@ window.onload = () => {
 
                                         var pos = document.getElementById(id.toLowerCase()).getAttribute("position");
                                         var distance = getDistance(origin, place.location);
-                                        console.log(distance, place.location, origin, "DISTNACE");
+                                        // console.log(distance, place.location, origin, "DISTNACE");
                                         if (frustum.containsPoint(pos)) {
                                             // Do something with the position...
                                             console.log("IN VIEW");
                                             overlay.css('display', "none");
                                             overlay.css('z-index', '1');
                                         } else {
-                                            if (distance && distance < 30) {
+                                            if (distance && distance < 50) {
                                                 overlay.css('display', 'block');
                                                 overlay.css('z-index', '9999');
                                             }
