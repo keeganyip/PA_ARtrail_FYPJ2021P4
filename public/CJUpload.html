@@ -238,7 +238,7 @@
                     writetoDB(filename,title,caption,trail,url);
                 });
                 var hostname = location.hostname;
-                var link =  "http://"+hostname+"/CJApproval.html?"+timestamp
+                var link =  "https://"+hostname+"/CJApproval.html?"+timestamp
                 var body = "Dear admin,<br> Please take a look at this upload request.<br> Request: " + link;
                
                 Email.send({
