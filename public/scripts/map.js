@@ -1,22 +1,26 @@
 const chinatown = {
     title: "Chinatown",
     latitude: 1.2826330692039218,
-    longitude: 103.84501595442900
+    longitude: 103.84501595442900,
+    icon:'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
 };
 const KPGL = {
     title: "Kampong Glam",
     latitude: 1.3027969731961035, 
     longitude: 103.86064949592937,
+    icon:'http://maps.google.com/mapfiles/ms/icons/purple-dot.png'
 };
 const LI = {
     title: "Little India",
     latitude: 1.3067645469152556,
     longitude:  103.85186092157653,
+    icon:'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
 };
 const peranakan = {
     title: "Peranakan",
     latitude:1.3173633675325074, 
-    longitude:103.90471137972536
+    longitude:103.90471137972536,
+    icon:'http://maps.google.com/mapfiles/ms/icons/orange-dot.png'
 }
 const markers = [chinatown,KPGL,LI,peranakan]
 
@@ -81,7 +85,13 @@ function setMarkers(map, origin) {
                 color: 'black',
                 fontWeight: 'bold',
                 text: marker.title,
-                fontSize: '40px',
+                fontSize: '35px',
+            },
+            
+            icon: {
+                url:marker.icon,
+                size: new google.maps.Size(48, 60),
+                scaledSize: new google.maps.Size(48, 60),
             },
         });
         bounds.extend(mapmarker.position);
